@@ -63,8 +63,9 @@
 ;;       single-quotes-mode
 (defvar vlt-packages
   '(ace-window
-    apache-mode
+    all-the-icons
     anzu
+    apache-mode
     avy
     browse-kill-ring
     cider
@@ -133,6 +134,8 @@
     whitespace-cleanup-mode
     yasnippet
     zencoding-mode
+    zerodark-theme
+    zoom-frm
     zop-to-char)
   "A list of packages to ensure are installed at launch.")
 

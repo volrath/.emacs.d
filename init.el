@@ -83,7 +83,7 @@
 ;; Require core config
 (require 'vlt-defaults)
 (require 'vlt-packages)
-;; (require 'vlt-ui)
+(require 'vlt-ui)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

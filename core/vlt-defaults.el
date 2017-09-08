@@ -153,11 +153,6 @@
 ;; Remove text in active region if inserting text
 (delete-selection-mode t)
 
-;; Always display line and column numbers
-(line-number-mode t)
-(column-number-mode t)
-(size-indication-mode t)
-
 ;; Undo/redo window configuration with C-c <left>/<right>
 (winner-mode 1)
 
