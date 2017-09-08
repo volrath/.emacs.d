@@ -161,6 +161,12 @@
 ;; Undo/redo window configuration with C-c <left>/<right>
 (winner-mode 1)
 
+;; enable which-func-mode
+(which-func-mode 1)
+
+;; set tramp max chunksize
+(setq tramp-chunksize 250)
+
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
