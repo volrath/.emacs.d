@@ -148,7 +148,6 @@
 (require 'diminish)
 (eval-after-load "yasnippet" '(diminish 'yas-minor-mode))
 (eval-after-load "eldoc" '(diminish 'eldoc-mode))
-(eval-after-load "paredit" '(diminish 'paredit-mode))
 (eval-after-load "tagedit" '(diminish 'tagedit-mode))
 (eval-after-load "elisp-slime-nav" '(diminish 'elisp-slime-nav-mode))
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
@@ -184,15 +183,6 @@
 
 ;; Fontify org-mode code blocks
 (setq org-src-fontify-natively t)
-
-;; Represent undo-history as an actual tree (visualize with C-x u)
-(setq undo-tree-mode-lighter "")
-(require 'undo-tree)
-(global-undo-tree-mode)
-
-;; show available keybindings after you start typing
-(require 'which-key)
-(which-key-mode t)
 
 (provide 'vlt-ui)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

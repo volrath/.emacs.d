@@ -47,7 +47,11 @@
 ;; 
 ;;; Code:
 
+(require 'ansi-color)
+(require 'compile)
+(require 'midnight)
 (require 'misc)
+(require 'tramp)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -132,6 +136,9 @@
 (set-selection-coding-system 'utf-8) ; please
 (prefer-coding-system 'utf-8) ; with sugar on top
 
+;; prettify symbols
+(global-prettify-symbols-mode t)
+
 ;; Highlight current line
 (global-hl-line-mode t)
 
@@ -161,6 +168,7 @@
 
 ;; set tramp max chunksize
 (setq tramp-chunksize 250)
+(setq tramp-default-method "ssh")
 
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
@@ -197,6 +205,10 @@
 
 ;; (setq set-mark-command-repeat-pop t)
 
+;; Colorize output of Compilation Mode, see
+;; http://stackoverflow.com/a/3072831/355252
+(add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+
 ;; zap-up-to-char
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR." t)
@@ -210,6 +222,11 @@
       (make-directory parent-directory t))))
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
+
+;; Run at full power please
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;; Sanity...
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory)
@@ -237,6 +254,17 @@
       shift-select-mode nil  ; Real emacs knights don't use shift to mark things
       x-select-enable-clipboard t  ; Allow pasting selection outside of Emacs
       enable-recursive-minibuffers t  ; Allow recursive minibuffers
+      xterm-mouse-mode t  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Text_002dOnly-Mouse.html
+      ispell-program-name "aspell"
+      version-control t
+      kept-new-versions 10
+      kept-old-versions 0
+      delete-old-versions t
+      backup-by-copying t
+      vc-make-backup-files t
+      compilation-ask-about-save nil  ; Just save before compiling
+      compilation-always-kill t       ; Just kill old compile processes before starting the new one
+      compilation-scroll-output 'first-error ; Automatically scroll to first error
       )
 (load custom-file)
 
@@ -247,7 +275,6 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "M-z") 'zap-up-to-char)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)

@@ -57,16 +57,14 @@
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (package-initialize)
 
-;; TODO: setup things in site-lisp
-;;       core-async-mode
-;;       delsel?
-;;       single-quotes-mode
 (defvar vlt-packages
   '(ace-window
     all-the-icons
     anzu
+    aggressive-indent
     apache-mode
     avy
+    beginend
     browse-kill-ring
     cider
     change-inner  ;; TODO
@@ -92,6 +90,7 @@
     fill-column-indicator
     flycheck
     flycheck-clojure
+    flycheck-pos-tip
     gist
     git-timemachine
     gitconfig-mode
@@ -100,6 +99,8 @@
     guru-mode
     hardcore-mode
     helm
+    helm-fuzzier
+    helm-projectile
     highlight-escape-sequences
     hydra
     imenu-anywhere
@@ -111,12 +112,12 @@
     multiple-cursors
     operate-on-number
     ov
-    paredit
     pass
     peep-dired
     perspective
     prodigy
     projectile
+    rainbow-delimiters
     restclient
     s
     smart-forward  ;; TODO
