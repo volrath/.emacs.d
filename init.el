@@ -38,6 +38,8 @@
   "Directory containing core configuration.")
 (defvar vlt-settings-dir (expand-file-name "settings" user-emacs-directory)
   "Directory containing settings for most of the major modes used.")
+(defvar vlt-appearance-dir (expand-file-name "appearance" user-emacs-directory)
+  "Directory containing appearance stuff, themes and what not.")
 (defvar vlt-defuns-dir (expand-file-name "defuns" user-emacs-directory)
   "Directory for personal/custom defuns and experiments.")
 (defvar vlt-site-lisp-dir (expand-file-name "site-lisp" user-emacs-directory)
@@ -55,6 +57,7 @@
 
 (add-to-list 'load-path vlt-core-dir)
 (add-to-list 'load-path vlt-settings-dir)
+(add-to-list 'load-path vlt-appearance-dir)
 (add-to-list 'load-path vlt-defuns-dir)
 (add-to-list 'load-path vlt-site-lisp-dir)
 (vlt-add-subfolders-to-load-path vlt-defuns-dir)
