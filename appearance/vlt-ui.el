@@ -46,9 +46,12 @@
   (when (file-directory-p path)
     (add-to-list 'custom-theme-load-path path)))
 
+;; Solarize customizations
+(setq solarized-distinct-fringe-background t
+      solarized-use-more-italic t
+      solarized-scale-org-headlines nil)
 
 ;; Start with the first theme in `vlt-themes'
-;; (zerodark-setup-modeline-format)  ;; works ok in every theme
 (vlt-enable-current-theme)
 
 ;; Shortcuts to cycle through themes
