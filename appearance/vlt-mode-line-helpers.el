@@ -86,7 +86,7 @@
 
 (defvar vlt-modeline-position
   '(:eval (propertize ":%l:%c %p " 'face (if (vlt--active-window-p)
-                                             '(list t :height 0.9)
+                                             'vlt-ml-buffer-position-face
                                            'mode-line-inactive)))
   "Mode line construct for displaying the position in the buffer.")
 
@@ -188,10 +188,12 @@ The result is cached for one second to avoid hiccups."
       (solarized-with-color-variables variant
         (setq vlt-ml-active-foreground s-mode-line-fg
               vlt-ml-inactive-foreground s-mode-line-inactive-fg
-              vlt-ml-background s-mode-line-bg
+              vlt-ml-active-background s-mode-line-bg
+              vlt-ml-inactive-background s-mode-line-inactive-bg
               vlt-ml-anzu-color "#c678dd"))))
    (t (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
-            vlt-ml-background "#222222"
+            vlt-ml-inactive-foreground (if (true-color-p) "#687080" "#707070")
+            vlt-ml-active-background "#222222"
             vlt-ml-inactive-background (if (vlt-true-color-p) "#1c2129" "#222222")
             vlt-ml-anzu-color "#c678dd"))))
 
@@ -203,16 +205,16 @@ The result is cached for one second to avoid hiccups."
      ;; Mode line faces
      `(mode-line
        ((,class
-         (:background ,vlt-ml-background
+         (:background ,vlt-ml-active-background
                       :height 0.9
                       :foreground ,vlt-ml-active-foreground
-                      :box (:line-width 6 :color ,vlt-ml-background)))))
+                      :box (:line-width 6 :color ,vlt-ml-active-background)))))
      `(mode-line-inactive
        ((,class
-         (:background ,vlt-ml-background
+         (:background ,vlt-ml-inactive-background
                       :height 0.9
                       :foreground ,vlt-ml-inactive-foreground
-                      :box (:line-width 6 :color ,vlt-ml-background)))))
+                      :box (:line-width 6 :color ,vlt-ml-inactive-background)))))
      `(anzu-mode-line
        ((,class :inherit mode-line :foreground ,vlt-ml-anzu-color :weight bold)))))
   (setq-default mode-line-format
