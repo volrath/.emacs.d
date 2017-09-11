@@ -249,7 +249,6 @@
       ediff-diff-options "-w"
       ediff-window-setup-function 'ediff-setup-windows-plain
       ediff-window-setup-function 'ediff-setup-windows-plain
-      ring-bell-function 'ignore  ; Never beep!
       gc-cons-threshold 50000000  ; Don't be so stingy on the memory, we have lots now. It's the distant future.
       large-file-warning-threshold 100000000  ; 100MB might be too much
       save-place-file (expand-file-name "saveplace" vlt-backups-dir)  ; Save place in buffers
