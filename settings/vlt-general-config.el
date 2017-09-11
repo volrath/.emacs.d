@@ -83,7 +83,8 @@
 
 ;; avy
 
-(setq avy-background t)
+;; (setq avy-background nil)
+(setq avy-highlight-first t)
 (setq avy-style 'at-full)
 
 ;; beginend
