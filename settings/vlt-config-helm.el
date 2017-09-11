@@ -57,6 +57,7 @@
       helm-apropos-fuzzy-match              t
       helm-info-emacs-fuzzy-match           t
       helm-find-files-fuzzy-match           t
+      helm-completing-read-fuzzy-match      t
       helm-locate-library-fuzzy-match       t)
 
 (define-key helm-command-map (kbd "o")     'helm-occur)
