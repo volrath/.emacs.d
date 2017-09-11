@@ -46,19 +46,19 @@
    (display-graphic-p)
    (= (tty-display-color-cells) 16777216)))
 
-(defmacro vlt-cached-for (secs &rest body)
+(defvar vlt-ml--git-last-run nil)
+(defvar vlt-ml--git-cache nil)
+
+(defmacro vlt-ml--cached-for (secs &rest body)
   "Cache for SECS the result of the evaluation of BODY."
   (declare (debug t))
-  (let ((cache (make-symbol "cache"))
-        (last-run (make-symbol "last-run")))
-    `(let (,cache ,last-run)
-       (lambda ()
-         (when (or (null ,last-run)
-                   (> (- (time-to-seconds (current-time)) ,last-run)
-                      ,secs))
-           (setf ,cache (progn ,@body))
-           (setf ,last-run (time-to-seconds (current-time))))
-         ,cache))))
+  `(lambda ()
+     (when (or (null vlt-ml--git-last-run)
+               (> (- (time-to-seconds (current-time)) vlt-ml--git-last-run)
+                  ,secs))
+       (setf vlt-ml--git-cache (progn ,@body))
+       (setf vlt-ml--git-last-run (time-to-seconds (current-time))))
+     vlt-ml--git-cache))
 
 (defvar vlt-selected-window nil
   "Selected window.")
@@ -159,7 +159,7 @@
                   'local-map (make-mode-line-mouse-map
                               'mouse-1 #'flycheck-list-errors)))))
 
-(defvar vlt-ml--git-face-cached (vlt-cached-for 1 (vlt-ml--git-face-intern)))
+(defvar vlt-ml--git-face-cached (vlt-ml--cached-for 1 (vlt-ml--git-face-intern)))
 
 (defun vlt-ml--git-face-intern ()
   "Return the face to use based on the current repository status."
