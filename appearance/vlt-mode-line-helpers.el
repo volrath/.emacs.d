@@ -192,7 +192,7 @@ The result is cached for one second to avoid hiccups."
               vlt-ml-inactive-background s-mode-line-inactive-bg
               vlt-ml-anzu-color "#c678dd"))))
    (t (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
-            vlt-ml-inactive-foreground (if (true-color-p) "#687080" "#707070")
+            vlt-ml-inactive-foreground (if (vlt-true-color-p) "#687080" "#707070")
             vlt-ml-active-background "#222222"
             vlt-ml-inactive-background (if (vlt-true-color-p) "#1c2129" "#222222")
             vlt-ml-anzu-color "#c678dd"))))
