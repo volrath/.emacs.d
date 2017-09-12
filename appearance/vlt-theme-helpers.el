@@ -5,7 +5,7 @@
 ;;  --------------------------------------------------------------------
 (setq small-font "-Regular-Hack-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
 (setq big-font "-Regular-Hack-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-(setq presentation-font "-*-Hack-normal-normal-normal-*-24-*-*-*-m-0-iso10646-1")
+(setq presentation-font "-simp-Hack-normal-normal-normal-*-24-*-*-*-m-0-iso10646-1")
 
 ;;; Comfy theme switchers
 ;;  --------------------------------------------------------------------
@@ -34,7 +34,8 @@
     (disable-theme (car theme-pair)))
   (load-theme theme)
   (vlt-extend-theme-customization theme)
-  (vlt-setup-mode-line-format theme))
+  (vlt-setup-mode-line-format theme)
+  (set-face-attribute 'default nil :font font))
 
 (defun vlt-enable-current-theme ()
   (let* ((theme-pair (nth vlt-current-theme-index vlt-themes))
