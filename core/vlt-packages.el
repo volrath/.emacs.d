@@ -114,7 +114,7 @@
     ov
     pass
     peep-dired
-    perspective
+    persp-mode
     prodigy
     projectile
     rainbow-delimiters
