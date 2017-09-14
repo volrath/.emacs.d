@@ -60,6 +60,7 @@
 (require 'highlight-escape-sequences)
 (require 'multiple-cursors)
 (require 'operate-on-number)
+(require 'perspective)
 (require 'prodigy)
 (require 'projectile)
 (require 're-builder)
@@ -76,7 +77,6 @@
 (require 'whitespace-cleanup-mode)
 
 ;; anzu
-;; TODO: check global-keys in prelude-editor.el:270
 
 (diminish 'anzu-mode)
 (global-anzu-mode)
@@ -119,22 +119,25 @@
 ;; operate-on-number
 
 (smartrep-define-key global-map "C-c ."
-                     '(("+" . apply-operation-to-number-at-point)
-                       ("-" . apply-operation-to-number-at-point)
-                       ("*" . apply-operation-to-number-at-point)
-                       ("/" . apply-operation-to-number-at-point)
-                       ("\\" . apply-operation-to-number-at-point)
-                       ("^" . apply-operation-to-number-at-point)
-                       ("<" . apply-operation-to-number-at-point)
-                       (">" . apply-operation-to-number-at-point)
-                       ("#" . apply-operation-to-number-at-point)
-                       ("%" . apply-operation-to-number-at-point)
-                       ("'" . operate-on-number-at-point)))
+  '(("+" . apply-operation-to-number-at-point)
+    ("-" . apply-operation-to-number-at-point)
+    ("*" . apply-operation-to-number-at-point)
+    ("/" . apply-operation-to-number-at-point)
+    ("\\" . apply-operation-to-number-at-point)
+    ("^" . apply-operation-to-number-at-point)
+    ("<" . apply-operation-to-number-at-point)
+    (">" . apply-operation-to-number-at-point)
+    ("#" . apply-operation-to-number-at-point)
+    ("%" . apply-operation-to-number-at-point)
+    ("'" . operate-on-number-at-point)))
+
+;; perspective
+(persp-mode t)
 
 ;; projectile
 
 (setq projectile-cache-file (expand-file-name  "projectile.cache" vlt-backups-dir))
-(projectile-global-mode t)
+(projectile-mode t)
 
 ;; re-builder
 

@@ -70,6 +70,11 @@
 (require 'vlt-setup)         ; Setup and configure major and minor modes / third party libs
 (require 'vlt-key-bindings)  ; global key bindings
 
+;; Start custom things
+
+(require 'vlt-project-mappings)
+(vlt-config-perspectives)
+
 ;; Server
 (require 'server)
 (unless (server-running-p)
