@@ -1,50 +1,50 @@
-;;; vlt-defaults.el --- 
-;; 
+;;; vlt-defaults.el --- -*- lexical-binding: t; -*-
+;;
 ;; Filename: vlt-defaults.el
-;; Description: 
+;; Description:
 ;; Author: Daniel Barreto
-;; Maintainer: 
+;; Maintainer:
 ;; Created: Thu Sep  7 13:44:11 2017 (+0200)
-;; Version: 
+;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: 
-;;           By: 
-;;     Update #: 0
-;; URL: 
-;; Doc URL: 
-;; Keywords: 
-;; Compatibility: 
-;; 
+;; Last-Updated:
+;;           By:
+;;     Update #: 4
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;;; Commentary: 
-;; 
+;;
+;;; Commentary:
+;;
 ;; This is a mix of Phil Hagelberg's `better-defaults.el', prelude's
 ;; `prelude-editor.el', magnar's `sane-defaults.el' and some defaults
 ;; of my own.
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Change Log:
-;; 
-;; 
+;;
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or (at
 ;; your option) any later version.
-;; 
+;;
 ;; This program is distributed in the hope that it will be useful, but
 ;; WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 ;; General Public License for more details.
-;; 
+;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Code:
 
 (require 'ansi-color)
