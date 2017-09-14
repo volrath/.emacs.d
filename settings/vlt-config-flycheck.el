@@ -1,5 +1,4 @@
 (require 'flycheck)
-(require 'flycheck-pos-tip)
 
 (defun magnars/adjust-flycheck-automatic-syntax-eagerness ()
   "Adjust how often we check for errors based on if there are any.
@@ -22,8 +21,11 @@ clean buffer we're an order of magnitude laxer about checking."
                                             idle-change
                                             mode-enabled))
 
-(eval-after-load 'flycheck
-  '(custom-set-variables
-    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
+;; Fix flycheck load-path
+(setq flycheck-emacs-lisp-load-path 'inherit)
+
+;; (eval-after-load 'flycheck
+;;   '(custom-set-variables
+;;     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 (provide 'vlt-config-flycheck)
