@@ -199,6 +199,7 @@
 ;;; Some other big configurations that needed their own files
 (require 'vlt-config-dired)
 (require 'vlt-config-flycheck)
+(require 'vlt-config-header2)
 (require 'vlt-config-helm)
 (require 'vlt-config-hippie)
 (require 'vlt-config-magit)
