@@ -50,15 +50,28 @@
       helm-move-to-line-cycle-in-source     t
       helm-ff-search-library-in-sexp        t
       helm-ff-file-name-history-use-recentf t
-      helm-mode-fuzzy-match                 t
+      helm-ag-fuzzy-match                   t
+      helm-apropos-fuzzy-match              t
+      helm-buffer-list-fuzzy-match          t
+      helm-completing-read-fuzzy-match      t
+      helm-completion-in-region-fuzzy-match t
+      helm-eshell-fuzzy-match               t
+      helm-etags-fuzzy-match                t
+      helm-ff-fuzzy-matching                t
+      helm-file-cache-fuzzy-match           t
+      helm-find-files-fuzzy-match           t
+      helm-imenu-fuzzy-match                t
+      helm-info-emacs-fuzzy-match           t
+      helm-locate-fuzzy-match               t
+      helm-locate-library-fuzzy-match       t
       helm-M-x-fuzzy-match                  t
       helm-mini-fuzzy-match                 t
-      helm-buffer-list-fuzzy-match          t
-      helm-apropos-fuzzy-match              t
-      helm-info-emacs-fuzzy-match           t
-      helm-find-files-fuzzy-match           t
-      helm-completing-read-fuzzy-match      t
-      helm-locate-library-fuzzy-match       t)
+      helm-mode-fuzzy-match                 t
+      helm-projectile-fuzzy-match           t
+      helm-recentf-fuzzy-match              t
+      helm-semantic-fuzzy-match             t
+      helm-session-fuzzy-match              t
+      )
 
 (define-key helm-command-map (kbd "o")     'helm-occur)
 (define-key helm-command-map (kbd "g")     'helm-do-grep)
