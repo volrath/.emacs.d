@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 5
+;;     Update #: 27
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -51,14 +51,34 @@
 (require 'dash)
 (require 'smartparens)
 
-(defun vlt-display-sp-map ()
+(defun vlt--sp-key-binding-from-command (command)
+  "Return a list containing the COMMAND name and its associated key seq."
+  (let ((command-name (symbol-name command)))
+    (list
+     command-name
+     (substitute-command-keys (format "<\\[%s]>" command-name)))))
+
+(defun vlt--sp-command-from-key-binding (key-binding)
+  "Return a list containing the KEY-BINDING and its associated command."
+  (list
+   (lookup-key (current-global-map) (kbd key-binding))
+   (format "<%s>" key-binding)))
+
+(defun vlt--generate-sp-command-key-binding-pair (target)
+  "Generate a command-keybinding pair for TARGET."
+  (if (symbolp target)
+      (vlt--sp-key-binding-from-command target)
+    (vlt--sp-command-from-key-binding target)))
+
+(defun vlt--display-sp-map (title commands)
+  "Display bindings with TITLE for COMMANDS."
+  (insert title)
   (newline 2)
-  (open-line 2)
   (ctbl:create-table-component-region
    :model (ctbl:make-model-from-list
-           (mapcar (lambda (p) (list (cdr p) (car p)))
-                   sp-paredit-bindings)
-           '("Function" "Key Seq"))))
+           (mapcar #'vlt--generate-sp-command-key-binding-pair commands)
+           '("Command" "Key Seq")))
+  (newline))
 
 (defun sp-cheatsheet ()
   "Custom smartparens cheat sheet that add keymaps at the beginning."
@@ -66,6 +86,62 @@
   (sp-cheat-sheet)
   (with-current-buffer (get-buffer "*Smartparens cheat sheet*")
     (goto-char (point-min))
-    (vlt-display-sp-map)))
+    (vlt--display-sp-map "Navigation"
+                         '(sp-beginning-of-sexp
+                           sp-end-of-sexp
+                           sp-up-sexp
+                           sp-backward-up-sexp
+                           sp-down-sexp
+                           sp-backward-down-sexp
+                           sp-forward-sexp
+                           sp-backward-sexp
+                           sp-next-sexp
+                           sp-previous-sexp))
+    (vlt--display-sp-map "Killing"
+                         '(sp-kill-sexp
+                           sp-kill-word
+                           sp-raise-sexp
+                           sp-splice-sexp-killing-around
+                           sp-splice-sexp
+                           sp-splice-sexp-killing-forward
+                           sp-splice-sexp-killing-backward))
+    (vlt--display-sp-map "Wrapping"
+                         '("M-("
+                           "M-["
+                           "M-{"
+                           sp-unwrap-sexp
+                           sp-backward-unwrap-sexp
+                           sp-forward-slurp-sexp
+                           sp-forward-barf-sexp
+                           sp-backward-slurp-sexp
+                           sp-backward-barf-sexp
+                           sp-join-sexp
+                           sp-split-sexp
+                           sp-rewrap-sexps))
+    (vlt--display-sp-map "Misc"
+                         '(sp-select-next-thing-exchange
+                           sp-select-previous-thing
+                           sp-select-next-thing
+                           sp-prefix-tag-object
+                           sp-prefix-pair-object
+                           sp-prefix-symbol-object
+                           sp-highlight-current-sexp
+                           sp-prefix-save-excursion
+                           sp-convolute-sexp
+                           sp-absorb-sexp
+                           sp-emit-sexp
+                           sp-add-to-previous-sexp
+                           sp-add-to-next-sexp
+                           sp-transpose-hybrid-sexp
+                           sp-comment))
+    (goto-char (point-min))))
+
+(defun sudo-edit (&optional arg)
+  "Sudo edit ARG."
+  (interactive "p")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 (provide 'vlt-misc)
+;;; vlt-misc.el ends here
