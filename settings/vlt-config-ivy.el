@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 10
+;;     Update #: 14
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -62,7 +62,8 @@
               ivy-height 15
               ivy-count-format "(%d/%d) "
               projectile-completion-system 'ivy
-              ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+              ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                                      (t . ivy--regex-fuzzy))
               ivy-initial-inputs-alist '((man . "^")
                                          (woman . "^"))
               ;; Counsel
