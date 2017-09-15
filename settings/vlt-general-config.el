@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 13
+;;     Update #: 15
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -143,23 +143,6 @@
 
 (setq reb-re-syntax 'string)
 
-;; Smartparens
-
-(setq sp-autoescape-string-quote nil)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
-(--each '(css-mode-hook
-          restclient-mode-hook
-          js-mode-hook
-          java-mode
-          ruby-mode
-          markdown-mode
-          groovy-mode
-          scala-mode)
-  (add-hook it 'turn-on-smartparens-mode))
-
 ;; undo-tree
 
 (global-undo-tree-mode)
@@ -192,7 +175,7 @@
 
 (global-whitespace-cleanup-mode)
 
-;; Use only own snippets, do not use bundled ones
+;; yasnippets: Use only own snippets, do not use bundled ones
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (yas-global-mode t)
 
@@ -204,6 +187,7 @@
 (require 'vlt-config-helm)
 (require 'vlt-config-hippie)
 (require 'vlt-config-magit)
+(require 'vlt-config-smartparens)
 (require 'vlt-config-yasnippet)
 
 (provide 'vlt-general-config)

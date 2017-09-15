@@ -274,42 +274,6 @@
       )
 (load custom-file)
 
-;;; Keyboard shortcuts override
-(global-set-key (kbd "C-.") 'hippie-expand-no-case-fold)
-(global-set-key (kbd "C-:") 'hippie-expand-lines)
-(global-set-key (kbd "C-,") 'completion-at-point)
-(global-set-key (kbd "M-/") 'hippie-expand)
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-
-(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)  ; Really Quit
-(global-unset-key (kbd "C-x C-c"))  ; Avoid killing emacs so easy
-
-(define-key key-translation-map [?\C-h] [?\C-?])  ; Use shell-like backspace C-h
-(global-set-key (kbd "<f1>") 'help-command)  ; make sure <f1> keeps the help
-
-(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
-(global-set-key (kbd "M-t l") 'transpose-lines)
-(global-set-key (kbd "M-t w") 'transpose-words)
-(global-set-key (kbd "M-t s") 'transpose-sexps)
-(global-set-key (kbd "M-t p") 'transpose-params)
-
-(global-set-key (kbd "<home>") 'beginning-of-buffer)
-(global-set-key (kbd "<end>") 'end-of-buffer)
-
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-
-(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c u") 'uncomment-region)
-
-(global-set-key (kbd "C-c C-k") 'eval-buffer)
-
 (provide 'vlt-defaults)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
