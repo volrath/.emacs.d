@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 1
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -71,6 +71,7 @@
     clj-refactor
     clojure-mode
     clojure-mode-extra-font-locking
+    counsel
     crux
     dash
     discover-my-major
@@ -98,12 +99,10 @@
     grizzl
     guru-mode
     hardcore-mode
-    helm
-    helm-fuzzier
-    helm-projectile
     highlight-escape-sequences
     hydra
     imenu-anywhere
+    ivy
     js2-mode
     js2-refactor
     magit
@@ -124,8 +123,10 @@
     smart-mode-line
     smartparens
     smartrep
+    smex
     smooth-scrolling
     solarized-theme
+    swiper
     tagedit
     undo-tree
     visual-regexp

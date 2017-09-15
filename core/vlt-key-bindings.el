@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 27
+;;     Update #: 29
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -207,6 +207,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (fset 'quick-switch-buffer [?\C-x ?b return])
 (global-set-key (kbd "s-b") 'quick-switch-buffer)
+(global-set-key (kbd "C-c b") 'create-scratch-buffer)
 
 (global-set-key (kbd "C-x -") 'toggle-window-split)
 (global-set-key (kbd "C-x C--") 'rotate-windows)
@@ -216,6 +217,8 @@
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
+
+(global-set-key (kbd "M-s /") 'vlt-swiper-at-point)
 
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)  ;; lol
 
@@ -310,6 +313,27 @@
 
 (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 ;; (define-key smartparens-mode-map (kbd "C-(") 'sp---wrap-with-40)
+
+
+;;; Ivy / Counsel / Swiper - combo
+;;  --------------------------------------------------------------------
+
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "M-s g") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "M-s l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 
 ;;; UI

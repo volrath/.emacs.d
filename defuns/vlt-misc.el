@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 27
+;;     Update #: 29
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -142,6 +142,11 @@
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(defun vlt-swiper-at-point (sym)
+  "Use `swiper' to search for the SYM at point."
+  (interactive (list (thing-at-point 'symbol)))
+  (swiper sym))
 
 (provide 'vlt-misc)
 ;;; vlt-misc.el ends here
