@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 37
+;;     Update #: 38
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -75,7 +75,9 @@
 (defun vlt-switch-to-last-perspective ()
   "Switch to last perspective."
   (interactive)
-  (persp-switch (persp-name persp-last)))
+  (if vlt-last-perspective
+      (persp-switch (persp-name persp-last))
+    (error "No last perspective")))
 
 (defun vlt--perspective-command-sym (persp)
   "Generate a command sym for PERSP."
