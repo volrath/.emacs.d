@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 29
+;;     Update #: 32
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -228,16 +228,16 @@
 (define-key smartparens-mode-map (kbd "M-s") nil)
 
 ;; Navigation
-(define-key smartparens-mode-map (kbd "M-a") 'sp-beginning-of-sexp)
 (define-key smartparens-mode-map (kbd "M-e") 'sp-end-of-sexp)
-(define-key smartparens-mode-map (kbd "M-S-a") 'sp-backward-up-sexp)
-(define-key smartparens-mode-map (kbd "M-S-e") 'sp-up-sexp)
+(define-key smartparens-mode-map (kbd "M-a") 'sp-beginning-of-sexp)
+(define-key smartparens-mode-map (kbd "C-M-a") 'sp-backward-up-sexp)
+(define-key smartparens-mode-map (kbd "C-M-e") 'sp-up-sexp)
 
 (define-key smartparens-mode-map (kbd "M-d") 'sp-down-sexp)
-(define-key smartparens-mode-map (kbd "M-S-d") 'sp-backward-down-sexp)
+(define-key smartparens-mode-map (kbd "C-M-d") 'sp-backward-down-sexp)
 
-(define-key smartparens-mode-map (kbd "C-S-f") 'sp-forward-symbol)
-(define-key smartparens-mode-map (kbd "C-S-b") 'sp-backward-symbol)
+(define-key smartparens-mode-map (kbd "C-M-f") 'sp-forward-symbol)
+(define-key smartparens-mode-map (kbd "C-M-b") 'sp-backward-symbol)
 (define-key smartparens-mode-map (kbd "M-f") 'sp-forward-sexp)
 (define-key smartparens-mode-map (kbd "M-b") 'sp-backward-sexp)
 (define-key smartparens-mode-map (kbd "M-n") 'sp-next-sexp)
