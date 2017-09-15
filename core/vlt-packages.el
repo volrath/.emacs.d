@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 3
+;;     Update #: 5
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -60,6 +60,7 @@
 (defvar vlt-packages
   '(ace-window
     all-the-icons
+    anaconda-mode
     anzu
     aggressive-indent
     apache-mode
@@ -71,6 +72,8 @@
     clj-refactor
     clojure-mode
     clojure-mode-extra-font-locking
+    company
+    company-anaconda
     counsel
     crux
     dash

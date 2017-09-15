@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 17
+;;     Update #: 19
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,6 +50,7 @@
 (require 'beginend)
 (require 'browse-kill-ring)
 (require 'change-inner)
+(require 'company)
 (require 'crux)
 (require 'dash)
 (require 'delsel)
@@ -94,6 +95,13 @@
 ;; browse-kill-ring
 
 (setq browse-kill-ring-quit-action 'save-and-restore)
+
+;; company
+(setq company-idle-delay 0.5
+      company-tooltip-limit 10
+      company-minimum-prefix-length 2
+      company-tooltip-flip-when-above t)
+(global-company-mode 1)
 
 ;; editorconfig
 
