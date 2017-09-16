@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -63,6 +63,7 @@
     ("\\.ex\\'" elixir-mode elixir-mode)
     ("\\.exs\\'" elixir-mode elixir-mode)
     ("\\.elixir\\'" elixir-mode elixir-mode)
+    ("\\.epub\\'" nov nov-mode)
     ("\\.erl\\'" erlang erlang-mode)
     ("\\.feature\\'" feature-mode feature-mode)
     ("\\.go\\'" go-mode go-mode)
