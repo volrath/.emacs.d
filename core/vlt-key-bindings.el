@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 32
+;;     Update #: 33
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -66,6 +66,7 @@
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)  ; Really Quit
 (global-unset-key (kbd "C-x C-c"))  ; Avoid killing emacs so easy
 (global-unset-key (kbd "C-z"))  ; and also suspending
+(global-unset-key (kbd "C-x C-p"))  ; this one is too close to switching persps
 
 (define-key key-translation-map [?\C-h] [?\C-?])  ; Use shell-like backspace C-h
 (global-set-key (kbd "<f1>") 'help-command)  ; make sure <f1> keeps the help
