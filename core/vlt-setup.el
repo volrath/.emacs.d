@@ -1,48 +1,48 @@
-;;; vlt-setup.el --- 
-;; 
+;;; vlt-setup.el ---
+;;
 ;; Filename: vlt-setup.el
-;; Description: 
+;; Description:
 ;; Author: Daniel Barreto
-;; Maintainer: 
+;; Maintainer:
 ;; Created: Fri Sep  8 12:20:16 2017 (+0200)
-;; Version: 
+;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: 
-;;           By: 
-;;     Update #: 0
-;; URL: 
-;; Doc URL: 
-;; Keywords: 
-;; Compatibility: 
-;; 
+;; Last-Updated:
+;;           By:
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;;; Commentary: 
-;; 
-;; 
-;; 
+;;
+;;; Commentary:
+;;
+;;
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Change Log:
-;; 
-;; 
+;;
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or (at
 ;; your option) any later version.
-;; 
+;;
 ;; This program is distributed in the hope that it will be useful, but
 ;; WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 ;; General Public License for more details.
-;; 
+;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Code:
 
 (require 'map)
@@ -107,7 +107,6 @@
   (let* ((mode-name (substring (symbol-name mode) 0 -5))
          (config-file-name (format "settings/vlt-config-%s.el" mode-name))
          (config-file (expand-file-name config-file-name user-emacs-directory)))
-    (message "trying to set up %S with file: %S" mode config-file)
     (when (file-exists-p config-file)
       (load config-file)
       (add-to-list 'vlt-configured-modes mode))))
@@ -130,6 +129,7 @@
 
 ;; There are some modes that will be configured by default
 (vlt-mode-configure 'emacs-lisp-mode)
+(vlt-mode-configure 'python-mode)
 
 ;; Finally setup all the things
 (vlt-major-modes-auto-setup)   ; Major modes

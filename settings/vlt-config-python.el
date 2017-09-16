@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 5
+;;     Update #: 13
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -47,6 +47,7 @@
 ;;; Code:
 
 (vlt-require-package 'anaconda-mode)
+(vlt-require-package 'highlight-indent-guides)
 
 (when (boundp 'company-backends)
   (vlt-require-package 'company-anaconda)
@@ -100,9 +101,11 @@
   "Defaults for Python programming."
   (subword-mode t)
   (anaconda-mode t)
+  (anaconda-eldoc-mode t)
   (eldoc-mode t)
   (electric-indent-mode t)
-  (anaconda-eldoc-mode t)
+  (setq-local highlight-indent-guides-method 'character)
+  (highlight-indent-guides-mode t)
   (setq-local electric-layout-rules
               '((?: . (lambda ()
                         (and (zerop (first (syntax-ppss)))
