@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 38
+;;     Update #: 47
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -49,6 +49,8 @@
 (require 'dash)
 (require 'perspective)
 
+(require 'vlt-python)
+
 (defun vlt--random-perspective (nr)
   "Create the structure for a random perspective with number NR."
   (let* ((s-nr (number-to-string nr))
@@ -61,9 +63,16 @@
   `((oss .  ((:name . "OSS")
              (:key . "o")
              (:file . "~/projects/oss/")))
+    (test . ((:name . "Tests")
+             (:key . "t")
+             (:file . "~/projects/tests/")))
     (emacs . ((:name . "Emacs")
               (:key . "e")
               (:file . "~/.emacs.d/")))
+    (swsca . ((:name . "SWSCA")
+              (:key . "SPC s")
+              (:file . "~/projects/swsca/backend/")
+              (:config . ((vlt-python-jack-in "~/.virtualenvs/backend--s12IZY0")))))
     ,(vlt--random-perspective 1)
     ,(vlt--random-perspective 2)
     ,(vlt--random-perspective 3))
