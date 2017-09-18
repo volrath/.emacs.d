@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 19
+;;     Update #: 20
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -176,7 +176,7 @@
 
 ;; whitespace-mode config
 
-(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-line-column 80) ;; general limit line length
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 
 ;; whitespace-cleanup-mode

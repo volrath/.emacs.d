@@ -39,6 +39,7 @@
 
 ;; a great lisp coding hook
 (defun vlt-lisp-coding-defaults ()
+  (setq whitespace-line-column 120)
   (aggressive-indent-mode t)
   (smartparens-strict-mode t))
 
