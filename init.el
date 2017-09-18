@@ -44,6 +44,8 @@
   "Directory for personal/custom defuns and experiments.")
 (defvar vlt-site-lisp-dir (expand-file-name "site-lisp" user-emacs-directory)
   "This directory houses packages that are not yet available in ELPA (or MELPA).")
+(defvar vlt-experiments-dir (expand-file-name "experiments" user-emacs-directory)
+  "Host of random things I want to load 'on request'.")
 (defvar vlt-backups-dir (expand-file-name "backups" user-emacs-directory)
   "This folder stores all the automatically generated save/history-files.")
 
@@ -74,6 +76,13 @@
 
 (require 'vlt-project-mappings)
 (vlt-config-perspectives)
+
+(require 'subr-x)
+(when-let (experiments-env (getenv "EXPERIMENTS"))
+  (dolist (experiment (split-string experiments-env ","))
+    (let ((experiment-dir (expand-file-name experiment vlt-experiments-dir)))
+      (when (file-directory-p experiment-dir)
+        (add-to-list 'load-path experiment-dir)))))
 
 ;; Server
 (require 'server)
