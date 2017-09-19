@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 13
+;;     Update #: 14
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -104,6 +104,7 @@
   (anaconda-eldoc-mode t)
   (eldoc-mode t)
   (electric-indent-mode t)
+  (fci-mode t)
   (setq-local highlight-indent-guides-method 'character)
   (highlight-indent-guides-mode t)
   (setq-local electric-layout-rules

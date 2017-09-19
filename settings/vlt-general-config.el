@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 20
+;;     Update #: 32
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -101,6 +101,22 @@
       company-tooltip-limit 10
       company-minimum-prefix-length 2
       company-tooltip-flip-when-above t)
+
+(defvar vlt-local-fci-mode nil
+  "Local way to know if fci was activated for current buffer.")
+(make-local-variable 'vlt-local-fci-mode)
+
+(defun vlt--toggle-fci-before-company (command)
+  "Turn on/off FCI when there is a company popup, given by COMMAND.
+For more info see:
+https://github.com/alpaker/Fill-Column-Indicator/issues/54"
+  (when vlt-local-fci-mode
+    (when (string= command "show")
+      (turn-off-fci-mode))
+    (when (string= command "hide")
+      (turn-on-fci-mode))))
+(advice-add 'company-call-frontends :before #'vlt--toggle-fci-before-company)
+
 (global-company-mode 1)
 
 ;; editorconfig
@@ -115,6 +131,7 @@
 ;; fill-column-indicator
 
 (setq fci-rule-color "#111122")
+(add-hook 'fci-mode-hook #'(lambda () (setq-local vlt-local-fci-mode t)))
 
 ;; highlight-escape-sequences
 
