@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 5
+;;     Update #: 6
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -92,6 +92,7 @@
     f
     find-file-in-project
     fill-column-indicator
+    flx
     flycheck
     flycheck-clojure
     flycheck-pos-tip
@@ -102,6 +103,7 @@
     grizzl
     guru-mode
     hardcore-mode
+    header2
     highlight-escape-sequences
     hydra
     imenu-anywhere
