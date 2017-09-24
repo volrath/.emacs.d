@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 47
+;;     Update #: 51
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -69,10 +69,17 @@
     (emacs . ((:name . "Emacs")
               (:key . "e")
               (:file . "~/.emacs.d/")))
+    (personal . ((:name . "volrath.me")
+                 (:key . "v")
+                 (:file . "~/projects/personal-site/")))
     (swsca . ((:name . "SWSCA")
               (:key . "SPC s")
               (:file . "~/projects/swsca/backend/")
               (:config . ((vlt-python-jack-in "~/.virtualenvs/backend--s12IZY0")))))
+    (dl-api . ((:name . "DL API")
+               (:key . "SPC d")
+               (:file . "~/projects/difusion-latina/api/")
+               (:config . ((vlt-python-jack-in "~/.virtualenvs/api-mHDDy2iN")))))
     ,(vlt--random-perspective 1)
     ,(vlt--random-perspective 2)
     ,(vlt--random-perspective 3))
