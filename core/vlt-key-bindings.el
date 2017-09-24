@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 33
+;;     Update #: 34
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -336,6 +336,12 @@
 
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
+;;; Org mode
+;;  --------------------------------------------------------------------
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c x") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-store-link)
 
 ;;; UI
 ;;  --------------------------------------------------------------------

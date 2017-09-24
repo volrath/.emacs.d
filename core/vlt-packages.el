@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 6
+;;     Update #: 7
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -115,6 +115,7 @@
     move-text
     multiple-cursors
     operate-on-number
+    org
     ov
     pass
     peep-dired

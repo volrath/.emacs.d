@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 32
+;;     Update #: 47
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -61,6 +61,7 @@
 (require 'highlight-escape-sequences)
 (require 'multiple-cursors)
 (require 'operate-on-number)
+(require 'org)
 (require 'perspective)
 (require 'prodigy)
 (require 'projectile)
@@ -155,6 +156,16 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
     ("#" . apply-operation-to-number-at-point)
     ("%" . apply-operation-to-number-at-point)
     ("'" . operate-on-number-at-point)))
+
+;; org mode
+(setq org-directory "~/projects/life"
+      org-default-notes-file (expand-file-name "agenda.org" org-directory)
+      org-hide-leading-stars t
+      org-return-follows-link t
+      org-log-into-drawer t
+      org-startup-folded nil)
+(add-to-list 'org-agenda-files org-default-notes-file)
+(define-obsolete-function-alias 'org-define-error 'define-error)
 
 ;; perspective
 (persp-mode t)
