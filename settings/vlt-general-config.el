@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 47
+;;     Update #: 51
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -62,6 +62,7 @@
 (require 'multiple-cursors)
 (require 'operate-on-number)
 (require 'org)
+(require 'org-agenda)
 (require 'perspective)
 (require 'prodigy)
 (require 'projectile)
@@ -163,6 +164,9 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
       org-hide-leading-stars t
       org-return-follows-link t
       org-log-into-drawer t
+      org-enforce-todo-dependencies t
+      org-track-ordered-property-with-tag t
+      org-agenda-dim-blocked-tasks t
       org-startup-folded nil)
 (add-to-list 'org-agenda-files org-default-notes-file)
 (define-obsolete-function-alias 'org-define-error 'define-error)
