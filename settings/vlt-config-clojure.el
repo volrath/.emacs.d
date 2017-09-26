@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 10
+;;     Update #: 18
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -47,7 +47,7 @@
 ;;; Code:
 
 (require 'vlt-config-lisp)
-(vlt-require-packages '(clojure-mode cider clj-refactor))
+(vlt-require-packages '(clojure-mode cider clj-refactor flycheck-clojure))
 
 ;; global cljr config
 
@@ -65,7 +65,6 @@
 (defun nrepl-warn-when-not-connected ()
   (interactive)
   (message "Oops! You're not connected to an nREPL server. Please run M-x cider or M-x cider-jack-in to connect."))
-
 (define-key clojure-mode-map (kbd "C-M-x")   'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-x C-e") 'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-e") 'nrepl-warn-when-not-connected)
@@ -76,6 +75,15 @@
 (define-key clojure-mode-map (kbd "C-c C-n") 'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-q") 'nrepl-warn-when-not-connected)
 
+;; custom cider shortcuts
+(define-key cider-mode-map (kbd "C-c C-e") 'cider-eval-last-sexp-and-replace)
+(define-key cider-mode-map (kbd "C-c C-q") 'nrepl-close)
+(define-key cider-mode-map (kbd "C-c C-Q") 'cider-quit)
+
+
+;; setup flycheck / squiggly support
+;; https://github.com/clojure-emacs/squiggly-clojure
+;; (eval-after-load 'flycheck '(flycheck-clojure-setup))
 
 (eval-after-load 'clojure-mode
   '(progn
