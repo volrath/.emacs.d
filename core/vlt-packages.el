@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 7
+;;     Update #: 8
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -107,6 +107,7 @@
     highlight-escape-sequences
     hydra
     imenu-anywhere
+    ibuffer-vc
     ivy
     js2-mode
     js2-refactor
