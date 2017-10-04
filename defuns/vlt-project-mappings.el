@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 51
+;;     Update #: 53
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -72,6 +72,9 @@
     (personal . ((:name . "volrath.me")
                  (:key . "v")
                  (:file . "~/projects/personal-site/")))
+    (life . ((:name . "life")
+             (:key . "l")
+             (:file . "~/projects/life/")))
     (swsca . ((:name . "SWSCA")
               (:key . "SPC s")
               (:file . "~/projects/swsca/backend/")
