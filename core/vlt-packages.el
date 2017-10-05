@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 8
+;;     Update #: 9
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -115,6 +115,7 @@
     markdown-mode
     move-text
     multiple-cursors
+    notmuch
     operate-on-number
     org
     ov
