@@ -84,6 +84,9 @@
       (when (file-directory-p experiment-dir)
         (add-to-list 'load-path experiment-dir)))))
 
+;; load private config
+(load (expand-file-name "private.el" user-emacs-directory))
+
 ;; Server
 (require 'server)
 (unless (server-running-p)
