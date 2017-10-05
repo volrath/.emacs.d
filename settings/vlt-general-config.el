@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 51
+;;     Update #: 52
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -63,6 +63,7 @@
 (require 'operate-on-number)
 (require 'org)
 (require 'org-agenda)
+(require 'password-store)
 (require 'perspective)
 (require 'prodigy)
 (require 'projectile)
@@ -170,6 +171,10 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
       org-startup-folded nil)
 (add-to-list 'org-agenda-files org-default-notes-file)
 (define-obsolete-function-alias 'org-define-error 'define-error)
+
+;; pass
+
+(setq password-store-password-length 24)
 
 ;; perspective
 (persp-mode t)
