@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 4
+;;     Update #: 16
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,7 +50,7 @@
 
 (defvar vlt-auto-mode-alist
   '(("\\.clj\\'" clojure-mode clojure-mode)
-    ("\\.cljs\\'" clojure-mode clojure-mode)
+    ("\\.cljs\\'" clojure-mode clojurescript-mode)
     ("\\.cmake\\'" cmake-mode cmake-mode)
     ("CMakeLists\\.txt\\'" cmake-mode cmake-mode)
     ("\\.coffee\\'" coffee-mode coffee-mode)
