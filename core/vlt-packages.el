@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 9
+;;     Update #: 14
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -76,11 +76,11 @@
     company-anaconda
     counsel
     crux
+    ctable
     dash
     discover-my-major
     diff-hl
     diminish
-    dired-details
     dired-k
     dired-narrow
     dockerfile-mode
@@ -103,7 +103,6 @@
     grizzl
     guru-mode
     hardcore-mode
-    header2
     highlight-escape-sequences
     hydra
     imenu-anywhere
@@ -145,7 +144,7 @@
     yasnippet
     zencoding-mode
     zerodark-theme
-    zoom-frm
+    ;; zoom-frm
     zop-to-char)
   "A list of packages to ensure are installed at launch.")
 

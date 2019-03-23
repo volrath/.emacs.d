@@ -62,7 +62,9 @@
 ;;  --------------------------------------------------------------------
 
 ;; zoom-frm, to make zoom affect frames instead of buffers
-(require 'zoom-frm)
+;; TODO: This package is not longer in MELPA, consider removing it or copying
+;; its source directly
+;; (require 'zoom-frm)
 
 ;; diminish
 (require 'diminish)
