@@ -85,7 +85,9 @@
         (add-to-list 'load-path experiment-dir)))))
 
 ;; load private config
-(load (expand-file-name "private.el" user-emacs-directory))
+(let ((private-config (expand-file-name "private.el" user-emacs-directory)))
+  (when (file-exists-p private-config)
+    (load (expand-file-name "private.el" user-emacs-directory))))
 
 ;; Server
 (require 'server)
