@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 53
+;;     Update #: 59
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -75,14 +75,6 @@
     (life . ((:name . "life")
              (:key . "l")
              (:file . "~/projects/life/")))
-    (swsca . ((:name . "SWSCA")
-              (:key . "SPC s")
-              (:file . "~/projects/swsca/backend/")
-              (:config . ((vlt-python-jack-in "~/.virtualenvs/backend--s12IZY0")))))
-    (dl-api . ((:name . "DL API")
-               (:key . "SPC d")
-               (:file . "~/projects/difusion-latina/api/")
-               (:config . ((vlt-python-jack-in "~/.virtualenvs/api-mHDDy2iN")))))
     ,(vlt--random-perspective 1)
     ,(vlt--random-perspective 2)
     ,(vlt--random-perspective 3))
@@ -95,7 +87,7 @@
   "Switch to last perspective."
   (interactive)
   (if vlt-last-perspective
-      (persp-switch (persp-name persp-last))
+      (persp-switch (persp-name (persp-last)))
     (error "No last perspective")))
 
 (defun vlt--perspective-command-sym (persp)
@@ -123,8 +115,8 @@
          (config (alist-get ':config attrs)))
     `(defun ,command-sym ()
        (interactive)
-       (let ((initialize-p  (not (gethash ,name perspectives-hash)))
-             (current-persp persp-curr))
+       (let ((initialize-p  (not (gethash ,name (perspectives-hash))))
+             (current-persp (persp-curr)))
          (persp-switch ,name)
          (when initialize-p
            (find-file ,file)
@@ -140,9 +132,9 @@
        (-map #'vlt-bind-perspective vlt-perspectives))))
 
 ;; Advice to maintain link to previous perspective
-(defun vlt--save-previous-perspective (_)
+(defun vlt--save-previous-perspective (&rest _)
   "Advice for `persp-switch' to save current persp before moving to the next."
-  (setq vlt-last-perspective persp-curr))
+  (setq vlt-last-perspective (persp-curr)))
 
 (advice-add #'persp-switch :before #'vlt--save-previous-perspective)
 

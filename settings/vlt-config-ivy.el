@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 14
+;;     Update #: 15
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -83,8 +83,8 @@
 (add-hook 'ivy-ignore-buffers
           #'(lambda (b)
               (when persp-mode
-                (if persp-curr
-                    (not (memq b (persp-buffers persp-curr)))
+                (if (persp-curr)
+                    (not (memq b (persp-buffers (persp-curr))))
                   nil))))
 
 (setq ivy-sort-functions-alist
