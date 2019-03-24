@@ -85,9 +85,9 @@
     face))
 
 (defvar vlt-modeline-position
-  '(:eval (propertize ":%l:%c %p " 'face (if (vlt--active-window-p)
-                                             'vlt-ml-buffer-position-face
-                                           'mode-line-inactive)))
+  '(:eval (propertize ":%l:%c %p" 'face (if (vlt--active-window-p)
+                                            'vlt-ml-buffer-position-face
+                                          'mode-line-inactive)))
   "Mode line construct for displaying the position in the buffer.")
 
 (defvar vlt-modeline-buffer-identification
@@ -231,7 +231,7 @@ The result is cached for one second to avoid hiccups."
                   ,vlt-modeline-vc
                   "  "
                   (:eval (vlt-modeline-flycheck-status))
-                  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces
+                  "  " mode-line-misc-info mode-line-modes mode-line-end-spaces
                   )))
 
 (provide 'vlt-mode-line-helpers)
