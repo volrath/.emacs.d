@@ -186,9 +186,9 @@ The result is cached for one second to avoid hiccups."
    ((string-prefix-p "solarized-" (symbol-name theme))
     (let ((variant (if (eq theme 'solarized-light) 'light 'dark)))
       (solarized-with-color-variables variant
-        (setq vlt-ml-active-foreground s-mode-line-fg
+        (setq vlt-ml-active-foreground s-mode-line-inactive-fg
               vlt-ml-inactive-foreground s-mode-line-inactive-fg
-              vlt-ml-active-background s-mode-line-bg
+              vlt-ml-active-background s-mode-line-inactive-bg
               vlt-ml-inactive-background s-mode-line-inactive-bg
               vlt-ml-anzu-color "#c678dd"))))
    (t (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
