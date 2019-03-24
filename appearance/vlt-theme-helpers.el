@@ -23,10 +23,12 @@
          (faces
           `((solarized-light
              (linum ((,class (:weight normal :underline nil :foreground "#93a1a1" :background "#fdf6e3"))))
-             (fringe ((,class (:background "#fcf1d5")))))
+             (fringe ((,class (:background "#fcf1d5"))))
+             (ivy-current-match ((,class (:underline nil :background "#eee8d5")))))
             (solarized-dark
              (linum ((,class (:weight normal :underline nil :foreground "#586e75" :background "#002b36"))))
-             (fringe ((,class (:background "#002630"))))))))
+             (fringe ((,class (:background "#002630"))))
+             (ivy-current-match ((,class (:underline nil :background "#073642"))))))))
     (apply #'custom-theme-set-faces theme (alist-get theme faces nil))))
 
 (defun vlt-enable-theme-with-font (theme font)
