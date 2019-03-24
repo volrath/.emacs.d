@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 14
+;;     Update #: 15
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -108,6 +108,7 @@
     imenu-anywhere
     ibuffer-vc
     ivy
+    ivy-rich
     js2-mode
     js2-refactor
     magit

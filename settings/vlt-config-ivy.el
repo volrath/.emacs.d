@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 15
+;;     Update #: 31
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,17 +50,20 @@
 (require 'counsel)
 (require 'flx)
 (require 'ivy)
+(require 'ivy-rich)
 (require 'perspective)
 (require 'smex)
 (require 'swiper)
 
 (ivy-mode t)
+(ivy-rich-mode t)
 (counsel-mode t)
 
 (setq-default ivy-use-virtual-buffers t
               ivy-virtual-abbreviate 'fullpath
               ivy-height 15
               ivy-count-format "(%d/%d) "
+              ivy-format-function #'ivy-format-function-line
               projectile-completion-system 'ivy
               ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                       (t . ivy--regex-fuzzy))
@@ -92,6 +95,32 @@
               '((persp-remove-buffer . nil)
                 (persp-add-buffer    . nil)
                 (persp-switch        . nil))))
+
+;; Sprinkle some icons
+(defun ivy-rich-switch-buffer-icon (candidate)
+  "Return an icon for CANDIDATE out of `all-the-icons'."
+  (with-current-buffer
+      (get-buffer candidate)
+    (let ((icon (all-the-icons-icon-for-mode major-mode :height 0.9)))
+      (if (symbolp icon)
+          (all-the-icons-icon-for-mode 'fundamental-mode :height 0.9)
+        icon))))
+
+(setq ivy-rich-display-transformers-list
+      (plist-put ivy-rich-display-transformers-list
+                 'ivy-switch-buffer
+                 '(:columns
+                   ((ivy-rich-switch-buffer-icon (:width 2))
+                    (ivy-rich-candidate (:width 40))
+                    (ivy-rich-switch-buffer-size (:width 7))
+                    (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+                    (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+                    (ivy-rich-switch-buffer-project (:width 15 :face success))
+                    (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+                   :predicate
+                   (lambda (cand) (get-buffer cand)))))
+
+(ivy-rich-set-display-transformer)  ;; tell ivy-rich to recalculate display transformers
 
 ;; smex
 (setq smex-save-file (expand-file-name ".smex-items" vlt-backups-dir))
