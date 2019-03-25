@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 34
+;;     Update #: 35
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -284,6 +284,7 @@
 (define-key smartparens-mode-map (kbd "H-s r") 'sp-rewrap-sexp)
 
 ;; Misc
+(define-key flyspell-mode-map (kbd "C-;") nil)
 (define-key smartparens-mode-map (kbd "C-]") 'sp-select-next-thing-exchange)
 (define-key smartparens-mode-map (kbd "<C-[>") 'sp-select-previous-thing)
 (define-key smartparens-mode-map (kbd "C-M-]") 'sp-select-next-thing)
@@ -299,7 +300,7 @@
 (define-key smartparens-mode-map (kbd "H-s p") 'sp-add-to-previous-sexp)
 (define-key smartparens-mode-map (kbd "H-s n") 'sp-add-to-next-sexp)
 (define-key smartparens-mode-map (kbd "C-x C-t") 'sp-transpose-hybrid-sexp)
-(define-key smartparens-mode-map (kbd ";") 'sp-comment)
+(define-key smartparens-mode-map (kbd "C-;") 'sp-comment)
 
 ;; (defvar hyp-s-x-map)
 ;; (define-prefix-command 'hyp-s-x-map)
