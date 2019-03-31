@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 15
+;;     Update #: 16
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -119,6 +119,7 @@
     operate-on-number
     org
     ov
+    page-break-lines
     pass
     peep-dired
     perspective
@@ -137,6 +138,7 @@
     swiper
     tagedit
     undo-tree
+    unfill
     visual-regexp
     volatile-highlights
     wgrep
