@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 21
+;;     Update #: 22
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -48,6 +48,7 @@
 
 (require 'vlt-config-lisp)
 (vlt-require-packages '(clojure-mode cider clj-refactor flycheck-joker))
+(require 'flycheck-joker)
 
 ;; global cljr config
 
