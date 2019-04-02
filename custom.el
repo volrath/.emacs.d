@@ -59,13 +59,84 @@
       (file "~/projects/life/todo-capture.template")))))
  '(package-selected-packages
    (quote
-    (ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
+    (page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
  '(persp-keymap-prefix "p")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
    (quote
-    ((eval when
+    ((eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local flycheck-python-flake8-executable
+                       (concat root-dir ".venv/bin/flake8")))
+     (eval progn
+           (put-clojure-indent
+            (quote async)
+            1)
+           (put-clojure-indent
+            (quote car/wcar)
+            1))
+     (eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face)))))
+     (eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local flycheck-python-flake8-executable
+                       (concat root-dir "zamenis/.venv/bin/flake8")))
+     (eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local flycheck-css-stylelint-executable
+                       (concat root-dir "node_modules/.bin/stylelint")))
+     (cider-ns-refresh-after-fn . "user/start")
+     (cider-ns-refresh-before-fn . "user/stop")
+     (nrepl-use-ssh-fallback-for-remote-hosts . t)
+     (eval progn
+           (when
+               (string-prefix-p "0.18" cider-version)
+             (cider-register-cljs-repl-type
+              (quote edison)
+              "(start-photon!)")
+             (setq-local cider-default-cljs-repl
+                         (quote edison)))
+           (put-clojure-indent
+            (quote async)
+            1)
+           (put-clojure-indent
+            (quote car/wcar)
+            1))
+     (eval when
            (fboundp
             (quote rainbow-mode))
            (rainbow-mode 1))
