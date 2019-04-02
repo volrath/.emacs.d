@@ -49,8 +49,7 @@
 ;; Solarize customizations
 (setq solarized-distinct-fringe-background t
       solarized-use-more-italic t
-      solarized-scale-org-headlines nil
-      solarized-high-contrast-mode-line t)
+      solarized-scale-org-headlines nil)
 
 ;; Start with the first theme in `vlt-themes'
 (vlt-enable-current-theme)
