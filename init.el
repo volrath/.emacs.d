@@ -29,8 +29,6 @@
 ;;
 ;;; Code:
 
-(package-initialize)
-
 (defvar current-user
   (getenv "USER"))
 
