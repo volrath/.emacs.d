@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 22
+;;     Update #: 29
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -49,6 +49,7 @@
 (require 'vlt-config-lisp)
 (vlt-require-packages '(clojure-mode cider clj-refactor flycheck-joker))
 (require 'flycheck-joker)
+(require 'smartparens)
 
 ;; global cljr config
 
@@ -74,6 +75,29 @@
       (cider--close-connection buf))
     (message "All CIDER connections closed")))
 
+;; Easy print-debugging
+(defun vlt-clj-doto-print ()
+  "Wrap the sexp at point in a `(doto <sexp> <print-fn>)'.
+Based on `smartparens''s `sp-get-thing', and uses a different
+`print-fn' per major mode: In `clojure-mode' we use
+`clojure.pprint/pprint', in `clojurescript-mode' we use
+`js/console.log'.  If the major mode doesn't match any of these,
+we use the generic `prn'."
+  (interactive)
+  (let* ((ok (sp-get-thing))
+         (beg (sp-get ok :beg))
+         (end (sp-get ok :end))
+         (printer (cl-case major-mode
+                    ('clojure-mode "clojure.pprint/pprint")
+                    ('clojurescript-mode "js/console.log")
+                    (t "prn"))))
+    (save-excursion
+      (goto-char beg)
+      (let ((sexp (buffer-substring-no-properties beg end)))
+        (delete-region beg end)
+        (insert (format "(doto %s %s)" sexp printer))))))
+
+
 ;; Warn about missing nREPL instead of doing stupid things
 (defun nrepl-warn-when-not-connected ()
   (interactive)
@@ -88,6 +112,8 @@
 (define-key clojure-mode-map (kbd "C-c C-k") 'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-n") 'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-q") 'nrepl-warn-when-not-connected)
+(define-key clojure-mode-map (kbd "C-c C-v l") 'vlt-clj-doto-print)
+(define-key clojurescript-mode-map (kbd "C-c C-v l") 'vlt-clj-doto-print)
 
 ;; custom cider shortcuts
 (define-key cider-mode-map (kbd "C-c C-e") 'cider-eval-last-sexp-and-replace)
