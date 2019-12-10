@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 29
+;;     Update #: 30
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -49,6 +49,7 @@
 (require 'vlt-config-lisp)
 (vlt-require-packages '(clojure-mode cider clj-refactor flycheck-joker))
 (require 'flycheck-joker)
+(require 'flycheck-clj-kondo)
 (require 'smartparens)
 
 ;; global cljr config
@@ -121,7 +122,7 @@ we use the generic `prn'."
 (define-key cider-mode-map (kbd "C-c C-Q") 'vlt-cider-quit-all)
 
 
-;; setup flycheck / squiggly support
+;; setup flycheck for clj-kondo (and joker?)
 ;; https://github.com/clojure-emacs/squiggly-clojure
 ;; (eval-after-load 'flycheck '(flycheck-clojure-setup))
 
