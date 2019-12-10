@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 30
+;;     Update #: 31
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -115,6 +115,8 @@ we use the generic `prn'."
 (define-key clojure-mode-map (kbd "C-c C-q") 'nrepl-warn-when-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-v l") 'vlt-clj-doto-print)
 (define-key clojurescript-mode-map (kbd "C-c C-v l") 'vlt-clj-doto-print)
+(define-key clojure-mode-map (kbd "C-c C-v z") 'vlt-zprint-buffer)
+(define-key clojurescript-mode-map (kbd "C-c C-v z") 'vlt-zprint-buffer)
 
 ;; custom cider shortcuts
 (define-key cider-mode-map (kbd "C-c C-e") 'cider-eval-last-sexp-and-replace)

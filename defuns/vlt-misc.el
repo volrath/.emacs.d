@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 29
+;;     Update #: 39
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -179,5 +179,21 @@
                       git-rev
                       path-to-file
                       line-nr))))
+
+
+(defun vlt-zprint-buffer ()
+  "Run zprint on current buffer and replace its content with the formatted version."
+  (interactive)
+  (let ((iro inhibit-read-only))
+    (setq inhibit-read-only t)
+    (if-let ((zprint (executable-find "zprint")))
+        (shell-command-on-region (point-min)
+                                 (point-max)
+                                 zprint
+                                 (current-buffer)
+                                 t)
+      (error "Can't find zprint.  Is it installed?"))
+    (setq inhibit-read-only iro)))
+
 (provide 'vlt-misc)
 ;;; vlt-misc.el ends here
