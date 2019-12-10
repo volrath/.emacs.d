@@ -7,56 +7,65 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#282c34" "#ff6c6b" "#98be65" "#da8548" "#61afef" "#c678dd" "#1f5582" "#abb2bf"])
- '(compilation-message-face 'default)
+ '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
-   '("e39ff005e524c331b08d613109bff0b55fc21c64914c4a243faa70f330015389" "c03d60937e814932cd707a487676875457e0b564a615c1edfd453f23b06fe879" "9ff4eb11b3d72c41325d3113bac30b9613c75b7a9ba0892c10bb5b9d9691b85f" "6570843991e40121f854432826e9fd175aec6bd382ef217b2c0c46da37f3af18" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))
+   (quote
+    ("e39ff005e524c331b08d613109bff0b55fc21c64914c4a243faa70f330015389" "c03d60937e814932cd707a487676875457e0b564a615c1edfd453f23b06fe879" "9ff4eb11b3d72c41325d3113bac30b9613c75b7a9ba0892c10bb5b9d9691b85f" "6570843991e40121f854432826e9fd175aec6bd382ef217b2c0c46da37f3af18" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(debug-on-error t)
  '(fci-rule-color "#073642")
- '(highlight-changes-colors '("#d33682" "#6c71c4"))
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
     (solarized-color-blend it "#002b36" 0.25)
-    '("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2")))
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
-   '(("#073642" . 0)
+   (quote
+    (("#073642" . 0)
      ("#546E00" . 20)
      ("#00736F" . 30)
      ("#00629D" . 50)
      ("#7B6000" . 60)
      ("#8B2C02" . 70)
      ("#93115C" . 85)
-     ("#073642" . 100)))
+     ("#073642" . 100))))
  '(hl-bg-colors
-   '("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00"))
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
  '(hl-fg-colors
-   '("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36"))
- '(hl-paren-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(hl-sexp-background-color "#1c1f26")
- '(magit-commit-arguments '("--gpg-sign=6276E2C1CB4235C7"))
+ '(magit-commit-arguments (quote ("--gpg-sign=6276E2C1CB4235C7")))
  '(magit-diff-use-overlays nil)
- '(magit-tag-arguments '("--sign"))
+ '(magit-tag-arguments (quote ("--sign")))
  '(nrepl-message-colors
-   '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
- '(org-agenda-files '("/home/volrath/projects/life/agenda.org"))
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(org-agenda-files (quote ("/home/volrath/projects/life/agenda.org")))
  '(org-capture-templates
-   '(("j" "Journal Entry" entry
+   (quote
+    (("j" "Journal Entry" entry
       (file+olp+datetree "~/projects/life/journal.org")
       "* %U - %^{Headline}")
      ("t" "TODO" entry
       (file+headline "~/projects/life/agenda.org" "Tasks")
-      (file "~/projects/life/todo-capture.template"))))
+      (file "~/projects/life/todo-capture.template")))))
  '(package-selected-packages
-   '(page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window))
+   (quote
+    (inf-clojure flycheck-clj-kondo clojure-mode counsel ivy swiper zmq rust-mode company-terraform terraform-mode go-mode wgrep-ag ivy-hydra docker ag zprint-mode json-mode page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
  '(persp-keymap-prefix "p")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
-   '((eval let
+   (quote
+    ((eval let
            ((root-dir
              (file-name-directory
               (let
@@ -69,15 +78,23 @@
            (setq-local flycheck-python-flake8-executable
                        (concat root-dir ".venv/bin/flake8")))
      (eval progn
-           (put-clojure-indent 'async 1)
-           (put-clojure-indent 'car/wcar 1))
+           (put-clojure-indent
+            (quote async)
+            1)
+           (put-clojure-indent
+            (quote car/wcar)
+            1))
      (eval font-lock-add-keywords nil
-           `((,(concat "("
+           (\`
+            (((\,
+               (concat "("
                        (regexp-opt
-                        '("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl")
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
                         t)
-                       "\\_>")
-              1 'font-lock-variable-name-face)))
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face)))))
      (eval let
            ((root-dir
              (file-name-directory
@@ -108,22 +125,31 @@
      (eval progn
            (when
                (string-prefix-p "0.18" cider-version)
-             (cider-register-cljs-repl-type 'edison "(start-photon!)")
-             (setq-local cider-default-cljs-repl 'edison))
-           (put-clojure-indent 'async 1)
-           (put-clojure-indent 'car/wcar 1))
+             (cider-register-cljs-repl-type
+              (quote edison)
+              "(start-photon!)")
+             (setq-local cider-default-cljs-repl
+                         (quote edison)))
+           (put-clojure-indent
+            (quote async)
+            1)
+           (put-clojure-indent
+            (quote car/wcar)
+            1))
      (eval when
-           (fboundp 'rainbow-mode)
+           (fboundp
+            (quote rainbow-mode))
            (rainbow-mode 1))
      (checkdoc-package-keywords-flag)
-     (header-auto-update-enabled)))
+     (header-auto-update-enabled))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
-   '((20 . "#dc322f")
+   (quote
+    ((20 . "#dc322f")
      (40 . "#c85d17")
      (60 . "#be730b")
      (80 . "#b58900")
@@ -140,10 +166,11 @@
      (300 . "#2898af")
      (320 . "#2793ba")
      (340 . "#268fc6")
-     (360 . "#268bd2")))
+     (360 . "#268bd2"))))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
-   '(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
  '(xterm-color-names
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright

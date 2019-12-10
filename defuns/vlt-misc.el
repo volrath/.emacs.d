@@ -46,10 +46,11 @@
 ;;
 ;;; Code:
 
-
 (require 'ctable)
 (require 'dash)
+(require 's)
 (require 'smartparens)
+(require 'subr-x)
 
 (defun vlt--sp-key-binding-from-command (command)
   "Return a list containing the COMMAND name and its associated key seq."
@@ -148,5 +149,35 @@
   (interactive (list (thing-at-point 'symbol)))
   (swiper sym))
 
+
+(defun vlt--git-remote-url (remote-name)
+  "Return the HTTP URL of REMOTE-NAME."
+  (let ((url (s-chomp (shell-command-to-string (format "git config --get remote.%s.url" remote-name)))))
+    (thread-last url
+      (replace-regexp-in-string ":" "/")
+      (replace-regexp-in-string "^git@" "https:\/\/")
+      (replace-regexp-in-string ".git$" ""))))
+
+
+(defun vlt--git-rev-abbrev ()
+  "Return the abbreviated reference for HEAD in the current git repository."
+  (s-chomp (shell-command-to-string "git rev-parse --abbrev-ref HEAD")))
+
+
+(defun vlt-github-url-at-point ()
+  "Copy a Github URL link to the line where the pointer is."
+  (interactive)
+  (let ((line-nr (line-number-at-pos))
+        (repo-url (vlt--git-remote-url "origin"))
+        (git-rev (vlt--git-rev-abbrev))
+        (path-to-file (s-replace (expand-file-name (vc-root-dir))
+                                 ""
+                                 (buffer-file-name))))
+    ;; (concat repo-url "/tree/" branch "/" path-to-file "#L" line-nr)
+    (kill-new (format "%s/tree/%s/%s#L%s"
+                      repo-url
+                      git-rev
+                      path-to-file
+                      line-nr))))
 (provide 'vlt-misc)
 ;;; vlt-misc.el ends here
