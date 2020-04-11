@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 16
+;;     Update #: 21
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -74,9 +74,11 @@
     clojure-mode-extra-font-locking
     company
     company-anaconda
+    company-lsp
     counsel
     crux
     ctable
+    dap-mode
     dash
     discover-my-major
     diff-hl
@@ -111,6 +113,8 @@
     ivy-rich
     js2-mode
     js2-refactor
+    lsp-java
+    lsp-ui
     magit
     markdown-mode
     move-text

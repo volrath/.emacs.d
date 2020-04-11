@@ -59,13 +59,28 @@
       (file "~/projects/life/todo-capture.template")))))
  '(package-selected-packages
    (quote
-    (inf-clojure flycheck-clj-kondo clojure-mode counsel ivy swiper zmq rust-mode company-terraform terraform-mode go-mode wgrep-ag ivy-hydra docker ag json-mode page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
+    (graphviz-dot-mode company company-lsp dap-mode lsp-ui lsp-java magit ivy-clojuredocs inf-clojure flycheck-clj-kondo clojure-mode counsel ivy swiper zmq rust-mode company-terraform terraform-mode go-mode wgrep-ag ivy-hydra docker ag json-mode page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
  '(persp-keymap-prefix "p")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
    (quote
     ((eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file
+                     (buffer-file-name))))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local flycheck-python-flake8-executable
+                       (concat root-dir ".venv/bin/flake8")))
+     (nrepl-force-ssh-for-remote-hosts . t)
+     (cider-clojure-cli-global-options . "-A:dev:test:package")
+     (eval let
            ((root-dir
              (file-name-directory
               (let
