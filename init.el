@@ -1,14 +1,15 @@
-;;; init.el --- init.el
+;;; init.el ---  -*- lexical-binding: t; -*-
 ;;
 ;; Filename: init.el
-;; Author: Daniel Barreto
-;; Created: Thu Sep  7 13:02:38 2017 (+0200)
+;; Author: Daniel Barreto Nava
+;; Copyright (C) 2022 Daniel Barreto
+;; Created: Sat Jan 29 11:35:06 2022 (+0100)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; My own mix of prelude and magnars .emacs.d configuration.
+;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -23,74 +24,60 @@
 ;; General Public License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
-(defvar current-user
-  (getenv "USER"))
+;;; Package Management Setup
+;;  ---------------------------------------------------------------------------
 
-(defvar vlt-core-dir (expand-file-name "core" user-emacs-directory)
-  "Directory containing core configuration.")
-(defvar vlt-settings-dir (expand-file-name "settings" user-emacs-directory)
-  "Directory containing settings for most of the major modes used.")
-(defvar vlt-appearance-dir (expand-file-name "appearance" user-emacs-directory)
-  "Directory containing appearance stuff, themes and what not.")
-(defvar vlt-defuns-dir (expand-file-name "defuns" user-emacs-directory)
-  "Directory for personal/custom defuns and experiments.")
-(defvar vlt-site-lisp-dir (expand-file-name "site-lisp" user-emacs-directory)
-  "This directory houses packages that are not yet available in ELPA (or MELPA).")
-(defvar vlt-experiments-dir (expand-file-name "experiments" user-emacs-directory)
-  "Host of random things I want to load 'on request'.")
-(defvar vlt-backups-dir (expand-file-name "backups" user-emacs-directory)
-  "This folder stores all the automatically generated save/history-files.")
+;; Install straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Populate `load-path'
-(defun vlt-add-subfolders-to-load-path (parent-dir)
-  "Add all level PARENT-DIR subdirs to the `load-path'."
-  (dolist (project (directory-files parent-dir t "\\w+"))
-    (when (file-directory-p project)
-      (add-to-list 'load-path project)
-      (vlt-add-subfolders-to-load-path project))))
+;; Install use-package
+(straight-use-package 'use-package)
 
-(add-to-list 'load-path vlt-core-dir)
-(add-to-list 'load-path vlt-settings-dir)
-(add-to-list 'load-path vlt-appearance-dir)
-(add-to-list 'load-path vlt-defuns-dir)
-(add-to-list 'load-path vlt-site-lisp-dir)
-(vlt-add-subfolders-to-load-path vlt-defuns-dir)
-(vlt-add-subfolders-to-load-path vlt-site-lisp-dir)
+;; Configure use-package to use straight.el by default
+(eval-when-compile (require 'use-package))
+(use-package straight
+             :custom (straight-use-package-by-default t))
+(setq use-package-verbose t)
 
-;; Require core config
-(require 'vlt-defaults)      ; Emacs core configuration
-(require 'vlt-packages)      ; Install packages
-(require 'vlt-ui)            ; Appearance and UI
-(require 'vlt-setup)         ; Setup and configure major and minor modes / third party libs
-(require 'vlt-key-bindings)  ; global key bindings
 
-;; Start custom things
+;;; Load paths and require modules
+;;; ---------------------------------------------------------------------------
 
-(require 'vlt-project-mappings)
-(vlt-config-perspectives)
-
-(require 'subr-x)
-(when-let (experiments-env (getenv "EXPERIMENTS"))
-  (dolist (experiment (split-string experiments-env ","))
-    (let ((experiment-dir (expand-file-name experiment vlt-experiments-dir)))
-      (when (file-directory-p experiment-dir)
-        (add-to-list 'load-path experiment-dir)))))
+(add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "packages" user-emacs-directory))
+(require 'vlt-defaults)
+(require 'vlt-packages)
+(require 'vlt-key-bindings)
+(require 'vlt-ui)
 
 ;; load private config
 (let ((private-config (expand-file-name "private.el" user-emacs-directory)))
   (when (file-exists-p private-config)
     (load (expand-file-name "private.el" user-emacs-directory))))
 
-;; Server
+
+;;; Server
+;;  ---------------------------------------------------------------------------
+
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
