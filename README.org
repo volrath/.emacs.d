@@ -1,0 +1,18 @@
+* .emacs.d
+
+I do not recommend you use this config yourself, but there might be some
+things here and there that are useful to copy :).
+
+** If you still want to try it out
+
+#+begin_src bash
+$> git clone https://github.com/volrath/.emacs.d /tmp/.emacs.d
+
+# Then either...
+$> HOME=/tmp emacs
+# Or...
+$> emacs -Q -l /tmp/.emacs.d/init.el
+#+end_src
+
+Both options above have their own quirks, but will allow you to quickly try most
+of this config out.
