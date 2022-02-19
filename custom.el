@@ -6,66 +6,112 @@
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   ["#282c34" "#ff6c6b" "#98be65" "#da8548" "#61afef" "#c678dd" "#1f5582" "#abb2bf"])
- '(compilation-message-face (quote default))
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
+ '(auth-source-save-behavior nil)
+ '(cljr-eagerly-build-asts-on-startup nil)
+ '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
-   (quote
-    ("e39ff005e524c331b08d613109bff0b55fc21c64914c4a243faa70f330015389" "c03d60937e814932cd707a487676875457e0b564a615c1edfd453f23b06fe879" "9ff4eb11b3d72c41325d3113bac30b9613c75b7a9ba0892c10bb5b9d9691b85f" "6570843991e40121f854432826e9fd175aec6bd382ef217b2c0c46da37f3af18" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "d88049c628f3a8a92f9e46982d3e891867e4991de2b3a714f29f9f5eb91638c1" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "e39ff005e524c331b08d613109bff0b55fc21c64914c4a243faa70f330015389" "c03d60937e814932cd707a487676875457e0b564a615c1edfd453f23b06fe879" "9ff4eb11b3d72c41325d3113bac30b9613c75b7a9ba0892c10bb5b9d9691b85f" "6570843991e40121f854432826e9fd175aec6bd382ef217b2c0c46da37f3af18" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))
  '(debug-on-error t)
  '(fci-rule-color "#073642")
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+   '("#3b6b40f432d6" "#07b9463c4d36" "#47a3341e358a" "#1d873c3f56d5" "#2d86441c3361" "#43b7362d3199" "#061d417f59d7"))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
-   (quote
-    (("#073642" . 0)
-     ("#546E00" . 20)
-     ("#00736F" . 30)
-     ("#00629D" . 50)
-     ("#7B6000" . 60)
-     ("#8B2C02" . 70)
-     ("#93115C" . 85)
-     ("#073642" . 100))))
+   '(("#073642" . 0)
+     ("#5b7300" . 20)
+     ("#007d76" . 30)
+     ("#0061a8" . 50)
+     ("#866300" . 60)
+     ("#992700" . 70)
+     ("#a00559" . 85)
+     ("#073642" . 100)))
  '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+   '("#866300" "#992700" "#a7020a" "#a00559" "#243e9b" "#0061a8" "#007d76" "#5b7300"))
  '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+   '("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36"))
+ '(hl-paren-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
  '(hl-sexp-background-color "#1c1f26")
- '(magit-commit-arguments (quote ("--gpg-sign=6276E2C1CB4235C7")))
+ '(lsp-ui-doc-border "#93a1a1")
+ '(magit-commit-arguments '("--gpg-sign=6276E2C1CB4235C7"))
  '(magit-diff-use-overlays nil)
- '(magit-tag-arguments (quote ("--sign")))
+ '(magit-tag-arguments '("--sign"))
  '(nrepl-message-colors
-   (quote
-    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-files (quote ("/home/volrath/projects/life/agenda.org")))
+   '("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4"))
+ '(org-agenda-files '("/home/volrath/projects/life/agenda.org"))
  '(org-capture-templates
-   (quote
-    (("j" "Journal Entry" entry
+   '(("j" "Journal Entry" entry
       (file+olp+datetree "~/projects/life/journal.org")
       "* %U - %^{Headline}")
      ("t" "TODO" entry
       (file+headline "~/projects/life/agenda.org" "Tasks")
-      (file "~/projects/life/todo-capture.template")))))
+      (file "~/projects/life/todo-capture.template"))))
  '(package-selected-packages
-   (quote
-    (graphviz-dot-mode company company-lsp dap-mode lsp-ui lsp-java magit ivy-clojuredocs inf-clojure flycheck-clj-kondo clojure-mode counsel ivy swiper zmq rust-mode company-terraform terraform-mode go-mode wgrep-ag ivy-hydra docker ag json-mode page-break-lines unfill shell-script-mode ivy-rich cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window)))
+   '(2048-game typescript-mode racket-mode company-box sqlformat vega-view graphviz-dot-mode company company-lsp dap-mode lsp-ui lsp-java magit ivy-clojuredocs inf-clojure flycheck-clj-kondo clojure-mode counsel zmq rust-mode company-terraform terraform-mode go-mode wgrep-ag docker ag json-mode page-break-lines unfill shell-script-mode cider all-the-icons notmuch flycheck-joker ibuffer-vc org htmlize ox-reveal easy-hugo a nov highlight-indent-guides company-mode company-anaconda anaconda-mode header2 persp-mode-projectile-bridge workgroups persp-mode workgroups2 yaml-mode cask-mode buttercup password-store password-store-otp zop-to-char zoom-frm zerodark-theme zencoding-mode whitespace-cleanup-mode which-key wgrep volatile-highlights visual-regexp undo-tree tagedit solarized-theme smooth-scrolling smartrep smartparens smart-mode-line smart-forward restclient rainbow-delimiters prodigy perspective peep-dired pass ov operate-on-number move-text markdown-mode macrostep js2-refactor imenu-anywhere highlight-escape-sequences helm-projectile helm-fuzzier helm-flx helm-descbinds helm-ag hardcore-mode guru-mode grizzl gitignore-mode gitconfig-mode git-timemachine gist flycheck-pos-tip flycheck-clojure find-file-in-project fill-column-indicator elisp-slime-nav editorconfig dockerfile-mode discover-my-major dired-narrow dired-k dired-details diminish diff-hl ctable csv-mode crux clojure-mode-extra-font-locking clj-refactor change-inner browse-kill-ring beginend apache-mode anzu aggressive-indent ace-window))
  '(persp-keymap-prefix "p")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
-   (quote
-    ((eval let
+   '((eval progn
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1)
+           (put-clojure-indent 'tc\.props/for-all 1)
+           (put-clojure-indent 'clojure\.test\.check\.properties/for-all 1)
+           (put-clojure-indent 'tc/quick-check 1)
+           (put-clojure-indent 'clojure\.test\.check/quick-check 1))
+     (eval progn
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1)
+           (put-clojure-indent 'tc\.props/for-all 1)
+           (put-clojure-indent 'clojure\.test\.check\.properties/for-all 1))
+     (cljr-eagerly-build-asts-on-startup)
+     (eval progn
+           (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+           (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))
+     (checkdoc-symbol-words quote
+                            ("UNREPL" "unrepl" "stdout" "print-level" "print-length"))
+     (eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".dir-locals.el")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq vega-view--vega-svg-command
+                 (concat root-dir "node_modules/.bin/vl2svg")))
+     (eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".dir-locals.el")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local vega-view--vega-svg-command
+                       (concat root-dir "node_modules/.bin/vl2svg")))
+     (eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local vega-view--vega-svg-command
+                       (concat root-dir "node_modules/.bin/vl2svg")))
+     (eval let
            ((root-dir
              (file-name-directory
               (let
@@ -93,23 +139,15 @@
            (setq-local flycheck-python-flake8-executable
                        (concat root-dir ".venv/bin/flake8")))
      (eval progn
-           (put-clojure-indent
-            (quote async)
-            1)
-           (put-clojure-indent
-            (quote car/wcar)
-            1))
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1))
      (eval font-lock-add-keywords nil
-           (\`
-            (((\,
-               (concat "("
+           `((,(concat "("
                        (regexp-opt
-                        (quote
-                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        '("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl")
                         t)
-                       "\\_>"))
-              1
-              (quote font-lock-variable-name-face)))))
+                       "\\_>")
+              1 'font-lock-variable-name-face)))
      (eval let
            ((root-dir
              (file-name-directory
@@ -140,52 +178,42 @@
      (eval progn
            (when
                (string-prefix-p "0.18" cider-version)
-             (cider-register-cljs-repl-type
-              (quote edison)
-              "(start-photon!)")
-             (setq-local cider-default-cljs-repl
-                         (quote edison)))
-           (put-clojure-indent
-            (quote async)
-            1)
-           (put-clojure-indent
-            (quote car/wcar)
-            1))
+             (cider-register-cljs-repl-type 'edison "(start-photon!)")
+             (setq-local cider-default-cljs-repl 'edison))
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1))
      (eval when
-           (fboundp
-            (quote rainbow-mode))
+           (fboundp 'rainbow-mode)
            (rainbow-mode 1))
      (checkdoc-package-keywords-flag)
-     (header-auto-update-enabled))))
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+     (header-auto-update-enabled)))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
+ '(tramp-verbose 6)
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#dc322f")
-     (40 . "#c85d17")
-     (60 . "#be730b")
+   '((20 . "#dc322f")
+     (40 . "#cb4366eb20b4")
+     (60 . "#c1167942154f")
      (80 . "#b58900")
-     (100 . "#a58e00")
-     (120 . "#9d9100")
-     (140 . "#959300")
-     (160 . "#8d9600")
+     (100 . "#a6ae8f7c0000")
+     (120 . "#9ed892380000")
+     (140 . "#96be94cf0000")
+     (160 . "#8e5397440000")
      (180 . "#859900")
-     (200 . "#669b32")
-     (220 . "#579d4c")
-     (240 . "#489e65")
-     (260 . "#399f7e")
+     (200 . "#77679bfc4635")
+     (220 . "#6d449d465bfd")
+     (240 . "#5fc09ea47092")
+     (260 . "#4c68a01784aa")
      (280 . "#2aa198")
-     (300 . "#2898af")
-     (320 . "#2793ba")
-     (340 . "#268fc6")
-     (360 . "#268bd2"))))
+     (300 . "#303498e7affc")
+     (320 . "#2fa1947cbb9b")
+     (340 . "#2c879008c736")
+     (360 . "#268bd2")))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
-   (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+   '(unspecified "#002b36" "#073642" "#a7020a" "#dc322f" "#5b7300" "#859900" "#866300" "#b58900" "#0061a8" "#268bd2" "#a00559" "#d33682" "#007d76" "#2aa198" "#839496" "#657b83"))
  '(xterm-color-names
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
@@ -195,5 +223,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight ((t (:background "#073642" :overline t))))
- '(ivy-current-match ((t (:background "#eee8d5" :underline nil :weight bold)))))
+ )
