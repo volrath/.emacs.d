@@ -50,7 +50,7 @@
 
 ;; accessing a package repo over https on Windows is a no go, so we
 ;; fallback to http there
-(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;; set package-user-dir to be relative to Vlt install path
