@@ -122,6 +122,8 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
 
 (global-company-mode 1)
 
+;; (add-hook 'company-mode-hook 'company-box-mode)
+
 ;; editorconfig
 
 (editorconfig-mode t)
