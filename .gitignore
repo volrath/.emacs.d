@@ -15,3 +15,9 @@
 /url
 /experiments
 /private.el
+/auto-save-list
+/.cache
+/.dap-breakpoints
+/.lsp*
+/session.*
+/workspace
