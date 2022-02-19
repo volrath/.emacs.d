@@ -190,6 +190,10 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
 
 (setq reb-re-syntax 'string)
 
+;; tramp
+
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
 ;; undo-tree
 
 (global-undo-tree-mode)
