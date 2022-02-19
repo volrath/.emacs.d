@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 35
+;;     Update #: 41
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -64,6 +64,7 @@
 (setq cider-history-file (expand-file-name "nrepl-history" vlt-backups-dir))
 (setq cider-repl-pop-to-buffer-on-connect nil)
 (setq cider-repl-use-pretty-printing t)
+(setq cider-repl-display-help-banner nil)
 
 ;; Quit all cider connections!!
 (defun vlt-cider-quit-all ()
@@ -161,7 +162,7 @@ we use the generic `prn'."
        (subword-mode +1)
        (clj-refactor-mode t)
        (yas-minor-mode t)
-       (run-hooks 'vlt-interactive-lisp-coding-hook))
+       (smartparens-strict-mode t))
 
      (setq vlt-cider-repl-mode-hook 'vlt-cider-repl-mode-defaults)
 
