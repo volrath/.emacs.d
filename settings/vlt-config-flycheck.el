@@ -8,9 +8,6 @@ clean buffer we're an order of magnitude laxer about checking."
   (setq flycheck-idle-change-delay
         (if flycheck-current-errors 0.5 30.0)))
 
-;; Each buffer gets its own idle-change-delay because of the
-;; buffer-sensitive adjustment above.
-(make-variable-buffer-local 'flycheck-idle-change-delay)
 
 (add-hook 'flycheck-after-syntax-check-hook
           'magnars/adjust-flycheck-automatic-syntax-eagerness)

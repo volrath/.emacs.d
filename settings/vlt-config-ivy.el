@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 31
+;;     Update #: 34
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -120,7 +120,7 @@
                    :predicate
                    (lambda (cand) (get-buffer cand)))))
 
-(ivy-rich-set-display-transformer)  ;; tell ivy-rich to recalculate display transformers
+(ivy-rich-set-display-transformer nil)  ;; tell ivy-rich to recalculate display transformers
 
 ;; smex
 (setq smex-save-file (expand-file-name ".smex-items" vlt-backups-dir))

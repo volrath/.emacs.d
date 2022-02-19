@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 21
+;;     Update #: 22
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -45,7 +45,7 @@
 ;;
 ;;; Code:
 
-(require 'cl)
+(require 'cl-lib)
 (require 'package)
 
 ;; accessing a package repo over https on Windows is a no go, so we
@@ -157,7 +157,7 @@
 
 (defun vlt-packages-installed-p ()
   "Check if all packages in `vlt-packages' are installed."
-  (every #'package-installed-p vlt-packages))
+  (cl-every #'package-installed-p vlt-packages))
 
 (defun vlt-require-package (package)
   "Install PACKAGE unless already installed."
