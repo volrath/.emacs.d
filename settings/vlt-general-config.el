@@ -9,7 +9,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 52
+;;     Update #: 58
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -233,6 +233,7 @@ https://github.com/alpaker/Fill-Column-Indicator/issues/54"
 (require 'vlt-config-ivy)
 (require 'vlt-config-magit)
 (require 'vlt-config-smartparens)
+(require 'vlt-config-sql)
 (require 'vlt-config-yasnippet)
 
 (provide 'vlt-general-config)
