@@ -182,20 +182,26 @@ The result is cached for one second to avoid hiccups."
   (funcall vlt-ml--git-face-cached))
 
 (defun vlt-ml-set-palette (theme)
-  (cond
-   ((string-prefix-p "solarized-" (symbol-name theme))
-    (let ((variant (if (eq theme 'solarized-light) 'light 'dark)))
-      (solarized-with-color-variables variant
-        (setq vlt-ml-active-foreground s-mode-line-inactive-fg
-              vlt-ml-inactive-foreground s-mode-line-inactive-fg
-              vlt-ml-active-background s-mode-line-inactive-bg
-              vlt-ml-inactive-background s-mode-line-inactive-bg
-              vlt-ml-anzu-color "#c678dd"))))
-   (t (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
+  (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
             vlt-ml-inactive-foreground (if (vlt-true-color-p) "#687080" "#707070")
             vlt-ml-active-background "#222222"
             vlt-ml-inactive-background (if (vlt-true-color-p) "#1c2129" "#222222")
-            vlt-ml-anzu-color "#c678dd"))))
+            vlt-ml-anzu-color "#c678dd")
+  ;; (cond
+  ;;  ((string-prefix-p "solarized-" (symbol-name theme))
+  ;;   (let ((variant (if (eq theme 'solarized-light) 'light 'dark)))
+  ;;     (solarized-with-color-variables variant theme
+  ;;       (setq vlt-ml-active-foreground s-mode-line-inactive-fg
+  ;;             vlt-ml-inactive-foreground s-mode-line-inactive-fg
+  ;;             vlt-ml-active-background s-mode-line-inactive-bg
+  ;;             vlt-ml-inactive-background s-mode-line-inactive-bg
+  ;;             vlt-ml-anzu-color "#c678dd"))))
+  ;;  (t (setq vlt-ml-active-foreground (if (vlt-true-color-p) "#ccd4e3" "#d7d7d7")
+  ;;           vlt-ml-inactive-foreground (if (vlt-true-color-p) "#687080" "#707070")
+  ;;           vlt-ml-active-background "#222222"
+  ;;           vlt-ml-inactive-background (if (vlt-true-color-p) "#1c2129" "#222222")
+  ;;           vlt-ml-anzu-color "#c678dd")))
+)
 
 (defun vlt-setup-mode-line-format (theme)
   (vlt-ml-set-palette theme)

@@ -94,8 +94,7 @@
 (column-number-mode t)
 (size-indication-mode t)
 
-(setq linum-format "%4d")
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;; org-mode: Don't ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
 (setq org-replace-disputed-keys t)

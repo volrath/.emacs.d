@@ -10,7 +10,7 @@
 ;; Package-Requires: ()
 ;; Last-Updated:
 ;;           By:
-;;     Update #: 31
+;;     Update #: 35
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -48,6 +48,7 @@
 
 (require 'vlt-config-lisp)
 (vlt-require-packages '(clojure-mode cider clj-refactor flycheck-joker))
+(require 'clj-refactor)
 (require 'flycheck-joker)
 (require 'flycheck-clj-kondo)
 (require 'smartparens)
@@ -71,9 +72,17 @@
   (let ((repl-buffers (seq-filter (lambda (b)
                                     (with-current-buffer b
                                       (eq major-mode 'cider-repl-mode)))
+                                  (buffer-list)))
+        (temp-buffers (seq-filter (lambda (b)
+                                    (with-current-buffer b
+                                      (string-prefix-p " *cider-temp " (buffer-name))))
                                   (buffer-list))))
     (dolist (buf repl-buffers)
-      (cider--close-connection buf))
+      (condition-case e
+          (cider--close-connection buf)
+        (cider--close-connection buf)))
+    (dolist (buf temp-buffers)
+      (kill-buffer buf))
     (message "All CIDER connections closed")))
 
 ;; Easy print-debugging
