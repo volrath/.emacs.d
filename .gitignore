@@ -1,5 +1,6 @@
 /auto-save-list
 /backups
+/bookmarks
 /.cache
 /emojis
 /experiments
@@ -10,4 +11,5 @@
 /tramp
 /url
 /projects
+/project-window-list
 /.lsp-session-v1
