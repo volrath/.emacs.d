@@ -345,6 +345,20 @@ clean buffer we're an order of magnitude laxer about checking."
   (project-x-window-state-save))
 (advice-add 'project-x-window-state-load :before #'vlt/project-x-save-before-jumping)
 
+;; Switch to the last project used
+(defvar vlt/project-last-used nil "Last perspective used.")
+(defun vlt/project-x-window-state-load-last-used ()
+  (interactive)
+  (if vlt/project-last-used
+      (project-x-window-state-load vlt/project-last-used)
+    (project-x-window-state-load)))
+
+(defun vlt/project-x-save-last-used (orig-func &rest args)
+  (setq vlt/project-last-used (project-root (project-current))))
+(advice-add 'project-x-window-state-load :before #'vlt/project-x-save-last-used)
+
+(define-key project-prefix-map (kbd "-") #'vlt/project-x-window-state-load-last-used)
+
 
 
 ;; Require every other package in ~/.emacs.d/packages
