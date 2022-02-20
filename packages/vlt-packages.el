@@ -116,29 +116,27 @@
   (setq er--show-expansion-message t))
 
 
-;; (use-package flycheck
-;;   :ensure t
-;;   :init
-;;   (defun vlt/adjust-flycheck-automatic-syntax-eagerness ()  ;; Another great trick from Magnars
-;;     "Adjust how often we check for errors based on if there are any.
+(use-package flycheck
+  :ensure t
+  :init
+  (defun vlt/adjust-flycheck-automatic-syntax-eagerness ()  ;; Another great trick from Magnars
+    "Adjust how often we check for errors based on if there are any.
 
-;; This lets us fix any errors as quickly as possible, but in a
-;; clean buffer we're an order of magnitude laxer about checking."
-;;     (setq flycheck-idle-change-delay
-;;           (if flycheck-current-errors 0.5 30.0)))
-;;   ;; Each buffer gets its own idle-change-delay because of the
-;;   ;; buffer-sensitive adjustment above.
-;;   (make-variable-buffer-local 'flycheck-idle-change-delay)
-;;   :hook (flycheck-after-syntax-check . vlt/adjust-flycheck-automatic-syntax-eagerness)
-;;   :config
-;;   (make-variable-buffer-local 'flycheck-idle-change-delay)
-;;   ;; Remove newline checks, since they would trigger an immediate check
-;;   ;; when we want the idle-change-delay to be in effect while editing.
-;;   (setq flycheck-check-syntax-automatically '(save
-;;                                               idle-change
-;;                                               mode-enabled))
-;;   ;; Fix flycheck load-path
-;;   (setq flycheck-emacs-lisp-load-path 'inherit))
+This lets us fix any errors as quickly as possible, but in a
+clean buffer we're an order of magnitude laxer about checking."
+    (setq flycheck-idle-change-delay
+          (if flycheck-current-errors 0.5 30.0)))
+  ;; Each buffer gets its own idle-change-delay because of the
+  ;; buffer-sensitive adjustment above.
+  (make-variable-buffer-local 'flycheck-idle-change-delay)
+  :hook (flycheck-after-syntax-check . vlt/adjust-flycheck-automatic-syntax-eagerness)
+  :config
+  (make-variable-buffer-local 'flycheck-idle-change-delay)
+  ;; Remove newline checks, since they would trigger an immediate check
+  ;; when we want the idle-change-delay to be in effect while editing.
+  (setq flycheck-check-syntax-automatically '(save
+                                              idle-change
+                                              mode-enabled)))
 
 
 (use-package move-text

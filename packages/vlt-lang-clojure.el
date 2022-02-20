@@ -79,7 +79,6 @@ we use the generic `prn'."
   (require 'flycheck-clj-kondo)
 
   (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
-  ;; (add-hook 'clojure-mode-hook 'flycheck-mode)
   (add-hook 'clojure-mode-hook 'yas-minor-mode)
   (diminish 'yas-minor-mode)
 
