@@ -1,0 +1,3 @@
+[submodule "libs/project-x"]
+	path = libs/project-x
+	url = https://github.com/karthink/project-x.git

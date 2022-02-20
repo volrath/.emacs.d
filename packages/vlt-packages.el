@@ -32,6 +32,31 @@
 
 (require 'vlt-defaults)
 
+;;; Load all libraries in `libs'
+;;  ----------------------------------------------------------------------------
+
+(dolist (lib-path (thread-last (expand-file-name "libs" user-emacs-directory)
+                    (directory-files)
+                    (-remove (lambda (file)
+                               (or (string= file ".")
+                                   (string= file ".."))))))
+  (load lib-path))
+
+
+;; For some reason, `:load-path' from `use-package' is not able to find
+;; libraries in `libs'.
+
+;; `project-x' helps saving the window/buffer configuration between projects
+(require 'project-x)
+(project-x-mode 1)
+
+;; Please save everytime we jump to a different project
+(defun vlt/project-x-save-before-jumping (orig-func &rest args)
+  (project-x-window-state-save))
+(advice-add 'project-x-window-state-load :before #'vlt/project-x-save-before-jumping)
+
+;;; ----------------------------------------------------------------------------
+
 (use-package bind-key :ensure t)
 (use-package diminish :ensure t)
 (require 'bind-key)
