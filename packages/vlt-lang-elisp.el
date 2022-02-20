@@ -30,11 +30,7 @@
 ;;
 ;;; Code:
 
-(use-package pp+
-  :bind (([remap eval-expression] . pp-eval-expression)
-         :map emacs-lisp-mode-map
-         ("C-c C-p" . pp-eval-last-sexp)
-         ("C-c C-k" . pp-eval-buffer)))
+(use-package eval-sexp-fu :ensure t)
 
 
 (use-package header2
@@ -106,6 +102,13 @@
     "Don't set the buffer modified flag."
     (apply orig-fun args)
     (set-buffer-modified-p nil)))
+
+
+(use-package pp+
+  :bind (([remap eval-expression] . pp-eval-expression)
+         :map emacs-lisp-mode-map
+         ("C-c C-p" . pp-eval-last-sexp)
+         ("C-c C-k" . pp-eval-buffer)))
 
 
 (provide 'vlt-lang-elisp)
