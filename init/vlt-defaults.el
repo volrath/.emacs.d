@@ -198,7 +198,8 @@
       ediff-diff-options "-w"
       ediff-window-setup-function 'ediff-setup-windows-plain
       ediff-window-setup-function 'ediff-setup-windows-plain
-      gc-cons-threshold 50000000  ; Don't be so stingy on the memory, we have lots now. It's the distant future.
+      gc-cons-threshold (* 100 1024 1024)  ; Don't be so stingy on the memory, we have lots now. It's the distant future.
+      read-process-output-max (* 1024 1024)
       large-file-warning-threshold 100000000  ; 100MB might be too much
       save-place-file (expand-file-name "saveplace" vlt-defaults/backups-dir)  ; Save place in buffers
       backup-directory-alist `(("." . ,vlt-defaults/backups-dir))  ; Keep things clean!
