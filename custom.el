@@ -4,7 +4,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((nrepl-use-ssh-fallback-for-remote-hosts . t)
+   '((eval progn
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1))
+     (nrepl-use-ssh-fallback-for-remote-hosts . t)
      (cider-ns-refresh-after-fn . "user/start")
      (cider-ns-refresh-before-fn . "user/stop")
      (eval progn
