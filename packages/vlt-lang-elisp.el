@@ -1,9 +1,9 @@
-;;; vlt-header2.el ---  -*- lexical-binding: t; -*-
+;;; vlt-lang-elisp.el ---  -*- lexical-binding: t; -*-
 ;;
-;; Filename: vlt-header2.el
-;; Author: Daniel Barreto Nava
+;; Filename: vlt-lang-elisp.el
+;; Author:
 ;; Copyright (C) 2022 Daniel Barreto
-;; Created: Mon Feb 14 00:49:58 2022 (+0100)
+;; Created: Sat Feb 19 14:44:16 2022 (+0100)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,6 +29,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+
+(use-package pp+
+  :bind (([remap eval-expression] . pp-eval-expression)
+         :map emacs-lisp-mode-map
+         ("C-c C-p" . pp-eval-last-sexp)
+         ("C-c C-k" . pp-eval-buffer)))
+
 
 (use-package header2
   :ensure t
@@ -100,4 +107,7 @@
     (apply orig-fun args)
     (set-buffer-modified-p nil)))
 
-;;; vlt-header2.el ends here
+
+(provide 'vlt-lang-elisp)
+
+;;; vlt-lang-elisp.el ends here
