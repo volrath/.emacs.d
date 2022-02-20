@@ -117,6 +117,12 @@
 (global-set-key (kbd "C-x C--") 'rotate-windows)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
+
+;;; Random helpers
+;;  --------------------------------------------------------------------
+
+(global-set-key (kbd "C-s-v g l") 'vlt/github-url-at-point)
+
 (provide 'vlt-key-bindings)
 
 ;;; vlt-key-bindings.el ends here

@@ -238,6 +238,35 @@ If there's no region, the current line will be duplicated."
      (sp-wrap-with-pair ,s)))
 
 
+(defun vlt/github-url-at-point (&optional revision args)
+  (interactive (if current-prefix-arg
+                   (list (magit-read-other-branch-or-commit "Revision")
+                         (magit-branch-arguments))
+                 (list (magit-get-current-branch))))
+  (let* ((remote-url-http (thread-last (s-chomp (shell-command-to-string (format "git config --get remote.%s.url" "origin")))
+                            (replace-regexp-in-string ":" "/")
+                            (replace-regexp-in-string "^git@" "https:\/\/")
+                            (replace-regexp-in-string ".git$" "")))
+         (path-to-file (s-replace (expand-file-name (vc-root-dir))
+                                  ""
+                                  (buffer-file-name)))
+         (region-start-line (line-number-at-pos (region-beginning)))
+         (region-end-line   (if (save-excursion (goto-char (region-end)) (bolp))
+                                (1- (line-number-at-pos (region-end)))
+                              (line-number-at-pos (region-end))))
+         (line-hash (if (or (not (use-region-p))
+                            (eq region-start-line region-end-line))
+                        (format "#L%s" (line-number-at-pos))
+                      (format "#L%s-L%s" region-start-line region-end-line)))
+         (repo-link (format "%s/tree/%s/%s%s"
+                            remote-url-http
+                            revision
+                            path-to-file
+                            line-hash)))
+    (kill-new repo-link)
+    (message "Copied to clipboard: %s" repo-link)))
+
+
 (provide 'vlt-defuns)
 
 
