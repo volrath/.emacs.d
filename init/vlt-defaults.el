@@ -139,6 +139,9 @@
 ;; 80 chars is a good width.
 (set-default 'fill-column 80)
 
+;; So long, long lines
+(global-so-long-mode 1)
+
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
