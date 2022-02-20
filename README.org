@@ -16,3 +16,14 @@ $> emacs -Q -l /tmp/.emacs.d/init.el
 
 Both options above have their own quirks, but will allow you to quickly try most
 of this config out.
+
+** External dependencies
+
+Some keybindings and other functionality depend on these external libraries
+being installed:
+
+- Font: [[https://github.com/tonsky/FiraCode][Fira Code]]
+- [[https://clojure-lsp.io/][clojure-lsp]]
+- [[https://www.passwordstore.org/][pass]] and [[https://github.com/tadfisher/pass-otp][pass-otp]]
+- [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+- docker, git, and other stuff you probably have already installed.
