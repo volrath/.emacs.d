@@ -50,11 +50,9 @@
 ;;  ----------------------------------------------------------------------------
 
 (use-package monokai-theme
-  :ensure t
   :init (load-theme 'monokai t))
 
 (use-package doom-modeline
-  :ensure t
   :custom
   (doom-modeline-buffer-encoding nil)
   (doom-modeline-buffer-file-name-style 'buffer-name)
@@ -79,7 +77,7 @@
 (set-frame-font "Fira Code Light-11")
 ;; (set-frame-font "Hack-11")
 
-(use-package all-the-icons :ensure t)
+(use-package all-the-icons)
 
 (use-package emojify
   :hook (after-init . global-emojify-mode))

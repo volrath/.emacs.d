@@ -31,7 +31,6 @@
 ;;; Code:
 
 (use-package org
-  :ensure t
   :after smartparens
   :custom
   (org-src-fontify-natively t)

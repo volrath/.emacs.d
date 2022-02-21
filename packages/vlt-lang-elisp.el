@@ -30,11 +30,10 @@
 ;;
 ;;; Code:
 
-(use-package eval-sexp-fu :ensure t)
+(use-package eval-sexp-fu)
 
 
 (use-package header2
-  :ensure t
   :config
   (define-advice make-header (:after (&rest args) add-lexbind-variable)
     "Add `lexical-binding: t' to header."

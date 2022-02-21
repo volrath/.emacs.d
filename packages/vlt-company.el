@@ -31,7 +31,6 @@
 ;;; Code:
 
 (use-package company
-  :ensure t
   :defer nil
   :custom
   (company-idle-delay 0.5)
@@ -41,7 +40,6 @@
   (global-company-mode 1))
 
 ;; (use-package company-box
-;;   :ensure t
 ;;   :diminish company-box-mode
 ;;   :hook (company-mode . company-box-mode)
 ;;   ;; :init

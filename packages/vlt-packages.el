@@ -32,26 +32,23 @@
 
 (require 'vlt-defaults)
 
-(use-package bind-key :ensure t)
-(use-package diminish :ensure t)
+(use-package bind-key)
+(use-package diminish)
 (require 'bind-key)
 (require 'diminish)
 
 
 (use-package ace-window
-  :ensure t
   :bind (("M-z" . ace-window)))
 
 
 (use-package aggressive-indent
-  :ensure t
   :diminish aggressive-indent-mode
   :config
   (global-aggressive-indent-mode))
 
 
 (use-package anzu
-  :ensure t
   :diminish anzu-mode
   :bind (("M-%" . 'anzu-query-replace)
          ("C-M-%" . 'anzu-query-replace-regexp))
@@ -60,18 +57,15 @@
 
 
 (use-package avy
-  :ensure t
   :bind (("s-." . avy-goto-word-or-subword-1)
          ("s-," . avy-goto-line)))
 
 
 (use-package browse-kill-ring
-  :ensure t
   :bind (("C-x C-y" . browse-kill-ring)))
 
 
 (use-package change-inner
-  :ensure t
   :bind (("s-i" . copy-inner)
          ("s-o" . copy-inner)
          ("s-I" . change-inner)
@@ -79,7 +73,6 @@
 
 
 (use-package discover-my-major
-  :ensure t
   :bind (("C-h m" . discover-my-major)))
 
 
@@ -91,25 +84,22 @@
   (defun vlt/docker-compose-down-all ()
     (interactive)
     (docker-compose-run-action-for-all-services "down" nil))
-  :ensure t
   :bind (("C-c C-s-d C-s-d" . docker)
          ("C-c C-s-d C-s-u" . vlt/docker-compose-up-all)
          ("C-c C-s-d C-s-w" . vlt/docker-compose-down-all)))
 
 
 (use-package dockerfile-mode
-  :ensure t
   :mode "Dockerfile\\'")
 
 
-(use-package docker-compose-mode :ensure t)
+(use-package docker-compose-mode)
 
 
 (use-package eldoc :diminish eldoc-mode)
 
 
 (use-package expand-region
-  :ensure t
   :bind (("C-'" . 'er/expand-region))
   :config
   (setq expand-region-fast-keys-enabled nil)
@@ -117,7 +107,6 @@
 
 
 (use-package flycheck
-  :ensure t
   :init
   (defun vlt/adjust-flycheck-automatic-syntax-eagerness ()  ;; Another great trick from Magnars
     "Adjust how often we check for errors based on if there are any.
@@ -140,13 +129,11 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package move-text
-  :ensure t
   :bind (("<C-S-down>" . move-text-down)
          ("<C-S-up>"   . move-text-up)))
 
 
 (use-package multiple-cursors
-  :ensure t
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-¶" . mc/mark-all-like-this) ;; ;
@@ -155,23 +142,21 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package pass
-  :ensure t
   :custom (password-store-password-length 24)
   :config
-  (use-package password-store-otp :ensure t))
+  (use-package password-store-otp))
 
 
-(use-package project :ensure t)
+(use-package project)
 
 
-(use-package restclient :ensure t)
+(use-package restclient)
 
 
 (use-package rg
-  :ensure t
   :config
   (rg-enable-default-bindings)
-  (use-package wgrep :ensure t))
+  (use-package wgrep))
 
 
 (use-package savehist
@@ -184,7 +169,6 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package saveplace
-  :ensure t
   :config (save-place-mode t))
 
 
@@ -210,7 +194,6 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package smooth-scrolling
-  :ensure t
   :config (smooth-scrolling-mode t))
 
 
@@ -218,7 +201,6 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package undo-tree
-  :ensure t
   :diminish undo-tree-mode
   :config
   (global-undo-tree-mode)
@@ -226,7 +208,6 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package which-key
-  :ensure t
   :diminish which-key-mode
   :config
   (which-key-mode)
@@ -235,20 +216,17 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package whitespace-cleanup-mode
-  :ensure t
   :diminish whitespace-cleanup-mode
   :config
   (global-whitespace-cleanup-mode t))
 
 
 (use-package yasnippet
-  :ensure t
   :config
   (yas-reload-all))
 
 
 (use-package zoom-frm
-  :ensure t
   :init
   (defun vlt-packages/enable-zoom-one-shot-keybindings ()  ;; Thanks magnars :)
     (set-transient-map
@@ -277,7 +255,6 @@ clean buffer we're an order of magnitude laxer about checking."
 ;; -----------------------------------------------------------------------------
 
 (use-package dired-narrow
-  :ensure t
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 
@@ -286,7 +263,6 @@ clean buffer we're an order of magnitude laxer about checking."
 ;; -----------------------------------------------------------------------------
 
 (use-package magit
-  :ensure t
   :init
   (defun vlt-packages/magit-cursor-fix ()
     (goto-char (point-min))
@@ -306,7 +282,6 @@ clean buffer we're an order of magnitude laxer about checking."
 ;; -----------------------------------------------------------------------------
 
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -318,9 +293,9 @@ clean buffer we're an order of magnitude laxer about checking."
 ;; Coding utilities
 ;; -----------------------------------------------------------------------------
 
-(use-package s :ensure t)
-(use-package f :ensure t)
-(use-package dash :ensure t)
+(use-package s)
+(use-package f)
+(use-package dash)
 
 
 ;;; Load all libraries in `libs'

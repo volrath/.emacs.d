@@ -8,6 +8,7 @@
         sp-delete-char
         sp-forward-sexp
         sp-forward-slurp-sexp
+        sp-kill-hybrid-sexp
         sp-kill-word
         sp-raise-sexp
         ))

@@ -47,7 +47,6 @@
 ;; (use-package dap-mode)
 
 (use-package eglot
-  :ensure t
   :hook (clojure-mode . eglot-ensure)
   :custom
   (eglot-autoshutdown t))

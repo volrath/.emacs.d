@@ -33,7 +33,6 @@
 (require 'vlt-defuns)
 
 (use-package smartparens
-  :ensure t
   :diminish smartparens-mode
   :bind
   (:map smartparens-mode-map
@@ -66,7 +65,6 @@
   (define-key smartparens-mode-map (kbd "M-\"") (vlt/wrap-with "\""))
 
   (use-package hydra
-    :ensure t
     :config
     (define-key smartparens-mode-map (kbd "C-M-s")
       (defhydra smartparens-hydra ()

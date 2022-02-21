@@ -33,11 +33,10 @@
 (require 'vlt-defaults)
 
 
-(use-package flx :ensure t)
+(use-package flx)
 
 
 (use-package ivy
-  :ensure t
   :diminish ivy-mode
   :bind (("C-c C-r" . ivy-resume)
          ("C-x B" . ivy-switch-buffer-other-window)
@@ -58,7 +57,6 @@
 
 
 (use-package counsel
-  :ensure t
   :diminish counsel-mode
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
@@ -72,7 +70,6 @@
 
 
 (use-package ivy-rich
-  :ensure t
   :hook (ivy-mode . ivy-rich-mode)
   :init
   ;; Sprinkle some icons
@@ -105,13 +102,11 @@
 
 
 (use-package smex
-  :ensure t
   :custom (smex-save-file (expand-file-name ".smex-items" vlt-defaults/backups-dir))
   :config (smex-initialize))
 
 
 (use-package swiper
-  :ensure t
   :init
   (defun vlt-swiper-at-point (sym)
     "Use `swiper' to search for the SYM at point."

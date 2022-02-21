@@ -49,12 +49,13 @@
 
 ;; Install use-package
 (straight-use-package 'use-package)
+(setq use-package-verbose t
+      use-package-always-demand t)
 
 ;; Configure use-package to use straight.el by default
 (eval-when-compile (require 'use-package))
 (use-package straight
-             :custom (straight-use-package-by-default t))
-(setq use-package-verbose t)
+  :custom (straight-use-package-by-default t))
 
 
 ;;; Load paths and require modules

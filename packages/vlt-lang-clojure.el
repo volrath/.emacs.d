@@ -33,7 +33,6 @@
 (require 'vlt-defaults)
 
 (use-package clojure-mode
-  :ensure t
   :init
   (defun vlt/clj-doto-print ()
     "Wrap the sexp at point in a `(doto <sexp> <print-fn>)'.
@@ -75,7 +74,7 @@ we use the generic `prn'."
               ("C-s-v C-s-z" . vlt/zprint-buffer))
 
   :config
-  (use-package flycheck-clj-kondo :ensure t)
+  (use-package flycheck-clj-kondo)
   (require 'flycheck-clj-kondo)
 
   (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
@@ -83,7 +82,6 @@ we use the generic `prn'."
   (diminish 'yas-minor-mode)
 
   (use-package cider
-    :ensure t
     :init
     (add-hook 'cider-repl-mode-hook (lambda () (aggressive-indent-mode 0)))
     (defun vlt/cider-quit-all ()
@@ -107,13 +105,12 @@ we use the generic `prn'."
     (add-hook 'cider-mode-hook #'company-mode)
     (define-key cider-repl-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)
 
-    (use-package cider-eval-sexp-fu :ensure t)
+    (use-package cider-eval-sexp-fu)
 
     (setq cider-history-file (expand-file-name "cider-history" vlt-defaults/backups-dir)
           nrepl-prompt-to-kill-server-buffer-on-quit nil))
 
   (use-package clj-refactor
-    :ensure t
     :diminish clj-refactor-mode
     :config
     (add-hook 'clojure-mode-hook 'clj-refactor-mode)
@@ -124,7 +121,7 @@ we use the generic `prn'."
           cljr-favor-private-functions nil
           cljr-eagerly-build-asts-on-startup nil))
 
-  (use-package clojure-mode-extra-font-locking :ensure t))
+  (use-package clojure-mode-extra-font-locking))
 
 (provide 'vlt-lang-clojure)
 
