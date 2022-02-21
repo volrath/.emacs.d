@@ -147,7 +147,37 @@ clean buffer we're an order of magnitude laxer about checking."
   (use-package password-store-otp))
 
 
-(use-package project)
+(use-package project
+  :config
+  (use-package project-x
+    :straight (project-x
+               :type git
+               :host github
+               :repo "karthink/project-x"
+               :files ("*" (:exclude ".git")))
+    :init
+    ;; Switch to the last project used
+    (defvar vlt/project-last-used nil "Last perspective used.")
+    (defun vlt/project-x-advice-save-last-used (orig-func &rest args)
+      (setq vlt/project-last-used (project-root (project-current))))
+
+    (defun vlt/project-x-window-state-load-last-used ()
+      (interactive)
+      (if vlt/project-last-used
+          (project-x-window-state-load vlt/project-last-used)
+        (project-x-window-state-load)))
+
+    ;; Please save everytime we jump to a different project
+    (defun vlt/project-x-advice-save-before-jumping (orig-func &rest args)
+      (project-x-window-state-save))
+
+    :bind (:map project-prefix-map
+                ("-" . vlt/project-x-window-state-load-last-used))
+
+    :config
+    (project-x-mode 1)
+    (advice-add 'project-x-window-state-load :before #'vlt/project-x-advice-save-last-used)
+    (advice-add 'project-x-window-state-load :before #'vlt/project-x-advice-save-before-jumping)))
 
 
 (use-package restclient)
@@ -296,43 +326,6 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package s)
 (use-package f)
 (use-package dash)
-
-
-;;; Load all libraries in `libs'
-;;  ----------------------------------------------------------------------------
-
-(dolist (lib-path (--remove
-                   (or (s-ends-with? "/." it)
-                       (s-ends-with? "/.." it))
-                   (directory-files (expand-file-name "libs" user-emacs-directory) :full)))
-  (add-to-list 'load-path lib-path))
-
-
-;; For some reason, `:load-path' from `use-package' is not able to find
-;; libraries in `libs'.
-
-;; `project-x' helps saving the window/buffer configuration between projects
-(require 'project-x)
-(project-x-mode 1)
-
-;; Please save everytime we jump to a different project
-(defun vlt/project-x-save-before-jumping (orig-func &rest args)
-  (project-x-window-state-save))
-(advice-add 'project-x-window-state-load :before #'vlt/project-x-save-before-jumping)
-
-;; Switch to the last project used
-(defvar vlt/project-last-used nil "Last perspective used.")
-(defun vlt/project-x-window-state-load-last-used ()
-  (interactive)
-  (if vlt/project-last-used
-      (project-x-window-state-load vlt/project-last-used)
-    (project-x-window-state-load)))
-
-(defun vlt/project-x-save-last-used (orig-func &rest args)
-  (setq vlt/project-last-used (project-root (project-current))))
-(advice-add 'project-x-window-state-load :before #'vlt/project-x-save-last-used)
-
-(define-key project-prefix-map (kbd "-") #'vlt/project-x-window-state-load-last-used)
 
 
 
