@@ -158,18 +158,21 @@ clean buffer we're an order of magnitude laxer about checking."
     :init
     ;; Switch to the last project used
     (defvar vlt/project-last-used nil "Last perspective used.")
-    (defun vlt/project-x-advice-save-last-used (orig-func &rest args)
-      (setq vlt/project-last-used (project-root (project-current))))
+    (defun vlt/project-x-advice-save-last-used (next-project)
+      (when (and (project-current)
+                 (not (string= (project-root (project-current)) next-project)))
+        (setq vlt/project-last-used (project-root (project-current)))))
 
     (defun vlt/project-x-window-state-load-last-used ()
       (interactive)
       (if vlt/project-last-used
           (project-x-window-state-load vlt/project-last-used)
-        (project-x-window-state-load)))
+        (call-interactively 'project-x-window-state-load)))
 
     ;; Please save everytime we jump to a different project
-    (defun vlt/project-x-advice-save-before-jumping (orig-func &rest args)
-      (project-x-window-state-save))
+    (defun vlt/project-x-advice-save-before-jumping (&rest _args)
+      (when (project-current)
+        (project-x-window-state-save)))
 
     :bind (:map project-prefix-map
                 ("-" . vlt/project-x-window-state-load-last-used))
