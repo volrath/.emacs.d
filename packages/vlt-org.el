@@ -35,6 +35,7 @@
   :custom
   (org-src-fontify-natively t)
   (org-default-notes-file (expand-file-name "agenda.org" org-directory))
+  (org-agenda-files (list (expand-file-name "agenda.org" org-directory)))
   (org-return-follows-link t)
   (org-enforce-todo-dependencies t)
   :bind (("C-s-o a" . org-agenda)
