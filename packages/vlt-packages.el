@@ -186,6 +186,9 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package restclient)
 
 
+(use-package re-builder)
+
+
 (use-package rg
   :config
   (rg-enable-default-bindings)

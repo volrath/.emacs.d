@@ -120,7 +120,8 @@ we use the generic `prn'."
     (setq cljr-warn-on-eval nil
           cljr-favor-prefix-notation nil
           cljr-favor-private-functions nil
-          cljr-eagerly-build-asts-on-startup nil))
+          cljr-eagerly-build-asts-on-startup nil)
+    (use-package discover-clj-refactor))
 
   (use-package clojure-mode-extra-font-locking))
 
