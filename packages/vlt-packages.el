@@ -322,7 +322,21 @@ clean buffer we're an order of magnitude laxer about checking."
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :custom (markdown-command "multimarkdown"))
+  :custom (markdown-command "multimarkdown")
+  :init
+  (defun vlt/markdown-insert-pull-requests (pr-link)
+    "Prompts for a pull request link and inserts a nicely formatted link."
+    (interactive "sPull Request: ")
+    (let ((pr-number (save-match-data
+                       (and (string-match "github.com/\[^\/\]+/\[^\/\]+/pull/\\(\[0-9\]+\\)/?"
+                                          pr-link)
+                            (match-string 1 pr-link)))))
+      (if pr-number
+          ;; TODO: consider using `markdown-insert-link'
+          (insert (format "[#%s](%s)" pr-number pr-link))
+        (error (format "Input does not seem to be a valid Github PR Link %s" pr-link)))))
+  :bind (:map markdown-mode-map
+              ("C-c p" . vlt/markdown-insert-pull-requests)))
 
 
 
