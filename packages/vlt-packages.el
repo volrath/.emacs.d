@@ -141,6 +141,22 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-ä" . mc/mark-all-dwim)))    ;; q
 
 
+(use-package page-break-lines
+  :diminish page-break-lines-mode
+  :custom (page-break-lines-max-width 80)
+  :init
+  (defun vlt/page-navigation-move-to-bol (&rest _args)
+    "page-break-lines is great, but I don't like that the cursor
+    goes to the end of the break line when I `backward-page' or
+    `forward-page'."
+    (when (bound-and-true-p page-break-lines-mode)
+      (move-beginning-of-line nil)))
+  :config
+  (global-page-break-lines-mode t)
+  (advice-add 'backward-page :after #'vlt/page-navigation-move-to-bol)
+  (advice-add 'forward-page :after #'vlt/page-navigation-move-to-bol))
+
+
 (use-package pass
   :custom (password-store-password-length 24)
   :config
