@@ -80,6 +80,7 @@
 (use-package all-the-icons)
 
 (use-package emojify
+  :custom (emojify-emoji-styles '(unicode github))
   :hook (after-init . global-emojify-mode))
 
 
