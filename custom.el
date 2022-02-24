@@ -4,7 +4,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval progn
+   '((eval let
+           ((root-dir
+             (file-name-directory
+              (let
+                  ((d
+                    (dir-locals-find-file ".")))
+                (if
+                    (stringp d)
+                    d
+                  (car d))))))
+           (setq-local flycheck-css-stylelint-executable
+                       (concat root-dir "node_modules/.bin/stylelint")))
+     (eval progn
            (put-clojure-indent 'async 1)
            (put-clojure-indent 'car/wcar 1))
      (nrepl-use-ssh-fallback-for-remote-hosts . t)
