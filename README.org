@@ -23,7 +23,7 @@ Some keybindings and other functionality depend on these external libraries
 being installed:
 
 - Font: [[https://github.com/tonsky/FiraCode][Fira Code]]
-- [[https://clojure-lsp.io/][clojure-lsp]]
+- [[https://github.com/python-lsp/python-lsp-server][Python LSP Server]]
 - [[https://www.passwordstore.org/][pass]] and [[https://github.com/tadfisher/pass-otp][pass-otp]]
 - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
 - docker, git, and other stuff you probably have already installed.

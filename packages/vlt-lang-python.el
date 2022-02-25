@@ -1,9 +1,9 @@
-;;; vlt-lsp.el ---  -*- lexical-binding: t; -*-
+;;; vlt-lang-python.el ---  -*- lexical-binding: t; -*-
 ;;
-;; Filename: vlt-lsp.el
-;; Author: Daniel Barreto Nava
+;; Filename: vlt-lang-python.el
+;; Author:
 ;; Copyright (C) 2022 Daniel Barreto
-;; Created: Fri Feb 18 20:53:28 2022 (+0100)
+;; Created: Fri Feb 25 20:09:10 2022 (+0100)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -30,10 +30,12 @@
 ;;
 ;;; Code:
 
-(use-package eglot
-  :hook (python-mode . eglot-ensure)
-  :custom
-  (eglot-autoshutdown t))
+(use-package highlight-indent-guides
+  :hook (python-mode . highlight-indent-guides-mode))
+
+(add-hook 'python-mode-hook (lambda ()
+                              (electric-indent-mode t)
+                              (display-fill-column-indicator-mode t)))
 
 
-;;; vlt-lsp.el ends here
+;;; vlt-lang-python.el ends here

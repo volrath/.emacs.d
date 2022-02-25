@@ -152,7 +152,7 @@ clean buffer we're an order of magnitude laxer about checking."
     (when (bound-and-true-p page-break-lines-mode)
       (move-beginning-of-line nil)))
   :config
-  (global-page-break-lines-mode t)
+  (global-page-break-lines-mode)
   (advice-add 'backward-page :after #'vlt/page-navigation-move-to-bol)
   (advice-add 'forward-page :after #'vlt/page-navigation-move-to-bol))
 
