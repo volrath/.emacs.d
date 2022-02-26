@@ -106,6 +106,9 @@
   (setq er--show-expansion-message t))
 
 
+(use-package explain-pause-mode)
+
+
 (use-package flycheck
   :init
   (defun vlt/adjust-flycheck-automatic-syntax-eagerness ()  ;; Another great trick from Magnars
