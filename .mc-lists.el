@@ -3,6 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        cljr-slash
+        kill-region-or-backward-word
         sp-backward-delete-char
         sp-backward-sexp
         sp-delete-char
@@ -10,7 +12,10 @@
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
         sp-kill-word
+        sp-next-sexp
         sp-raise-sexp
+        sp-splice-sexp-killing-backward
+        sp-up-sexp
         ))
 
 (setq mc/cmds-to-run-once
