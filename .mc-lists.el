@@ -16,6 +16,7 @@
         sp-backward-up-sexp
         sp-delete-char
         sp-end-of-sexp
+        sp-down-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
@@ -34,4 +35,5 @@
       '(
         beginning-of-buffer
         swiper
+        org-self-insert-command
         ))
