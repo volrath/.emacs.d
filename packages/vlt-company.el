@@ -36,6 +36,7 @@
   (company-idle-delay 0.5)
   (company-tooltip-flip-when-above t)
   (company-tooltip-align-annotations t)
+  (company-minimum-prefix-length 2)
   :config
   (global-company-mode 1))
 
