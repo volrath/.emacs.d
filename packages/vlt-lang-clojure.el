@@ -84,7 +84,6 @@ we use the generic `prn'."
 
   (use-package cider
     :init
-    (add-hook 'cider-repl-mode-hook (lambda () (aggressive-indent-mode 0)))
     (defun vlt/cider-quit-all ()
       "Iterate over all CIDER connections and close them all!"
       (interactive)
@@ -105,6 +104,8 @@ we use the generic `prn'."
     :config
     (add-hook 'clojure-mode-hook 'cider-mode)
     (add-hook 'cider-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'eldoc-mode)
+    (add-hook 'cider-repl-mode-hook (lambda () (aggressive-indent-mode 0)))
     (define-key cider-repl-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)
 
     (use-package cider-eval-sexp-fu)
@@ -114,17 +115,43 @@ we use the generic `prn'."
 
   (use-package clj-refactor
     :diminish clj-refactor-mode
+    :init
+    (defun vlt/cljr-ns-string ()
+      (condition-case nil
+          (save-excursion
+            (cljr--goto-ns)
+            (push-mark)
+            (paredit-forward)
+            (prog1 (buffer-substring-no-properties (mark) (point))
+              (pop-mark)))
+        (error "")))
+    (defun vlt/advice-cljr-to-sort-ns-after-magic-require (orig-cljr-slash &rest args)
+      "Sort namespace only if it changed after executing `cljr-slash'."
+      (let ((prev-ns (vlt/cljr-ns-string))
+            (res (apply orig-cljr-slash args)))
+        (unless (string= prev-ns (vlt/cljr-ns-string))
+          (cljr--maybe-sort-ns))
+        res))
+    :custom
+    (cljr-eagerly-build-asts-on-startup nil)
+    (cljr-favor-prefix-notation nil)
+    (cljr-favor-private-functions nil)
+    (cljr-insert-newline-after-require nil)
+    (cljr-warn-on-eval nil)
     :config
     (add-hook 'clojure-mode-hook 'clj-refactor-mode)
     (add-hook 'cider-repl-mode-hook 'clj-refactor-mode)
     (cljr-add-keybindings-with-modifier "C-s-")
-    (setq cljr-warn-on-eval nil
-          cljr-favor-prefix-notation nil
-          cljr-favor-private-functions nil
-          cljr-eagerly-build-asts-on-startup nil)
+    (advice-add 'cljr-slash :around #'vlt/advice-cljr-to-sort-ns-after-magic-require)
     (use-package discover-clj-refactor))
 
-  (use-package clojure-mode-extra-font-locking))
+  (use-package clojure-mode-extra-font-locking)
+
+  (defun vlt/clojure-custom-hook ()
+    (setq-local eldoc-documentation-function #'cider-eldoc))
+
+  (add-hook 'cider-mode-hook #'vlt/clojure-custom-hook)
+  (add-hook 'cider-repl-mode-hook #'vlt/clojure-custom-hook))
 
 (provide 'vlt-lang-clojure)
 
