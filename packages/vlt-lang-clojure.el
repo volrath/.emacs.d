@@ -99,6 +99,7 @@ we use the generic `prn'."
     :custom
     (cider-repl-display-help-banner nil)
     (cider-repl-pop-to-buffer-on-connect nil)
+    (cider-repl-use-pretty-printing t)
     (nrepl-hide-special-buffers t)
     (nrepl-log-messages t)
     :config
