@@ -250,14 +250,15 @@ If there's no region, the current line will be duplicated."
          (path-to-file (s-replace (expand-file-name (vc-root-dir))
                                   ""
                                   (buffer-file-name)))
-         (region-start-line (line-number-at-pos (region-beginning)))
-         (region-end-line   (if (save-excursion (goto-char (region-end)) (bolp))
-                                (1- (line-number-at-pos (region-end)))
-                              (line-number-at-pos (region-end))))
-         (line-hash (if (or (not (use-region-p))
-                            (eq region-start-line region-end-line))
+         (line-hash (if (not (use-region-p))
                         (format "#L%s" (line-number-at-pos))
-                      (format "#L%s-L%s" region-start-line region-end-line)))
+                      (let* ((region-start-line (line-number-at-pos (region-beginning)))
+                             (region-end-line   (if (save-excursion (goto-char (region-end)) (bolp))
+                                                    (1- (line-number-at-pos (region-end)))
+                                                  (line-number-at-pos (region-end)))))
+                        (if (eq region-start-line region-end-line)
+                            (format "#L%s" (line-number-at-pos))
+                          (format "#L%s-L%s" region-start-line region-end-line)))))
          (repo-link (format "%s/tree/%s/%s%s"
                             remote-url-http
                             revision
