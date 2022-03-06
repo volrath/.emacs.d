@@ -101,9 +101,16 @@
 
 (use-package expand-region
   :bind (("C-'" . 'er/expand-region))
+  :init
+  (require 'clojure-mode-expansions)
+  (defun vlt/er-add-sqli-mode-expansions ()
+    "Adds ER expansions for buffers in sql-interactive-mode"
+    (set (make-local-variable 'er/try-expand-list)
+         (append er/try-expand-list
+                 ;; Turns out I have what i want in clojure expansions.
+                 '(er/mark-clj-word))))
   :config
-  (setq expand-region-fast-keys-enabled nil)
-  (setq er--show-expansion-message t))
+  (er/enable-mode-expansions 'sql-interactive-mode 'vlt/er-add-sqli-mode-expansions))
 
 
 (use-package explain-pause-mode)
