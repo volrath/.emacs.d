@@ -33,7 +33,7 @@
 (require 's)
 
 
-;;; Buffer-related defuns
+;;; Buffer/Windows-related defuns
 ;;  ----------------------------------------------------------------------------
 
 ;;;###autoload
@@ -57,6 +57,15 @@
   (interactive)
   (split-window-right)
   (windmove-right))
+
+
+;;;###autoload
+(defun vlt/clone-window-and-delete-all-others ()
+  "Close all other windows and clone the current one by placing it right"
+  (interactive)
+  (delete-other-windows)
+  (split-window-right))
+
 
 ;;;###autoload
 (defun toggle-window-split ()

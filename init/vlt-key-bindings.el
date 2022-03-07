@@ -116,6 +116,7 @@
 (global-set-key (kbd "C-x -") 'toggle-window-split)
 (global-set-key (kbd "C-x C--") 'rotate-windows)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x !") 'vlt/clone-window-and-delete-all-others)
 
 
 ;;; Random helpers
