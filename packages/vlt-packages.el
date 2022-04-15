@@ -366,6 +366,14 @@ clean buffer we're an order of magnitude laxer about checking."
               ("C-c p" . vlt/markdown-insert-pull-requests)))
 
 
+(use-package tex
+  :straight auctex
+  :mode ("\\.tex\\'" . latex-mode)
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t))
+
+
 
 ;; Coding utilities
 ;; -----------------------------------------------------------------------------
