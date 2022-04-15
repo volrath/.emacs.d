@@ -4,8 +4,10 @@
 (setq mc/cmds-to-run-for-all
       '(
         cljr-slash
+        clojure-align
         kill-region-or-backward-word
         sp-backward-delete-char
+        sp-backward-kill-word
         sp-backward-sexp
         sp-delete-char
         sp-forward-sexp
@@ -14,10 +16,13 @@
         sp-kill-word
         sp-next-sexp
         sp-raise-sexp
+        sp-remove-active-pair-overlay
         sp-splice-sexp-killing-backward
         sp-up-sexp
+        vlt/clj-doto-print
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        swiper
         ))
