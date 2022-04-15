@@ -94,7 +94,19 @@ we use the generic `prn'."
         (dolist (buf repl-buffers)
           (cider--close-connection buf))
         (message "All CIDER connections closed")))
-    :bind (:map cider-mode-map ("C-c C-Q" . vlt/cider-quit-all))
+
+    (defun vlt/clerk-show ()  ;; Taken from https://github.com/nextjournal/clerk#emacs
+      (interactive)
+      (save-buffer)
+      (let
+          ((filename
+            (buffer-file-name)))
+        (when filename
+          (cider-interactive-eval
+           (concat "(nextjournal.clerk/show! \"" filename "\")")))))
+    :bind (:map cider-mode-map
+                ("C-c C-Q" . vlt/cider-quit-all)
+                ("M-RET" . vlt/clerk-show))
     :custom
     (cider-repl-display-help-banner nil)
     (cider-repl-pop-to-buffer-on-connect nil)
