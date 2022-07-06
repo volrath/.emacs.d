@@ -5,10 +5,13 @@
       '(
         cljr-slash
         clojure-align
+        electric-newline-and-maybe-indent
+        indent-for-tab-command
         kill-region-or-backward-word
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
+        sp-backward-up-sexp
         sp-delete-char
         sp-forward-sexp
         sp-forward-slurp-sexp

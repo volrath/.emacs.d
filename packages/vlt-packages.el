@@ -240,7 +240,7 @@ clean buffer we're an order of magnitude laxer about checking."
   :init
   (defun vlt/sql-login-hook ()
     "I like my postgres to ECHO..."
-    (when (eq sql-product'postgres)
+    (when (eq sql-product 'postgres)
       (let ((proc (get-buffer-process (current-buffer))))
         (comint-send-string proc "\\set ECHO queries\n"))))
   :hook (sql-login . vlt/sql-login-hook))
