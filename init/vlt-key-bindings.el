@@ -98,6 +98,7 @@
 (global-set-key (kbd "M-t w") 'transpose-words)
 (global-set-key (kbd "M-t s") 'transpose-sexps)
 (global-set-key (kbd "M-t p") 'transpose-params)
+(global-set-key (kbd "M-s e") 'sudo-edit)
 
 ;; Quotes
 (global-set-key (kbd "C-\"") 'toggle-quotes)

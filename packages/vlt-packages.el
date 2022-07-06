@@ -263,11 +263,17 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package subword :diminish subword-mode)
 
 
+(use-package sudo-edit)
+
+
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
   (global-undo-tree-mode)
   (setq undo-tree-mode-lighter ""))
+
+
+(use-package unfill)
 
 
 (use-package which-key
