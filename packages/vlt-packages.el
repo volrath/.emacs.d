@@ -292,6 +292,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package yasnippet
   :config
+  (use-package yasnippet-snippets)
   (yas-reload-all))
 
 
