@@ -69,9 +69,14 @@ we use the generic `prn'."
         (error "Can't find zprint.  Is it installed?"))
       (setq inhibit-read-only iro)))
 
+  (defun vlt/cider-eval-and-pprint-register (reg)
+    (interactive (list (register-read-with-preview "Eval form:")))
+    (cider--pprint-eval-form (get-register reg)))
+
   :bind (:map clojure-mode-map
               ("C-s-v C-s-l" . vlt/clj-doto-print)
-              ("C-s-v C-s-z" . vlt/zprint-buffer))
+              ("C-s-v C-s-z" . vlt/zprint-buffer)
+              ("C-s-v C-s-e" . vlt/cider-eval-and-pprint-register))
 
   :config
   (use-package flycheck-clj-kondo)

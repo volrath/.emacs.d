@@ -8,6 +8,7 @@
         electric-newline-and-maybe-indent
         indent-for-tab-command
         kill-region-or-backward-word
+        LaTeX-insert-left-brace
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
@@ -27,5 +28,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+        beginning-of-buffer
         swiper
         ))
