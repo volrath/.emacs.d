@@ -266,6 +266,9 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package sudo-edit)
 
 
+(use-package typescript-mode)
+
+
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
