@@ -50,6 +50,6 @@
     (sp-local-pair "=" "=" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
     (sp-local-pair "«" "»")))
 
-(define-obsolete-function-alias 'org-define-error 'define-error)
+(define-obsolete-function-alias 'org-define-error 'define-error "28.1")
 
 ;;; vlt-org.el ends here
