@@ -13,3 +13,5 @@
 /projects
 /project-window-list
 /.lsp-session-v1
+/SessionDesktop.el
+/org-persist/
