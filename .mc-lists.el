@@ -3,17 +3,19 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        LaTeX-insert-left-brace
         cljr-slash
         clojure-align
+        counsel-M-x
         electric-newline-and-maybe-indent
         indent-for-tab-command
         kill-region-or-backward-word
-        LaTeX-insert-left-brace
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
         sp-backward-up-sexp
         sp-delete-char
+        sp-end-of-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
@@ -23,6 +25,8 @@
         sp-remove-active-pair-overlay
         sp-splice-sexp-killing-backward
         sp-up-sexp
+        toggle-quotes
+        transpose-sexps
         vlt/clj-doto-print
         ))
 

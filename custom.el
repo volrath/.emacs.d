@@ -4,7 +4,36 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval let
+   '((eval progn
+           (put-clojure-indent 'async 1)
+           (put-clojure-indent 'car/wcar 1)
+           (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+           (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))
+     (sql-connection-alist
+      (rh-test
+       (sql-product 'postgres)
+       (sql-port 5430)
+       (sql-server "localhost")
+       (sql-user "postgres")
+       (sql-database "rh")))
+     (sql-postgres-login-params quote
+                                ((user :default "postgres")
+                                 (database :default "rh")
+                                 (server :default "localhost")
+                                 (port 5430)))
+     (sql-postgres-login-params quote
+                                ((user :default "postgres")
+                                 (database :default "rh")
+                                 (server :default "localhost")
+                                 (port :default 5430)))
+     (cider-ns-refresh-after-fn . "mount.core/start")
+     (cider-ns-refresh-before-fn . "mount.core/stop")
+     (sql-postgres-login-params
+      '((user :default "postgres")
+        (database :default "rh")
+        (server :default "localhost")
+        (port :default 5430)))
+     (eval let
            ((root-dir
              (file-name-directory
               (let
