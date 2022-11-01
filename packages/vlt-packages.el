@@ -171,7 +171,27 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package pass
   :custom (password-store-password-length 24)
   :config
-  (use-package password-store-otp))
+  (use-package password-store-otp)
+
+  (defvar vlt-pass--orig-password-store (password-store-dir))
+  (defun vlt-pass--reset-password-store-dir ()
+    (setq auth-source-pass-filename vlt-pass--orig-password-store))
+
+  (defun vlt-pass-advice (pass-fn prompt-for-store-p)
+    (interactive "P")
+    (let* ((store (or (and (not prompt-for-store-p) (password-store-dir))
+                      (expand-file-name (completing-read "Password Store: "
+                                                         (directory-files "~" nil "^\.password-store" t))
+                                        "~/")))
+           (auto-mode-key (format "%s/.*\\.gpg\\'"
+                                  (expand-file-name store))))
+      (setq auth-source-pass-filename store)
+      (unless (assoc auto-mode-key auto-mode-alist)
+        (add-to-list 'auto-mode-alist (cons auto-mode-key 'pass-view-mode)))
+      (apply pass-fn '())
+      (with-current-buffer pass-buffer-name
+        (add-hook 'kill-buffer-hook #'vlt-pass--reset-password-store-dir 0 t))))
+  (advice-add 'pass :around #'vlt-pass-advice))
 
 
 (use-package project
