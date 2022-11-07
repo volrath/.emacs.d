@@ -48,7 +48,11 @@
     (sp-local-pair "/" "/" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
     (sp-local-pair "~" "~" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
     (sp-local-pair "=" "=" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
-    (sp-local-pair "«" "»")))
+    (sp-local-pair "«" "»"))
+
+  (use-package org-journal
+    :custom
+    (org-journal-dir "~/org/journal/")))
 
 (define-obsolete-function-alias 'org-define-error 'define-error "28.1")
 
