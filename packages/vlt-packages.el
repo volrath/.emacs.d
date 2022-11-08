@@ -141,6 +141,15 @@ clean buffer we're an order of magnitude laxer about checking."
                                               mode-enabled)))
 
 
+(use-package ibuffer-project
+  :config
+  (defun vlt--ibuffer-project.el-hook ()
+    (setq ibuffer-filter-groups (ibuffer-project-generate-filter-groups))
+    (unless (eq ibuffer-sorting-mode 'project-file-relative)
+      (ibuffer-do-sort-by-project-file-relative)))
+  (add-hook 'ibuffer-hook #'vlt--ibuffer-project.el-hook))
+
+
 (use-package move-text
   :bind (("<C-S-down>" . move-text-down)
          ("<C-S-up>"   . move-text-up)))
