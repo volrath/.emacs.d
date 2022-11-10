@@ -23,6 +23,7 @@ Some keybindings and other functionality depend on these external libraries
 being installed:
 
 - Font: [[https://github.com/tonsky/FiraCode][Fira Code]]
+- Icons: From within Emacs run ~M-x all-the-icons-install-fonts~
 - [[https://github.com/python-lsp/python-lsp-server][Python LSP Server]]
 - [[https://www.passwordstore.org/][pass]] and [[https://github.com/tadfisher/pass-otp][pass-otp]]
 - [[https://github.com/BurntSushi/ripgrep][ripgrep]]

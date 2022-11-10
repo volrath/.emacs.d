@@ -30,12 +30,16 @@
 ;;
 ;;; Code:
 
-(require 'vlt-defaults)
-
+(use-package s)
+(use-package f)
+(use-package dash)
 (use-package bind-key)
 (use-package diminish)
+
 (require 'bind-key)
 (require 'diminish)
+(require 'vlt-defaults)
+(require 'vlt-defuns)
 
 
 (use-package ace-window
@@ -72,6 +76,22 @@
          ("s-O" . change-inner)))
 
 
+(use-package company
+  :defer nil
+  :custom
+  (company-idle-delay 0.5)
+  (company-tooltip-flip-when-above t)
+  (company-tooltip-align-annotations t)
+  (company-minimum-prefix-length 2)
+  :config
+  (global-company-mode 1))
+
+
+(use-package dired-narrow
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
+
+
 (use-package discover-my-major
   :bind (("C-h m" . discover-my-major)))
 
@@ -96,7 +116,10 @@
 (use-package docker-compose-mode)
 
 
-(use-package eglot)
+(use-package eglot
+  :hook (python-mode . eglot-ensure)
+  :custom
+  (eglot-autoshutdown t))
 
 
 (use-package eldoc :diminish eldoc-mode)
@@ -141,6 +164,10 @@ clean buffer we're an order of magnitude laxer about checking."
                                               mode-enabled)))
 
 
+(use-package highlight-indent-guides
+  :hook (python-mode . highlight-indent-guides-mode))
+
+
 (use-package ibuffer-project
   :config
   (defun vlt--ibuffer-project.el-hook ()
@@ -148,6 +175,50 @@ clean buffer we're an order of magnitude laxer about checking."
     (unless (eq ibuffer-sorting-mode 'project-file-relative)
       (ibuffer-do-sort-by-project-file-relative)))
   (add-hook 'ibuffer-hook #'vlt--ibuffer-project.el-hook))
+
+
+(use-package magit
+  :init
+  (defun vlt-packages/magit-cursor-fix ()
+    (goto-char (point-min))
+    (when (looking-at "#")
+      (forward-line 2)))
+  :bind (("C-x m" . magit-status)
+         ("C-s-m b" . magit-blame-addition))
+  :config
+  (set-default 'magit-push-always-verify nil)
+  (set-default 'magit-revert-buffers 'silent)
+  (set-default 'magit-no-confirm '(stage-all-changes
+                                   unstage-all-changes))
+  (add-hook 'git-commit-mode-hook 'vlt-packages/magit-cursor-fix))
+
+
+(use-package marginalia
+  :bind (:map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
+  :init (marginalia-mode))
+
+
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :custom (markdown-command "multimarkdown")
+  :init
+  (defun vlt/markdown-insert-pull-requests (pr-link)
+    "Prompts for a pull request link and inserts a nicely formatted link."
+    (interactive "sPull Request: ")
+    (let ((pr-number (save-match-data
+                       (and (string-match "github.com/\[^\/\]+/\[^\/\]+/pull/\\(\[0-9\]+\\)/?"
+                                          pr-link)
+                            (match-string 1 pr-link)))))
+      (if pr-number
+          ;; TODO: consider using `markdown-insert-link'
+          (insert (format "[#%s](%s)" pr-number pr-link))
+        (error (format "Input does not seem to be a valid Github PR Link %s" pr-link)))))
+  :bind (:map markdown-mode-map
+              ("C-c p" . vlt/markdown-insert-pull-requests)))
 
 
 (use-package move-text
@@ -161,6 +232,33 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-¶" . mc/mark-all-like-this) ;; ;
          ("C-ë" . mc/mark-all-in-region) ;; r
          ("C-ä" . mc/mark-all-dwim)))    ;; q
+
+
+(use-package org
+  :after smartparens
+  :custom
+  (org-src-fontify-natively t)
+  (org-default-notes-file (expand-file-name "agenda.org" org-directory))
+  (org-agenda-files (list (expand-file-name "agenda.org" org-directory)))
+  (org-return-follows-link t)
+  (org-enforce-todo-dependencies t)
+  :bind (("C-s-o a" . org-agenda)
+         ("C-s-o x" . org-capture)
+         ("C-s-o l" . org-store-link))
+  :config
+  (sp-with-modes 'org-mode
+    (sp-local-pair "*" "*" :actions '(insert wrap) :unless '(sp-point-after-word-p sp-point-at-bol-p) :wrap "C-*" :skip-match 'sp--org-skip-asterisk)
+    (sp-local-pair "_" "_" :unless '(sp-point-after-word-p) :wrap "C-_")
+    (sp-local-pair "/" "/" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "~" "~" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "=" "=" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "«" "»"))
+
+  (use-package org-journal
+    :custom
+    (org-journal-dir "~/org/journal/"))
+
+  (define-obsolete-function-alias 'org-define-error 'define-error "28.1"))
 
 
 (use-package page-break-lines
@@ -268,6 +366,53 @@ clean buffer we're an order of magnitude laxer about checking."
   :config (save-place-mode t))
 
 
+(use-package smartparens
+  :diminish smartparens-mode
+  :bind
+  (:map smartparens-mode-map
+        ;; Navigation
+        ("M-e"   . sp-end-of-sexp)
+        ("M-a"   . sp-beginning-of-sexp)
+        ("C-M-a" . sp-backward-up-sexp)
+        ("C-M-e" . sp-up-sexp)
+        ("M-d"   . sp-down-sexp)
+        ("M-f"   . sp-forward-sexp)
+        ("M-b"   . sp-backward-sexp)
+        ("M-n"   . sp-next-sexp)
+        ("M-p"   . sp-previous-sexp)
+
+        ;; Editing
+        ("M-k"     . sp-kill-sexp)
+        ("M-r"     . sp-raise-sexp)
+        ("C-)"     . sp-forward-slurp-sexp)
+        ("C-("     . sp-forward-barf-sexp)
+        ("C-M-("   . sp-backward-slurp-sexp)
+        ("C-M-)"   . sp-backward-barf-sexp)
+        ("C-x C-t" . sp-transpose-hybrid-sexp)
+        ("C-M-<backspace>" . sp-splice-sexp-killing-backward))
+  :defer nil
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode)
+
+  (define-key smartparens-mode-map (kbd "M-(") (vlt/wrap-with "("))
+  (define-key smartparens-mode-map (kbd "M-\"") (vlt/wrap-with "\""))
+
+  (use-package hydra
+    :config
+    (define-key smartparens-mode-map (kbd "C-M-s")
+      (defhydra smartparens-hydra ()
+        "Smartparens"
+        ("d" sp-down-sexp "Down")
+        ("e" sp-up-sexp "Up")
+        ("u" sp-backward-up-sexp "Up")
+        ("a" sp-backward-down-sexp "Down")
+        ("f" sp-forward-sexp "Forward")
+        ("b" sp-backward-sexp "Backward")
+        ("k" sp-kill-sexp "Kill" :color blue)
+        ("q" nil "Quit" :color blue)))))
+
+
 (use-package sql
   :custom (sql-display-sqli-buffer-function t)
   :init
@@ -297,6 +442,14 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package sudo-edit)
+
+
+(use-package tex
+  :straight auctex
+  :mode ("\\.tex\\'" . latex-mode)
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t))
 
 
 (use-package tree-sitter
@@ -381,75 +534,6 @@ clean buffer we're an order of magnitude laxer about checking."
   :bind (("C-x ="   . vlt-packages/zoom-frame-in)
          ("C-x -"   . vlt-packages/zoom-frame-out)
          ("C-x C-0" . zoom-frm-unzoom)))
-
-
-;; Dired
-;; -----------------------------------------------------------------------------
-
-(use-package dired-narrow
-  :bind (:map dired-mode-map
-              ("/" . dired-narrow)))
-
-
-;; Magit
-;; -----------------------------------------------------------------------------
-
-(use-package magit
-  :init
-  (defun vlt-packages/magit-cursor-fix ()
-    (goto-char (point-min))
-    (when (looking-at "#")
-      (forward-line 2)))
-  :bind (("C-x m" . magit-status)
-         ("C-s-m b" . magit-blame-addition))
-  :config
-  (set-default 'magit-push-always-verify nil)
-  (set-default 'magit-revert-buffers 'silent)
-  (set-default 'magit-no-confirm '(stage-all-changes
-                                   unstage-all-changes))
-  (add-hook 'git-commit-mode-hook 'vlt-packages/magit-cursor-fix))
-
-
-;; Programming Modes
-;; -----------------------------------------------------------------------------
-
-(use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :custom (markdown-command "multimarkdown")
-  :init
-  (defun vlt/markdown-insert-pull-requests (pr-link)
-    "Prompts for a pull request link and inserts a nicely formatted link."
-    (interactive "sPull Request: ")
-    (let ((pr-number (save-match-data
-                       (and (string-match "github.com/\[^\/\]+/\[^\/\]+/pull/\\(\[0-9\]+\\)/?"
-                                          pr-link)
-                            (match-string 1 pr-link)))))
-      (if pr-number
-          ;; TODO: consider using `markdown-insert-link'
-          (insert (format "[#%s](%s)" pr-number pr-link))
-        (error (format "Input does not seem to be a valid Github PR Link %s" pr-link)))))
-  :bind (:map markdown-mode-map
-              ("C-c p" . vlt/markdown-insert-pull-requests)))
-
-
-(use-package tex
-  :straight auctex
-  :mode ("\\.tex\\'" . latex-mode)
-  :custom
-  (TeX-auto-save t)
-  (TeX-parse-self t))
-
-
-
-;; Coding utilities
-;; -----------------------------------------------------------------------------
-
-(use-package s)
-(use-package f)
-(use-package dash)
 
 
 

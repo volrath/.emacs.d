@@ -70,8 +70,7 @@
 
 ;; load private config
 (let ((private-config (expand-file-name "private.el" user-emacs-directory)))
-  (when (file-exists-p private-config)
-    (load (expand-file-name "private.el" user-emacs-directory))))
+  (when (file-exists-p private-config) (load private-config)))
 
 
 ;;; Server

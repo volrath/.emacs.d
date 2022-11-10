@@ -187,6 +187,11 @@
              nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
                     1 font-lock-warning-face t)))))
 
+;; Python needs some defaults
+(add-hook 'python-mode-hook (lambda ()
+                              (electric-indent-mode t)
+                              (display-fill-column-indicator-mode t)))
+
 ;; Sanity...
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory)
       inhibit-startup-message t
