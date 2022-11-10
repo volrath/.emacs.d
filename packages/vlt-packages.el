@@ -182,6 +182,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package pass
   :custom (password-store-password-length 24)
+  :bind (("H-p" . pass))
   :config
   (use-package password-store-otp)
 
