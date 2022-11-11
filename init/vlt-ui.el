@@ -89,6 +89,7 @@
 
 (line-number-mode t)
 (column-number-mode t)
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 
 (provide 'vlt-ui)
