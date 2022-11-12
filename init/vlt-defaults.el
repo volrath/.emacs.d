@@ -192,6 +192,23 @@
                               (electric-indent-mode t)
                               (display-fill-column-indicator-mode t)))
 
+
+;; macOS Settings (🤯🔫)
+(when (eq system-type 'darwin)
+  (setq
+   ;; Remap Modifiers
+   ;; I use Karabiner's simple rules to get the following layout:
+   ;; +------+------+------+------+-----------+
+   ;; | Cmd  | Fn   | Optn | Ctrl | Space Bar | ... (I don't really care about right mods)
+   ;; +------+------+------+------+-----------+
+   mac-command-modifier  'control
+   mac-control-modifier  'meta
+   mac-option-modifier   'super
+   mac-function-modifier 'hyper
+   ;; Random sanity
+   delete-by-moving-to-trash t))
+
+
 ;; Sanity...
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory)
       inhibit-startup-message t
