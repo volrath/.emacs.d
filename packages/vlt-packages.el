@@ -177,6 +177,9 @@ clean buffer we're an order of magnitude laxer about checking."
   (add-hook 'ibuffer-hook #'vlt--ibuffer-project.el-hook))
 
 
+(use-package json-mode)
+
+
 (use-package magit
   :init
   (defun vlt-packages/magit-cursor-fix ()
