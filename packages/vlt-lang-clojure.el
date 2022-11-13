@@ -120,7 +120,7 @@ we use the generic `prn'."
     (nrepl-log-messages t)
     :config
     (add-hook 'clojure-mode-hook 'cider-mode)
-    (add-hook 'cider-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'corfu-mode)
     (add-hook 'cider-mode-hook #'eldoc-mode)
     (add-hook 'cider-repl-mode-hook (lambda () (aggressive-indent-mode 0)))
     (define-key cider-repl-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)

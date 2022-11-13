@@ -76,15 +76,31 @@
          ("s-O" . change-inner)))
 
 
-(use-package company
+(use-package corfu
   :defer nil
   :custom
-  (company-idle-delay 0.5)
-  (company-tooltip-flip-when-above t)
-  (company-tooltip-align-annotations t)
-  (company-minimum-prefix-length 2)
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.5)
+  (corfu-preview-current nil)    ;; Disable current candidate preview
   :config
-  (global-company-mode 1))
+  (setq tab-always-indent 'complete
+        completion-cycle-threshold nil)
+
+  (load (expand-file-name "straight/build/corfu/extensions/corfu-info.el" user-emacs-directory))  ;; (use-package corfu-info :load-path "straight/build/corfu/extensions") not working for me 🤔
+
+  (use-package kind-icon
+    :after corfu
+    :custom
+    (kind-icon-use-icons t)
+    (kind-icon-default-face 'corfu-default)
+    (kind-icon-blend-background nil)
+    (kind-icon-blend-frac 0.8)
+    (svg-lib-icons-dir (expand-file-name "svg-lib/cache/" vlt-defaults/backups-dir))
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  (global-corfu-mode))
 
 
 (use-package dired-narrow
