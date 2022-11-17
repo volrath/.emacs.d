@@ -103,6 +103,10 @@
   (global-corfu-mode))
 
 
+(use-package define-word
+  :bind (("M-#" . define-word-at-point)))
+
+
 (use-package dired-narrow
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
@@ -194,6 +198,12 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package json-mode)
+
+
+(use-package langtool
+  :config
+  (setq langtool-http-server-host "localhost"
+        langtool-http-server-port 8081))
 
 
 (use-package magit
@@ -322,6 +332,10 @@ clean buffer we're an order of magnitude laxer about checking."
       (with-current-buffer pass-buffer-name
         (add-hook 'kill-buffer-hook #'vlt-pass--reset-password-store-dir 0 t))))
   (advice-add 'pass :around #'vlt-pass-advice))
+
+
+(use-package powerthesaurus
+  :bind (("C-M-#" . powerthesaurus-lookup-dwim)))
 
 
 (use-package project
