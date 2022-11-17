@@ -33,10 +33,14 @@
 ;;; Code:
 
 (require 'ansi-color)
+(require 'auth-source)
 (require 'compile)
 (require 'misc)
 (require 'tramp)
 
+
+;; auth-source in `pass'
+(setq auth-sources '(password-store))
 
 ;; Window good behavior
 (when window-system
