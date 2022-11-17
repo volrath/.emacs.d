@@ -10,13 +10,15 @@
         electric-newline-and-maybe-indent
         indent-for-tab-command
         kill-region-or-backward-word
+        org-yank
+        pp-eval-expression
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
         sp-backward-up-sexp
         sp-delete-char
-        sp-end-of-sexp
         sp-down-sexp
+        sp-end-of-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-hybrid-sexp
@@ -34,6 +36,6 @@
 (setq mc/cmds-to-run-once
       '(
         beginning-of-buffer
-        swiper
         org-self-insert-command
+        swiper
         ))
