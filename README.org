@@ -24,7 +24,8 @@ being installed:
 
 - Font: [[https://github.com/tonsky/FiraCode][Fira Code]]
 - Icons: From within Emacs run ~M-x all-the-icons-install-fonts~
-- [[https://github.com/python-lsp/python-lsp-server][Python LSP Server]]
+- Mail: [[https://notmuchmail.org/][notmuch]] (and likely something like [[http://www.offlineimap.org/][offlineimap]] too)
 - [[https://www.passwordstore.org/][pass]] and [[https://github.com/tadfisher/pass-otp][pass-otp]]
 - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+- LSP Servers as needed
 - docker, git, and other stuff you probably have already installed.

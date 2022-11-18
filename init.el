@@ -68,9 +68,13 @@
 (require 'vlt-key-bindings)
 (require 'vlt-ui)
 
-;; load private config
+;; load private settings I would like to keep out of the public repo.
 (let ((private-config (expand-file-name "private.el" user-emacs-directory)))
   (when (file-exists-p private-config) (load private-config)))
+
+;; load local settings that each workstation might define.
+(let ((local-config (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-config) (load local-config)))
 
 
 ;;; Server

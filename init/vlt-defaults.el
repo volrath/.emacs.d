@@ -193,6 +193,11 @@
                               (display-fill-column-indicator-mode t)))
 
 
+;; Email
+(setq send-mail-function 'smtpmail-send-it
+      smtpmail-smtp-service 587)  ;; server & user in private.el
+
+
 ;; macOS Settings (🤯🔫)
 (when (eq system-type 'darwin)
   (setq

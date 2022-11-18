@@ -263,6 +263,11 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-ä" . mc/mark-all-dwim)))    ;; q
 
 
+(use-package notmuch
+  :custom (notmuch-show-logo . nil)  ;; TODO: consider using your own logo (`notmuch-hello-logo')
+  :bind (("H-m" . notmuch)))
+
+
 (use-package org
   :after smartparens
   :custom
