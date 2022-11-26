@@ -272,6 +272,7 @@ clean buffer we're an order of magnitude laxer about checking."
   :after smartparens
   :custom
   (org-src-fontify-natively t)
+  (org-export-backends '(ascii html icalendar latex md odt))
   (org-default-notes-file (expand-file-name "agenda.org" org-directory))
   (org-agenda-files (list (expand-file-name "agenda.org" org-directory)))
   (org-return-follows-link t)
