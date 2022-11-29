@@ -30,9 +30,6 @@
 ;;
 ;;; Code:
 
-(require 'vlt-defaults)
-
-
 (use-package flx)
 
 
@@ -102,7 +99,7 @@
 
 
 (use-package smex
-  :custom (smex-save-file (expand-file-name ".smex-items" vlt-defaults/backups-dir))
+  :custom (smex-save-file (expand-file-name ".smex-items" vlt/var-dir))
   :config (smex-initialize))
 
 

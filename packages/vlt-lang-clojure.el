@@ -30,8 +30,6 @@
 ;;
 ;;; Code:
 
-(require 'vlt-defaults)
-
 (use-package clojure-mode
   :init
   (defun vlt/clj-doto-print ()
@@ -127,7 +125,7 @@ we use the generic `prn'."
 
     (use-package cider-eval-sexp-fu)
 
-    (setq cider-history-file (expand-file-name "cider-history" vlt-defaults/backups-dir)
+    (setq cider-history-file (expand-file-name "cider-history" vlt/var-dir)
           nrepl-prompt-to-kill-server-buffer-on-quit nil))
 
   (use-package clj-refactor

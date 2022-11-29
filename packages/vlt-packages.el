@@ -38,7 +38,6 @@
 
 (require 'bind-key)
 (require 'diminish)
-(require 'vlt-defaults)
 (require 'vlt-defuns)
 
 
@@ -97,7 +96,7 @@
     (kind-icon-default-face 'corfu-default)
     (kind-icon-blend-background nil)
     (kind-icon-blend-frac 0.8)
-    (svg-lib-icons-dir (expand-file-name "svg-lib/cache/" vlt-defaults/backups-dir))
+    (svg-lib-icons-dir (expand-file-name "svg-lib/cache/" vlt/var-dir))
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
   (global-corfu-mode))
@@ -214,6 +213,8 @@ clean buffer we're an order of magnitude laxer about checking."
       (forward-line 2)))
   :bind (("C-x m" . magit-status)
          ("C-s-m b" . magit-blame-addition))
+  :custom
+  (transient-history-file (expand-file-name "transient-history.el" vlt/var-dir))
   :config
   (set-default 'magit-push-always-verify nil)
   (set-default 'magit-revert-buffers 'silent)
@@ -277,6 +278,7 @@ clean buffer we're an order of magnitude laxer about checking."
   (org-agenda-files (list (expand-file-name "agenda.org" org-directory)))
   (org-return-follows-link t)
   (org-enforce-todo-dependencies t)
+  (org-persist-directory (expand-file-name "org-persist/" vlt/var-dir))
   :bind (("C-s-o a" . org-agenda)
          ("C-s-o x" . org-capture)
          ("C-s-o l" . org-store-link))
@@ -332,6 +334,8 @@ clean buffer we're an order of magnitude laxer about checking."
                :host github
                :repo "karthink/project-x"
                :files ("*" (:exclude ".git")))
+    :custom
+    (project-x-window-list-file (expand-file-name "project-window-list" vlt/var-dir))
     :init
     ;; Switch to the last project used
     (defvar vlt/project-last-used nil "Last perspective used.")
@@ -376,7 +380,7 @@ clean buffer we're an order of magnitude laxer about checking."
   :custom
   (savehist-additional-variables '(search-ring regexp-search-ring))
   (savehist-autosave-interval 60)
-  (savehist-file (expand-file-name "savehist" vlt-defaults/backups-dir))
+  (savehist-file (expand-file-name "savehist" vlt/var-dir))
   :config
   (savehist-mode t))
 
@@ -501,7 +505,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :custom (undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" vlt-defaults/backups-dir))))
+  :custom (undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" vlt/var-dir))))
   :config
   (global-undo-tree-mode)
   (setq undo-tree-mode-lighter ""))

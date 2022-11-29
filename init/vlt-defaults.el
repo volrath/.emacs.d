@@ -53,11 +53,9 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; History
-(defvar vlt-defaults/backups-dir (expand-file-name "backups" user-emacs-directory)
-  "This folder stores all the automatically generated save/history-files.")
-
-(require 'saveplace)
+(require 'saveplace)  ;; Save point position between sessions
 (setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" vlt/var-dir))
 
 (require 'savehist)
 (setq savehist-additional-variables
@@ -66,11 +64,11 @@
       ;; save every minute
       savehist-autosave-interval 60
       ;; keep the home clean
-      savehist-file (expand-file-name "savehist" vlt-defaults/backups-dir))
+      savehist-file (expand-file-name "savehist" vlt/var-dir))
 (savehist-mode t)
 
 (require 'recentf)
-(setq recentf-save-file (expand-file-name "recentf" vlt-defaults/backups-dir)
+(setq recentf-save-file (expand-file-name "recentf" vlt/var-dir)
       recentf-max-saved-items 100
       recentf-max-menu-items 15
       ;; disable recentf-cleanup on Emacs start, because it can cause
@@ -169,11 +167,6 @@
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
 
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
-
 ;; Only autofill in comments!
 (add-hook 'prog-mode-hook
           (lambda ()
@@ -231,8 +224,9 @@
       gc-cons-threshold (* 100 1024 1024)  ; Don't be so stingy on the memory, we have lots now. It's the distant future.
       read-process-output-max (* 1024 1024)
       large-file-warning-threshold 100000000  ; 100MB might be too much
-      save-place-file (expand-file-name "saveplace" vlt-defaults/backups-dir)  ; Save place in buffers
-      backup-directory-alist `(("." . ,vlt-defaults/backups-dir))  ; Keep things clean!
+      save-place-file (expand-file-name "saveplace" vlt/var-dir)  ; Save place in buffers
+      auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" vlt/var-dir)
+      backup-directory-alist `(("." . ,vlt/var-dir))  ; Keep things clean!
       truncate-partial-width-windows nil  ; Don't truncate lines
       redisplay-dont-pause t  ; Don't defer screen updates when performing operations
       echo-keystrokes 0.1  ; Show keystrokes in progress
@@ -254,6 +248,8 @@
       electric-indent-mode nil
       org-replace-disputed-keys t ; Don't let org-mode ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
       org-src-fontify-natively t ; Fontify org-mode code blocks
+      tramp-persistency-file-name (expand-file-name "tramp" vlt/var-dir)
+      nsm-settings-file (expand-file-name "network-security.data" vlt/var-dir)
       )
 (load custom-file)
 

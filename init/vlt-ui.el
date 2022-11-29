@@ -80,7 +80,9 @@
 (use-package all-the-icons)
 
 (use-package emojify
-  :custom (emojify-emoji-styles '(unicode github))
+  :custom
+  (emojify-emoji-styles '(unicode github))
+  (emojify-emojis-dir (expand-file-name "emojis" vlt/var-dir))
   :hook (after-init . global-emojify-mode))
 
 
