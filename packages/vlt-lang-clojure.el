@@ -31,6 +31,7 @@
 ;;; Code:
 
 (use-package clojure-mode
+  :mode "\\.bb\\'"
   :init
   (defun vlt/clj-doto-print ()
     "Wrap the sexp at point in a `(doto <sexp> <print-fn>)'.
