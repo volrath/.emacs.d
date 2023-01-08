@@ -494,7 +494,7 @@ clean buffer we're an order of magnitude laxer about checking."
   (define-derived-mode typescriptreact-mode typescript-mode
     "TypeScript TSX")
 
-  (setq eglot-server-programs '((typescriptreact-mode . ("typescript-language-server" "--stdio"))))
+  (add-to-list 'eglot-server-programs '(typescriptreact-mode . ("typescript-language-server" "--stdio")))
 
   ;; use our derived mode for tsx files
   (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescriptreact-mode))
