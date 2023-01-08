@@ -31,6 +31,7 @@
         toggle-quotes
         transpose-sexps
         vlt/clj-doto-print
+        wdired--self-insert
         ))
 
 (setq mc/cmds-to-run-once
