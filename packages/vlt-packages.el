@@ -184,7 +184,8 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package highlight-indent-guides
-  :hook (python-mode . highlight-indent-guides-mode))
+  :hook (python-mode . highlight-indent-guides-mode)
+  :custom (highlight-indent-guides-method 'bitmap))
 
 
 (use-package ibuffer-project
