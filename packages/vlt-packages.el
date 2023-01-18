@@ -83,6 +83,7 @@
   (corfu-auto-prefix 2)
   (corfu-auto-delay 0.5)
   (corfu-preview-current nil)    ;; Disable current candidate preview
+  :bind (:map corfu-map ("ESC" . corfu-quit))
   :config
   (setq tab-always-indent 'complete
         completion-cycle-threshold nil)
