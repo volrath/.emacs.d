@@ -227,6 +227,7 @@
       save-place-file (expand-file-name "saveplace" vlt/var-dir)  ; Save place in buffers
       auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" vlt/var-dir)
       backup-directory-alist `(("." . ,vlt/var-dir))  ; Keep things clean!
+      bookmark-default-file (expand-file-name "bookmarks" vlt/var-dir)
       truncate-partial-width-windows nil  ; Don't truncate lines
       redisplay-dont-pause t  ; Don't defer screen updates when performing operations
       echo-keystrokes 0.1  ; Show keystrokes in progress
