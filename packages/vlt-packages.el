@@ -469,6 +469,17 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package sudo-edit)
 
 
+(use-package swiper
+  :init
+  (defun vlt-swiper-at-point (sym)
+    "Use `swiper' to search for the SYM at point."
+    (interactive (list (thing-at-point 'symbol)))
+    (swiper sym))
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper)
+         ("M-s /" . vlt-swiper-at-point)))
+
+
 (use-package tex
   :straight auctex
   :mode ("\\.tex\\'" . latex-mode)
