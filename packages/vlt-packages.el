@@ -108,6 +108,17 @@
   (global-corfu-mode))
 
 
+(use-package dashboard
+  :custom
+  (dashboard-startup-banner 'logo)
+  (dashboard-banner-logo-title "Spiral out...")
+  (dashboard-set-footer nil)
+  (dashboard-center-content t)
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda (get-buffer-create "*dashboard*"))))
+
+
 (use-package define-word
   :bind (("M-#" . define-word-at-point)))
 
