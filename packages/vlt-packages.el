@@ -51,6 +51,11 @@
   (global-aggressive-indent-mode))
 
 
+(use-package all-the-icons-dired
+  :custom (all-the-icons-dired-monochrome nil)
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+
 (use-package anzu
   :diminish anzu-mode
   :bind (("M-%" . 'anzu-query-replace)
