@@ -218,6 +218,7 @@
       require-final-newline t
       visible-bell t
       load-prefer-newer t
+      display-time-default-load-average nil  ; I can live without the load-average, thank you.
       ediff-diff-options "-w"
       ediff-window-setup-function 'ediff-setup-windows-plain
       ediff-window-setup-function 'ediff-setup-windows-plain

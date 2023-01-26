@@ -86,6 +86,17 @@
   :hook (after-init . global-emojify-mode))
 
 
+;;; Show clock when on fullscreen
+;; -----------------------------------------------------------------------------
+
+(defun vlt/fullscreen-display-time (&optional frame)
+  (if (memq (frame-parameter frame 'fullscreen) '(fullscreen fullboth))
+      (display-time-mode 1)
+    (display-time-mode 0)))
+
+(advice-add 'toggle-frame-fullscreen :after #'vlt/fullscreen-display-time)
+
+
 ;;; Extra defaults
 ;;  ----------------------------------------------------------------------------
 
