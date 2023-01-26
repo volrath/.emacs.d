@@ -301,7 +301,9 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package notmuch
-  :custom (notmuch-show-logo . nil)  ;; TODO: consider using your own logo (`notmuch-hello-logo')
+  :custom
+  (notmuch-show-logo nil)  ;; TODO: consider using your own logo (`notmuch-hello-logo')
+  (notmuch-search-oldest-first nil)
   :bind (("H-m" . notmuch)))
 
 
