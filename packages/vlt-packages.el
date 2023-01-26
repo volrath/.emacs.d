@@ -128,6 +128,30 @@
               ("/" . dired-narrow)))
 
 
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :bind (:map dired-mode-map
+              ("h" . dired-hide-dotfiles-mode)))
+
+
+(use-package dired-single
+  :init
+  (defun vlt/dired-single-init ()
+    "Bunch of stuff to run for dired, either immediately or when it's
+   loaded."
+    ;; <add other stuff here>
+    (define-key dired-mode-map [remap dired-find-file]
+      'dired-single-buffer)
+    (define-key dired-mode-map [remap dired-mouse-find-file-other-window]
+      'dired-single-buffer-mouse)
+    (define-key dired-mode-map [remap dired-up-directory]
+      'dired-single-up-directory))
+  :config
+  (if (boundp 'dired-mode-map)
+      (vlt/dired-single-init)
+    (add-hook 'dired-load-hook 'vlt/dired-single-init)))
+
+
 (use-package discover-my-major
   :bind (("C-h m" . discover-my-major)))
 
