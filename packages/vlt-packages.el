@@ -414,6 +414,19 @@ clean buffer we're an order of magnitude laxer about checking."
   (use-package wgrep))
 
 
+(use-package scratch
+  :init
+  (defun vlt/scratch-unique-name ()
+    (let ((base-buf-name (substring (buffer-name) 0 -1))
+          (n 0)
+          new-buf-name)
+      (while (progn
+               (setq new-buf-name (concat base-buf-name "-" (int-to-string n) "*"))
+               (setq n (1+ n))
+               (get-buffer new-buf-name)))
+      (rename-buffer new-buf-name)))
+  :bind ("C-c b" . scratch)
+  :hook (scratch-create-buffer . vlt/scratch-unique-name))
 
 
 (use-package smartparens

@@ -112,7 +112,6 @@
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "s-b") 'quick-switch-buffer)
-(global-set-key (kbd "C-c b") 'create-scratch-buffer)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
