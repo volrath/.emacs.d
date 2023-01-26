@@ -265,12 +265,6 @@ clean buffer we're an order of magnitude laxer about checking."
   (add-hook 'git-commit-mode-hook 'vlt-packages/magit-cursor-fix))
 
 
-(use-package marginalia
-  :bind (:map minibuffer-local-map
-              ("M-A" . marginalia-cycle))
-  :init (marginalia-mode))
-
-
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -418,17 +412,6 @@ clean buffer we're an order of magnitude laxer about checking."
   (use-package wgrep))
 
 
-(use-package savehist
-  :custom
-  (savehist-additional-variables '(search-ring regexp-search-ring))
-  (savehist-autosave-interval 60)
-  (savehist-file (expand-file-name "savehist" vlt/var-dir))
-  :config
-  (savehist-mode t))
-
-
-(use-package saveplace
-  :config (save-place-mode t))
 
 
 (use-package smartparens
