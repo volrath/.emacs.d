@@ -111,7 +111,7 @@
 (use-package dashboard
   :custom
   (dashboard-startup-banner 'logo)
-  (dashboard-banner-logo-title "Spiral out...")
+  (dashboard-banner-logo-title "Spiral out. Keep Going.")
   (dashboard-set-footer nil)
   (dashboard-center-content t)
   :config
