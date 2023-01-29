@@ -319,7 +319,9 @@ clean buffer we're an order of magnitude laxer about checking."
   (org-persist-directory (expand-file-name "org-persist/" vlt/var-dir))
   :bind (("C-s-o a" . org-agenda)
          ("C-s-o x" . org-capture)
-         ("C-s-o l" . org-store-link))
+         ("C-s-o l" . org-store-link)
+         :map org-mode-map
+         ("C-'" . er/expand-region))
   :config
   (sp-with-modes 'org-mode
     (sp-local-pair "*" "*" :actions '(insert wrap) :unless '(sp-point-after-word-p sp-point-at-bol-p) :wrap "C-*" :skip-match 'sp--org-skip-asterisk)
