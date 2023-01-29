@@ -22,7 +22,7 @@ of this config out.
 Some keybindings and other functionality depend on these external libraries
 being installed:
 
-- Font: [[https://github.com/tonsky/FiraCode][Fira Code]]
+- Fonts: [[https://github.com/tonsky/FiraCode][Fira Code]] & [[https://github.com/be5invis/Iosevka][Iosevka Aile]]
 - Icons: From within Emacs run ~M-x all-the-icons-install-fonts~
 - Mail: [[https://notmuchmail.org/][notmuch]] (and likely something like [[http://www.offlineimap.org/][offlineimap]] too)
 - [[https://www.passwordstore.org/][pass]] and [[https://github.com/tadfisher/pass-otp][pass-otp]]
