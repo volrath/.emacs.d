@@ -101,16 +101,13 @@
 ;; prettify symbols
 (global-prettify-symbols-mode t)
 
-;; Highlight current line
-(global-hl-line-mode t)
-
 ;; Show me wrapping parens
 (show-paren-mode t)
 
 ;; Don't indent with tabs
 (setq-default indent-tabs-mode nil)
 
-;; the blinking cursor is nothing, but an annoyance
+;; the blinking cursor is nothing but an annoyance
 (blink-cursor-mode -1)
 
 ;; Show active region

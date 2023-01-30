@@ -52,8 +52,6 @@
 (rename-modeline "clojure-mode" clojure-mode "Clj")
 (rename-modeline "clojurescript-mode" clojure-mode "Cljs")
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
 
 ;;; Font
 ;;  ----------------------------------------------------------------------------
@@ -74,7 +72,7 @@
   :hook (after-init . global-emojify-mode))
 
 
-;; Org-Mode
+;;; Org-Mode
 ;; -----------------------------------------------------------------------------
 ;; Most of this is credited to David Wilson from SystemCrafters
 ;; https://systemcrafters.net/emacs-tips/presentations-with-org-present/
@@ -105,8 +103,13 @@
 (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
 
+(defun vlt/org-mode-hook ()
+  (setq cursor-type 'bar
+        line-spacing 3))
+
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'vlt/org-mode-hook)
 
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
@@ -150,6 +153,9 @@ presentation.")
 
     ;; Visual configurations
     (org-display-inline-images)
+    (hl-line-mode 1)
+    (fringe-mode 0)
+    (smooth-scrolling-mode 0)
     (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
 
     ;; Delete other windows but save the windows configuration to restore it
@@ -172,6 +178,9 @@ presentation.")
     (set-window-configuration vlt/org-present--prev-windows-config)
 
     (org-remove-inline-images)
+    (hl-line-mode 0)
+    (fringe-mode nil)
+    (smooth-scrolling-mode 1)
     (set-frame-parameter (selected-frame) 'alpha '(100 . 100)))
 
   (defun vlt/org-present-prepare-slide (buffer-name heading)
@@ -183,7 +192,12 @@ presentation.")
   :config
   (add-hook 'org-present-mode-hook 'vlt/org-present-start)
   (add-hook 'org-present-mode-quit-hook 'vlt/org-present-end)
-  (add-hook 'org-present-after-navigate-functions 'vlt/org-present-prepare-slide))
+  (add-hook 'org-present-after-navigate-functions 'vlt/org-present-prepare-slide)
+  :bind (:map org-present-mode-keymap
+              ("C-<next>" . org-present-next)
+              ("C-<prior>" . org-present-prev)
+              ("<left>" . left-char)
+              ("<right>" . right-char)))
 
 
 ;;; Show clock when on fullscreen
@@ -202,6 +216,8 @@ presentation.")
 
 (line-number-mode t)
 (column-number-mode t)
+(add-hook 'prog-mode-hook 'hl-line-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 
