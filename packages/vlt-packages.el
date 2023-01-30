@@ -431,6 +431,9 @@ clean buffer we're an order of magnitude laxer about checking."
   :hook (scratch-create-buffer . vlt/scratch-unique-name))
 
 
+(use-package simple-httpd)
+
+
 (use-package smartparens
   :diminish smartparens-mode
   :bind
