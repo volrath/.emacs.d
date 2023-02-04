@@ -45,7 +45,8 @@
   :bind (("C-x b" . consult-buffer)
          ("M-y" . consult-yank-pop)
          ("M-g g" . consult-goto-line)
-         ("M-g o" . consult-outline))
+         ("M-g o" . consult-outline)
+         ("M-s r" . consult-ripgrep))
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 
