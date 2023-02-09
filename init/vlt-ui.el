@@ -104,8 +104,7 @@
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
 
 (defun vlt/org-mode-hook ()
-  (setq cursor-type 'bar
-        line-spacing 3))
+  (setq line-spacing 3))
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
