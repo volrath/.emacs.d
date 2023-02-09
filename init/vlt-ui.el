@@ -109,6 +109,9 @@
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'vlt/org-mode-hook)
+(add-hook 'org-roam-mode-hook 'variable-pitch-mode)
+(add-hook 'org-roam-mode-hook 'visual-line-mode)
+(add-hook 'org-roam-mode-hook 'vlt/org-mode-hook)
 
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
@@ -125,7 +128,7 @@
   :custom
   (visual-fill-column-width 100)
   (visual-fill-column-center-text t)
-  :hook org-mode)
+  :hook (org-mode org-roam-mode))
 
 
 (use-package org-appear

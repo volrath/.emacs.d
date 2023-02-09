@@ -320,6 +320,17 @@ clean buffer we're an order of magnitude laxer about checking."
   (define-obsolete-function-alias 'org-define-error 'define-error "28.1"))
 
 
+(use-package org-roam
+  :custom
+  (org-roam-directory "~/org/roam/")
+  (org-roam-db-location "~/org/roam/database.db")
+  (org-roam-completion-everywhere t)
+  :bind (("H-r f" . org-roam-node-find)
+         ("H-r i" . org-roam-node-insert)
+         ("H-r l" . org-roam-buffer-toggle))
+  :config (org-roam-setup))
+
+
 (use-package page-break-lines
   :diminish page-break-lines-mode
   :custom (page-break-lines-max-width 80)
