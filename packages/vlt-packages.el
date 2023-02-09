@@ -544,6 +544,7 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package undo-tree
   :diminish undo-tree-mode
   :custom (undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" vlt/var-dir))))
+  :hook org-mode
   :config
   (global-undo-tree-mode)
   (setq undo-tree-mode-lighter ""))
