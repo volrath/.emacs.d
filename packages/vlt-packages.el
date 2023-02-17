@@ -206,6 +206,13 @@ clean buffer we're an order of magnitude laxer about checking."
                                               mode-enabled)))
 
 
+(use-package helpful
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h s-." . helpful-at-point)))
+
+
 (use-package highlight-indent-guides
   :hook (python-mode . highlight-indent-guides-mode)
   :custom (highlight-indent-guides-method 'bitmap))
