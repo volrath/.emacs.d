@@ -306,6 +306,8 @@ clean buffer we're an order of magnitude laxer about checking."
   (org-return-follows-link t)
   (org-enforce-todo-dependencies t)
   (org-persist-directory (expand-file-name "org-persist/" vlt/var-dir))
+  (org-ellipsis " ⏷")
+  (org-capture-templates '(("t" "Task" entry (file+headline "" "Tasks") "* TODO %?\n  %u\n  %a")))
   :bind (("C-s-o a" . org-agenda)
          ("C-s-o x" . org-capture)
          ("C-s-o l" . org-store-link)
