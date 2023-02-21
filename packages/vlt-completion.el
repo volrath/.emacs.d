@@ -46,7 +46,8 @@
          ("M-y" . consult-yank-pop)
          ("M-g g" . consult-goto-line)
          ("M-g o" . consult-outline)
-         ("M-s r" . consult-ripgrep))
+         ("M-s r" . consult-ripgrep)
+         ("C-x r b" . consult-bookmark))
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 
