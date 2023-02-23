@@ -72,6 +72,10 @@
   :hook (after-init . global-emojify-mode))
 
 
+(defun vlt/variable-pitch-mode-hook ()
+  (setq line-spacing 3))
+
+
 ;;; Org-Mode
 ;; -----------------------------------------------------------------------------
 ;; Most of this is credited to David Wilson from SystemCrafters
@@ -103,15 +107,12 @@
 (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
 
-(defun vlt/org-mode-hook ()
-  (setq line-spacing 3))
-
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook 'vlt/org-mode-hook)
+(add-hook 'org-mode-hook 'vlt/variable-pitch-mode-hook)
 (add-hook 'org-roam-mode-hook 'variable-pitch-mode)
 (add-hook 'org-roam-mode-hook 'visual-line-mode)
-(add-hook 'org-roam-mode-hook 'vlt/org-mode-hook)
+(add-hook 'org-roam-mode-hook 'vlt/variable-pitch-mode-hook)
 
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
@@ -200,6 +201,13 @@ presentation.")
               ("C-<prior>" . org-present-prev)
               ("<left>" . left-char)
               ("<right>" . right-char)))
+
+
+;; Markdown
+;; -----------------------------------------------------------------------------
+
+(add-hook 'markdown-mode-hook 'variable-pitch-mode)
+(add-hook 'markdown-mode-hook 'visual-line-mode)
 
 
 ;;; Show clock when on fullscreen
