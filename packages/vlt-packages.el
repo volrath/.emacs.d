@@ -206,6 +206,9 @@ clean buffer we're an order of magnitude laxer about checking."
                                               mode-enabled)))
 
 
+(use-package groovy-mode)
+
+
 (use-package helpful
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
