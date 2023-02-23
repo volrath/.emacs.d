@@ -421,6 +421,11 @@ clean buffer we're an order of magnitude laxer about checking."
   (use-package wgrep))
 
 
+(use-package rst
+  :bind (("C-M-n" . rst-forward-section)
+         ("C-M-p" . rst-backward-section)))
+
+
 (use-package scratch
   :init
   (defun vlt/scratch-unique-name ()
