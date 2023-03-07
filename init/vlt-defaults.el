@@ -268,6 +268,7 @@
       compilation-ask-about-save nil  ; Just save before compiling
       compilation-always-kill t       ; Just kill old compile processes before starting the new one
       compilation-scroll-output 'first-error ; Automatically scroll to first error
+      native-comp-async-report-warnings-errors 'silent
       electric-indent-mode nil
       org-replace-disputed-keys t ; Don't let org-mode ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
       org-src-fontify-natively t ; Fontify org-mode code blocks
