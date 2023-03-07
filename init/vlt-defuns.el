@@ -255,7 +255,16 @@ If there's no region, the current line will be duplicated."
     (message "Copied to clipboard: %s" repo-link)))
 
 
-(provide 'vlt-defuns)
+(defun vlt/discord-time (datetime &optional output-format)
+  (interactive (list (org-read-date nil t)
+                     (when current-prefix-arg
+                       (completing-read "Output Format: "
+                                        '("d" "D" "f" "F" "R" "t" "T")
+                                        nil t))))
+  (kill-new (format "<t:%s:%s>" (format-time-string "%s" datetime) (or output-format "F")))
+  (message "Discord date copied to clipboard"))
 
+
+(provide 'vlt-defuns)
 
 ;;; vlt-defuns.el ends here

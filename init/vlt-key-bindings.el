@@ -125,6 +125,7 @@
 ;;  --------------------------------------------------------------------
 
 (global-set-key (kbd "C-s-v g l") 'vlt/github-url-at-point)
+(global-set-key (kbd "C-s-v d t") 'vlt/discord-time)
 
 (provide 'vlt-key-bindings)
 
