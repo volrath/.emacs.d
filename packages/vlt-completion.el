@@ -43,6 +43,7 @@
 
 (use-package consult
   :bind (("C-x b" . consult-buffer)
+         ("C-c f" . consult-find)
          ("M-y" . consult-yank-pop)
          ("M-g g" . consult-goto-line)
          ("M-g o" . consult-outline)
