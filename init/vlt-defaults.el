@@ -177,6 +177,9 @@
              nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
                     1 font-lock-warning-face t)))))
 
+;; Widen/Narrow are cool, why not use them?
+(put 'narrow-to-region 'disabled nil)
+
 ;; Python needs some defaults
 (add-hook 'python-mode-hook (lambda ()
                               (electric-indent-mode t)
