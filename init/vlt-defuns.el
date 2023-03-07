@@ -225,22 +225,15 @@ If there's no region, the current line will be duplicated."
     (one-shot-keybinding "d" 'duplicate-current-line)))
 
 
-(defun vlt/wrap-with (s)
-  "Create a wrapper function for smartparens using S."
-  `(lambda (&optional arg)
-     (interactive "P")
-     (sp-wrap-with-pair ,s)))
-
-
 (defun vlt/github-url-at-point (&optional revision args)
   (interactive (if current-prefix-arg
                    (list (magit-read-other-branch-or-commit "Revision")
                          (magit-branch-arguments))
                  (list (magit-get-current-branch))))
   (let* ((remote-url-http (thread-last (s-chomp (shell-command-to-string (format "git config --get remote.%s.url" "origin")))
-                            (replace-regexp-in-string ":" "/")
-                            (replace-regexp-in-string "^git@" "https:\/\/")
-                            (replace-regexp-in-string ".git$" "")))
+                                       (replace-regexp-in-string ":" "/")
+                                       (replace-regexp-in-string "^git@" "https:\/\/")
+                                       (replace-regexp-in-string ".git$" "")))
          (path-to-file (s-replace (expand-file-name (vc-root-dir))
                                   ""
                                   (buffer-file-name)))

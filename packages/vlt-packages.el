@@ -30,15 +30,8 @@
 ;;
 ;;; Code:
 
-(use-package s)
-(use-package f)
-(use-package dash)
 (use-package bind-key)
 (use-package diminish)
-
-(require 'bind-key)
-(require 'diminish)
-(require 'vlt-defuns)
 
 
 (use-package ace-window
@@ -106,6 +99,9 @@
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
   (global-corfu-mode))
+
+
+(use-package dash)
 
 
 (use-package dashboard
@@ -182,6 +178,9 @@
 
 
 (use-package explain-pause-mode)
+
+
+(use-package f)
 
 
 (use-package flycheck
@@ -426,6 +425,9 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-M-p" . rst-backward-section)))
 
 
+(use-package s)
+
+
 (use-package scratch
   :init
   (defun vlt/scratch-unique-name ()
@@ -446,6 +448,12 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package smartparens
   :diminish smartparens-mode
+  :init
+  (defun vlt/wrap-with (s)
+    "Create a wrapper function for smartparens using S."
+    `(lambda (&optional arg)
+       (interactive "P")
+       (sp-wrap-with-pair ,s)))
   :bind
   (:map smartparens-mode-map
         ;; Navigation

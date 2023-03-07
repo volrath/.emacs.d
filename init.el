@@ -69,6 +69,7 @@ example save/history files, package config files, etc.")
 (add-to-list 'load-path (expand-file-name "packages" user-emacs-directory))
 (require 'vlt-defaults)
 (require 'vlt-packages)
+(require 'vlt-defuns)
 (require 'vlt-key-bindings)
 (require 'vlt-ui)
 
