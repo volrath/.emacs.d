@@ -4,7 +4,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((cider-ns-refresh-after-fn . "mount.core/start")
+   '((cider-repl-use-pretty-printing)
+     (eval progn
+           (define-clojure-indent
+             (-> 1)
+             (->> 1)))
+     (aggressive-indent-mode)
+     (cider-ns-refresh-after-fn . "mount.core/start")
      (cider-ns-refresh-before-fn . "mount.core/stop")
      (eval progn
            (put-clojure-indent 'async 1)
