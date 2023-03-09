@@ -30,3 +30,4 @@ being installed:
 - [[http://aspell.net/][aspell]]
 - LSP Servers as needed
 - docker, git, and other stuff you probably have already installed.
+- [optional] [[https://www.leonerd.org.uk/code/libvterm/][libvterm]] (also Emacs needs to be compiled with modules)

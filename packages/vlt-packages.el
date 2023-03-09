@@ -589,6 +589,59 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package unfill)
 
 
+(when (and (boundp 'module-file-suffix) module-file-suffix)
+  (use-package vterm
+    :custom (vterm-max-scroll 2000)
+    :bind (:map vterm-mode-map
+                ("C-c C-x" . vterm-copy-mode))
+    :init
+    (defun vlt/vterm-new ()
+      "Create a new vterm buffer"
+      (interactive)
+      (vterm-toggle--new))
+
+    (defun vlt/vterm-tab-line-tabs-function ()
+      "Returns a list of all vterm buffers"
+      (reverse vterm-toggle--buffer-list))
+
+    (defun vlt/vterm-tab-line-hook ()
+      (tab-line-mode 1)
+      (setq-local tab-line-tabs-function #'vlt/vterm-tab-line-tabs-function
+                  tab-line-new-button-show nil
+                  tab-line-separator ""))
+
+    (defun vlt/vterm-toggle-hide-hook ()
+      (seq-do #'bury-buffer vterm-toggle--buffer-list))
+
+    :config
+    ;; Better UI
+    (use-package vterm-toggle
+      :bind (("<f12>" . vterm-toggle)
+             ("C-<f12>" . vterm-toggle-cd)
+             :map vterm-mode-map
+             ("<f12>" . vterm-toggle)
+             ("C-T" . vlt/vterm-new)
+             ("C-<next>" . vterm-toggle-backward)
+             ("C-<prior>" . vterm-toggle-forward))
+      :config
+      ;; Display term window at the bottom, full wide
+      (add-to-list 'display-buffer-alist
+                   '((lambda (buffer-or-name _)
+                       (let ((buffer (get-buffer buffer-or-name)))
+                         (with-current-buffer buffer
+                           (or (equal major-mode 'vterm-mode)
+                               (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                     (display-buffer-reuse-window display-buffer-at-bottom)
+                     (direction . bottom)
+                     (reusable-frames . visible)
+                     (window-height . 0.3))))
+    ;; TODO: implement fullscreen
+    ;; Use tab-line in these buffers
+    (add-hook 'vterm-mode-hook #'vlt/vterm-tab-line-hook)
+    ;; Bury vterm buffers after toggle-hide.
+    (add-hook 'vterm-toggle-hide-hook #'vlt/vterm-toggle-hide-hook)))
+
+
 (use-package which-key
   :diminish which-key-mode
   :config

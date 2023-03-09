@@ -265,6 +265,33 @@ If there's no region, the current line will be duplicated."
   (message "Discord date copied to clipboard"))
 
 
+(when (and (boundp 'module-file-suffix) module-file-suffix)
+  (require 'vterm)
+
+  (defun vlt/vterm-run-async (shell-cmd &optional env foreground)
+    "Execute SHELL-CMD and display output in a new `vterm' buffer.
+Optionally you can pass an ENV list (similar to
+`process-environment') to be appended to the vterm environment,
+see `vterm-environment'."
+    (if (not (fboundp 'vterm-other-window))
+        (error "The vterm package is not installed")
+      (let* ((vterm-shell shell-cmd)
+             (vterm-kill-buffer-on-exit nil)
+             (vterm-buffer-name (generate-new-buffer-name
+                                 (concat "[vlt/vterm-run-async] " shell-cmd)))
+             (display-buffer-fn (if foreground
+                                    #'display-buffer
+                                  (lambda (b)
+                                    (message
+                                     (concat "Process running in background: " vterm-buffer-name)))))
+             (buf (if (not env)
+                      (vterm--internal display-buffer-fn)
+                    (with-current-buffer (get-buffer-create vterm-buffer-name)
+                      (let ((process-environment (append env process-environment)))
+                        (vterm--internal display-buffer-fn))))))
+        (with-current-buffer buf
+          (setq-local vlt/vterm-run-async-buffer-p t))))))
+
 (provide 'vlt-defuns)
 
 ;;; vlt-defuns.el ends here
