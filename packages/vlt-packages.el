@@ -155,9 +155,26 @@
 
 
 (use-package eglot
-  :hook (python-mode . eglot-ensure)
-  :custom
-  (eglot-autoshutdown t))
+  :custom (eglot-autoshutdown t)
+  :init
+  (defun vlt/eglot-eldoc ()
+    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
+
+  (defun vlt/eglot-jdtls-program (_arg)
+    (let ((root-dir (project-root (project-current))))
+      `("jdtls"
+        "-data" ,(expand-file-name
+                  (format "lsp/java/workspace/%s-%s"
+                          (md5 root-dir)
+                          (file-name-base (directory-file-name (project-root (project-current)))))
+                  vlt/var-dir)
+        ,(concat "--jvm-arg=-javaagent:" (expand-file-name "~/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar")))))
+  :hook ((java-mode . eglot-ensure)
+         (python-mode . eglot-ensure)
+         (eglot-managed-mode . vlt/eglot-eldoc))
+  :config
+  ;; Set up Java LSP
+  (setcdr (assq 'java-mode eglot-server-programs) #'vlt/eglot-jdtls-program))
 
 
 (use-package eldoc :diminish eldoc-mode)
@@ -227,6 +244,16 @@ clean buffer we're an order of magnitude laxer about checking."
     (unless (eq ibuffer-sorting-mode 'project-file-relative)
       (ibuffer-do-sort-by-project-file-relative)))
   (add-hook 'ibuffer-hook #'vlt--ibuffer-project.el-hook))
+
+
+(use-package javadoc-lookup
+  :custom
+  (javadoc-lookup-cache-dir (expand-file-name "javadoc-cache" vlt/var-dir))
+  (javadoc-lookup-completing-read-function completing-read-function)
+  :bind (:map java-mode-map
+              ("C-h j" . javadoc-lookup))
+  :config
+  (javadoc-add-artifacts [org.clojure clojure "1.10.3"]))
 
 
 (use-package json-mode)
@@ -652,6 +679,14 @@ clean buffer we're an order of magnitude laxer about checking."
     (add-hook 'vterm-mode-hook #'vlt/vterm-tab-line-hook)
     ;; Bury vterm buffers after toggle-hide.
     (add-hook 'vterm-toggle-hide-hook #'vlt/vterm-toggle-hide-hook)))
+
+
+(use-package which-func
+  :custom
+  (which-func-modes '(java-mode))
+  (which-func-unknown "<λ>")
+  :config
+  (which-func-mode 1))
 
 
 (use-package which-key
