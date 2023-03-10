@@ -75,7 +75,8 @@ we use the generic `prn'."
   :bind (:map clojure-mode-map
               ("C-s-v C-s-l" . vlt/clj-doto-print)
               ("C-s-v C-s-z" . vlt/zprint-buffer)
-              ("C-s-v C-s-e" . vlt/cider-eval-and-pprint-register))
+              ("C-s-v C-s-e" . vlt/cider-eval-and-pprint-register)
+              ("M-Q" . aggressive-indent-indent-defun))
 
   :config
   (use-package flycheck-clj-kondo)
