@@ -371,6 +371,8 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package project
+  :custom
+  (project-list-file (expand-file-name "projects" vlt/var-dir))
   :config
   (use-package project-x
     :straight (project-x
