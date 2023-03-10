@@ -611,7 +611,17 @@ clean buffer we're an order of magnitude laxer about checking."
                   tab-line-separator ""))
 
     (defun vlt/vterm-toggle-hide-hook ()
-      (seq-do #'bury-buffer vterm-toggle--buffer-list))
+      ;; N.B. this implementation is fragile. I bury the buffers in the same
+      ;; order as they are listed in `buffer-list', so that the most recently
+      ;; used get buried first and therefore is closest to get beginning of the
+      ;; list later on when I invoke `vterm-toggle' again. `vterm-toggle' uses
+      ;; an internal function `vterm-toggle--recent-vterm-buffer' that selects
+      ;; the most recently used buffer, which would be the first one buried
+      ;; here. If that function's implementation changes, this function won't
+      ;; work anymore.
+      (seq-do #'bury-buffer
+              (seq-filter (lambda (b) (with-current-buffer b (derived-mode-p 'vterm-mode)))
+                          (buffer-list))))
 
     :config
     ;; Better UI
