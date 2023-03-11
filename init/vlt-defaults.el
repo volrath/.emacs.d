@@ -214,6 +214,13 @@
       smtpmail-smtp-service 587)  ;; server & user in private.el
 
 
+;; Dired
+(setq dired-kill-when-opening-new-dired-buffer t
+      dired-auto-revert-buffer t
+      dired-recursive-copies 'always
+      dired-listing-switches "--time-style long-iso -alhF --group-directories-first")
+
+
 ;; macOS Settings (🤯🔫)
 (when (eq system-type 'darwin)
   (setq
@@ -242,7 +249,6 @@
       visible-bell t
       load-prefer-newer t
       display-time-default-load-average nil  ; I can live without the load-average, thank you.
-      dired-kill-when-opening-new-dired-buffer t
       ediff-diff-options "-w"
       ediff-window-setup-function 'ediff-setup-windows-plain
       ediff-window-setup-function 'ediff-setup-windows-plain
