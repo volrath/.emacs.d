@@ -257,6 +257,9 @@ clean buffer we're an order of magnitude laxer about checking."
   (javadoc-add-artifacts [org.clojure clojure "1.10.3"]))
 
 
+(use-package jq-mode)
+
+
 (use-package json-mode)
 
 
@@ -438,7 +441,10 @@ clean buffer we're an order of magnitude laxer about checking."
     (advice-add 'project-x-window-state-load :before #'vlt/project-x-advice-save-before-jumping)))
 
 
-(use-package restclient)
+(use-package restclient
+  :after (jq-mode org)
+  :config
+  (use-package ob-restclient))
 
 
 (use-package re-builder)
