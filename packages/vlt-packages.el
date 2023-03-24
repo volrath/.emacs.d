@@ -247,6 +247,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package javadoc-lookup
+  :after java-mode
   :custom
   (javadoc-lookup-cache-dir (expand-file-name "javadoc-cache" vlt/var-dir))
   (javadoc-lookup-completing-read-function completing-read-function)
