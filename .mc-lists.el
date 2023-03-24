@@ -37,6 +37,7 @@
 (setq mc/cmds-to-run-once
       '(
         beginning-of-buffer
+        cider-eval-defun-at-point
         org-self-insert-command
         swiper
         ))
