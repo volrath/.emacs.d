@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((cider-repl-use-pretty-printing)
+   '((eval progn
+           (put-clojure-indent 'async 1))
+     (cider-repl-use-pretty-printing)
      (eval progn
            (define-clojure-indent
              (-> 1)
