@@ -449,6 +449,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package restclient
   :after (jq-mode org)
+  :load-path "straight/repos/restclient.el"
   :config
   (use-package ob-restclient))
 
