@@ -275,7 +275,13 @@ clean buffer we're an order of magnitude laxer about checking."
     (goto-char (point-min))
     (when (looking-at "#")
       (forward-line 2)))
+
+  (defun vlt/magit-status-find-file (&optional directory)
+    (interactive "DOpen magit on directory: ")
+    (magit-status (magit-toplevel directory)))
+
   :bind (("C-x m" . magit-status)
+         ("C-x C-m C-m" . vlt/magit-status-find-file)
          ("C-s-m b" . magit-blame-addition))
   :custom
   (transient-history-file (expand-file-name "transient-history.el" vlt/var-dir))
