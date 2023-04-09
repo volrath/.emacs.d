@@ -79,6 +79,8 @@ we use the generic `prn'."
               ("M-Q" . aggressive-indent-indent-defun))
 
   :config
+  (put-clojure-indent 'async 1)
+
   (use-package flycheck-clj-kondo)
   (require 'flycheck-clj-kondo)
 

@@ -10,6 +10,7 @@
         electric-newline-and-maybe-indent
         indent-for-tab-command
         kill-region-or-backward-word
+        markdown-outdent-or-delete
         org-yank
         pp-eval-expression
         sp-backward-delete-char
