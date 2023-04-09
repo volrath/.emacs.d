@@ -224,10 +224,15 @@ presentation.")
 ;;; Extra defaults
 ;;  ----------------------------------------------------------------------------
 
+(defun vlt/enable-line-visual-helpers ()
+  (hl-line-mode 1)
+  (display-line-numbers-mode 1))
+
 (line-number-mode t)
 (column-number-mode t)
-(add-hook 'prog-mode-hook 'hl-line-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'vlt/enable-line-visual-helpers)
+(add-hook 'conf-mode-hook 'vlt/enable-line-visual-helpers)
+(add-hook 'dired-mode-hook 'hl-line-mode)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 
