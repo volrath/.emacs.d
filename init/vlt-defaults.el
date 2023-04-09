@@ -234,7 +234,8 @@
    mac-option-modifier   'super
    mac-function-modifier 'hyper
    ;; Random sanity
-   delete-by-moving-to-trash t))
+   delete-by-moving-to-trash t
+   insert-directory-program "gls"))
 
 
 ;; Sanity...
