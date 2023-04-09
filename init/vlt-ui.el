@@ -59,7 +59,7 @@
 (defvar vlt/fixed-width-font "Fira Code Light")
 (defvar vlt/variable-width-font "Iosevka Aile")
 
-(set-face-attribute 'default nil :font vlt/fixed-width-font :height 110)
+(set-face-attribute 'default nil :font vlt/fixed-width-font :height (if (eq system-type 'darwin) 140 110))
 (set-face-attribute 'fixed-pitch nil :font vlt/fixed-width-font :height 115)
 (set-face-attribute 'variable-pitch nil :font vlt/variable-width-font :weight 'light :height 1.0)
 
