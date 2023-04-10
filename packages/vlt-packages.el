@@ -174,7 +174,8 @@
          (eglot-managed-mode . vlt/eglot-eldoc))
   :config
   ;; Set up Java LSP
-  (setcdr (assq 'java-mode eglot-server-programs) #'vlt/eglot-jdtls-program))
+  (setf (alist-get '(java-mode java-ts-mode) eglot-server-programs nil nil #'equal)
+        #'vlt/eglot-jdtls-program))
 
 
 (use-package eldoc :diminish eldoc-mode)
