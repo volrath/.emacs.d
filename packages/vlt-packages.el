@@ -635,7 +635,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (when (and (boundp 'module-file-suffix) module-file-suffix)
   (use-package vterm
-    :custom (vterm-max-scroll 2000)
+    :custom (vterm-max-scroll 4000)
     :bind (:map vterm-mode-map
                 ("C-c C-x" . vterm-copy-mode))
     :init
