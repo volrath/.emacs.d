@@ -397,6 +397,9 @@ clean buffer we're an order of magnitude laxer about checking."
   (advice-add 'forward-page :after #'vlt/page-navigation-move-to-bol))
 
 
+(use-package parseedn)
+
+
 (use-package pass
   :custom (password-store-password-length 24)
   :bind (("H-p" . pass))

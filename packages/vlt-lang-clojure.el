@@ -111,6 +111,47 @@ we use the generic `prn'."
         (when filename
           (cider-interactive-eval
            (concat "(nextjournal.clerk/show! \"" filename "\")")))))
+
+    (defun vlt/cider-add-libs (&optional deps-edn-file-path alias)
+      "Runs `clojure.tools.deps.alpha.repl/add-libs' on the
+dependencies specified DEPS-EDN-FILE-PATH.
+
+With C-u, you can decide which `deps.edn' file to use, otherwise
+it will try and guess the file path using `clojure-project-dir'.
+
+With C-u C-u, you'll be able to specify the alias you'd like to
+install."
+      (interactive (list (let* ((proj-dir (clojure-project-dir))
+                                (default-deps (when proj-dir
+                                                (expand-file-name "deps.edn" proj-dir))))
+                           (if (and default-deps
+                                    (file-exists-p default-deps)
+                                    (not current-prefix-arg))
+                               default-deps
+                             (read-file-name "Select deps.edn file: " proj-dir default-deps t)))
+                         nil))
+      (let* ((deps-content (with-temp-buffer
+                             (insert-file-contents deps-edn-file-path)
+                             (buffer-string)))
+             (parsed-deps (parseedn-read-str deps-content))
+             (available-aliases (gethash :aliases parsed-deps))
+             (deps (if (or (not current-prefix-arg)
+                           (< (car current-prefix-arg) 16))
+                       (gethash :deps parsed-deps)
+                     (if available-aliases
+                         (let* ((alias-keys (hash-table-keys available-aliases))
+                                (selected-alias-str (completing-read "Select alias: " alias-keys nil t))
+                                (selected-alias (seq-find (lambda (k) (equal selected-alias-str (symbol-name k)))
+                                                          alias-keys)))
+                           (gethash :extra-deps
+                                    (gethash selected-alias available-aliases)))
+                       (progn
+                         (message "No aliases in %s, defaulting to :deps" deps-edn-file-path)
+                         (gethash :deps parsed-deps))))))
+        (cider-interactive-eval
+         (concat "((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs) '"
+                 (parseedn-print-str deps)
+                 ")"))))
     :bind (:map cider-mode-map
                 ("C-c C-Q" . vlt/cider-quit-all)
                 ("M-RET" . vlt/clerk-show))
