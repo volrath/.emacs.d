@@ -267,7 +267,7 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package langtool
   :config
   (setq langtool-http-server-host "localhost"
-        langtool-http-server-port 8081))
+        langtool-http-server-port 7788))
 
 
 (use-package magit
