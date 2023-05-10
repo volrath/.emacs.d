@@ -203,13 +203,6 @@ presentation.")
               ("<right>" . right-char)))
 
 
-;; Markdown
-;; -----------------------------------------------------------------------------
-
-(add-hook 'markdown-mode-hook 'variable-pitch-mode)
-(add-hook 'markdown-mode-hook 'visual-line-mode)
-
-
 ;;; Show clock when on fullscreen
 ;; -----------------------------------------------------------------------------
 
