@@ -323,7 +323,11 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package multiple-cursors
   :bind (("C->" . mc/mark-next-like-this)
+         ("C-M->" . mc/skip-to-next-like-this)
+         ("C-s->" . mc/unmark-previous-like-this)
          ("C-<" . mc/mark-previous-like-this)
+         ("C-M-<" . mc/skip-to-previous-like-this)
+         ("C-s-<" . mc/unmark-next-like-this)
          ("C-¶" . mc/mark-all-like-this) ;; ;
          ("C-ë" . mc/mark-all-in-region) ;; r
          ("C-ä" . mc/mark-all-dwim)))    ;; q
