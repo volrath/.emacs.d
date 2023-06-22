@@ -147,6 +147,9 @@
          ("C-c C-s-d C-s-w" . vlt/docker-compose-down-all)))
 
 
+(use-package docker-tramp)
+
+
 (use-package dockerfile-mode
   :mode "Dockerfile\\'")
 
