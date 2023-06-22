@@ -218,6 +218,7 @@ presentation.")
 ;;  ----------------------------------------------------------------------------
 
 (defun vlt/enable-line-visual-helpers ()
+  (interactive)
   (hl-line-mode 1)
   (display-line-numbers-mode 1))
 
