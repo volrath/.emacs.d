@@ -4,10 +4,14 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-insert-left-brace
+        c-electric-paren
+        c-electric-semi&comma
+        c-electric-star
         cljr-slash
         clojure-align
         counsel-M-x
         electric-newline-and-maybe-indent
+        fill-paragraph
         indent-for-tab-command
         kill-region-or-backward-word
         markdown-outdent-or-delete
@@ -33,6 +37,8 @@
         transpose-sexps
         vlt/clj-doto-print
         wdired--self-insert
+        yaml-electric-backspace
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
