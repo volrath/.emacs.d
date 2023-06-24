@@ -129,7 +129,7 @@
   :custom
   (visual-fill-column-width 100)
   (visual-fill-column-center-text t)
-  :hook (org-mode org-roam-mode dashboard-mode))
+  :hook ((org-mode org-roam-mode dashboard-mode) . visual-fill-column-mode))
 
 
 (use-package org-appear

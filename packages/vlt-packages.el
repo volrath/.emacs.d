@@ -237,7 +237,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package highlight-indent-guides
-  :hook (docker-compose-mode nxml-mode python-mode yaml-mode)
+  :hook ((docker-compose-mode nxml-mode python-mode yaml-mode) . highlight-indent-guides-mode)
   :custom (highlight-indent-guides-method 'bitmap))
 
 
@@ -344,7 +344,6 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package org
-  :after smartparens
   :custom
   (org-src-fontify-natively t)
   (org-export-backends '(ascii html icalendar latex md odt))
@@ -361,13 +360,6 @@ clean buffer we're an order of magnitude laxer about checking."
          :map org-mode-map
          ("C-'" . er/expand-region))
   :config
-  (sp-with-modes 'org-mode
-    (sp-local-pair "*" "*" :actions '(insert wrap) :unless '(sp-point-after-word-p sp-point-at-bol-p) :wrap "C-*" :skip-match 'sp--org-skip-asterisk)
-    (sp-local-pair "_" "_" :unless '(sp-point-after-word-p) :wrap "C-_")
-    (sp-local-pair "/" "/" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
-    (sp-local-pair "~" "~" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
-    (sp-local-pair "=" "=" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
-    (sp-local-pair "«" "»"))
 
   (use-package org-journal
     :custom
@@ -377,6 +369,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package org-roam
+  :after org
   :custom
   (org-roam-directory "~/org/roam/")
   (org-roam-db-location "~/org/roam/database.db")
@@ -501,6 +494,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package smartparens
+  :after org
   :diminish smartparens-mode
   :init
   (defun vlt/wrap-with (s)
@@ -537,6 +531,14 @@ clean buffer we're an order of magnitude laxer about checking."
 
   (define-key smartparens-mode-map (kbd "M-(") (vlt/wrap-with "("))
   (define-key smartparens-mode-map (kbd "M-\"") (vlt/wrap-with "\""))
+
+  (sp-with-modes 'org-mode
+    (sp-local-pair "*" "*" :actions '(insert wrap) :unless '(sp-point-after-word-p sp-point-at-bol-p) :wrap "C-*" :skip-match 'sp--org-skip-asterisk)
+    (sp-local-pair "_" "_" :unless '(sp-point-after-word-p) :wrap "C-_")
+    (sp-local-pair "/" "/" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "~" "~" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "=" "=" :unless '(sp-point-after-word-p) :post-handlers '(("[d1]" "SPC")))
+    (sp-local-pair "«" "»"))
 
   (use-package hydra
     :config
@@ -634,7 +636,7 @@ clean buffer we're an order of magnitude laxer about checking."
 (use-package undo-tree
   :diminish undo-tree-mode
   :custom (undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" vlt/var-dir))))
-  :hook org-mode
+  :hook (org-mode . undo-tree-mode)
   :config
   (global-undo-tree-mode)
   (setq undo-tree-mode-lighter ""))
