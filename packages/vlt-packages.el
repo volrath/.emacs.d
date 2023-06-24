@@ -319,6 +319,11 @@ clean buffer we're an order of magnitude laxer about checking."
               ("C-c p" . vlt/markdown-insert-pull-requests)))
 
 
+(use-package mermaid-mode
+  :after org
+  :custom (mermaid-output-format ".svg"))
+
+
 (use-package move-text
   :bind (("<C-S-down>" . move-text-down)
          ("<C-S-up>"   . move-text-up)))
@@ -343,6 +348,11 @@ clean buffer we're an order of magnitude laxer about checking."
   :bind (("H-m" . notmuch)))
 
 
+(use-package ob-mermaid
+  :after org
+  :custom (ob-mermaid-cli-path "/usr/bin/mmdc"))
+
+
 (use-package org
   :custom
   (org-src-fontify-natively t)
@@ -360,6 +370,10 @@ clean buffer we're an order of magnitude laxer about checking."
          :map org-mode-map
          ("C-'" . er/expand-region))
   :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (mermaid . t)))
 
   (use-package org-journal
     :custom
