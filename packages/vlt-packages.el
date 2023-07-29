@@ -425,6 +425,22 @@ clean buffer we're an order of magnitude laxer about checking."
   :bind (("C-M-#" . powerthesaurus-lookup-dwim)))
 
 
+(use-package proced
+  :ensure nil
+  :commands proced
+  :bind (("H-t" . proced))
+  :custom
+  (proced-auto-update-flag t)
+  (proced-goal-attribute nil)
+  (proced-show-remote-processes t)
+  ;; (proced-enable-color-flag t)
+  (proced-format 'custom)
+  :config
+  (add-to-list
+   'proced-format-alist
+   '(custom user pid ppid sess tree pcpu pmem rss start time state (args comm))))
+
+
 (use-package project
   :custom
   (project-list-file (expand-file-name "projects" vlt/var-dir))
