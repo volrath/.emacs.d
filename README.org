@@ -6,16 +6,14 @@ things here and there that are useful to copy :).
 ** If you still want to try it out
 
 #+begin_src bash
-$> git clone https://github.com/volrath/.emacs.d /tmp/.emacs.d
+  $> git clone https://github.com/volrath/.emacs.d /tmp/.emacs.d
+  $> emacs --init-directory /tmp/.emacs.d  # If you're on Emacs 29.1+
 
-# Then either...
-$> HOME=/tmp emacs
-# Or...
-$> emacs -Q -l /tmp/.emacs.d/init.el
+  # If you're on an older version of Emacs, then try either...
+  $> HOME=/tmp emacs
+  # Or...
+  $> emacs -Q -l /tmp/.emacs.d/init.el
 #+end_src
-
-Both options above have their own quirks, but will allow you to quickly try most
-of this config out.
 
 ** External dependencies
 

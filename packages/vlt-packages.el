@@ -111,8 +111,7 @@
   (dashboard-set-footer nil)
   (dashboard-center-content t)
   :config
-  (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice (lambda (get-buffer-create "*dashboard*"))))
+  (dashboard-setup-startup-hook))
 
 
 (use-package define-word
@@ -145,9 +144,6 @@
   :bind (("C-c C-s-d C-s-d" . docker)
          ("C-c C-s-d C-s-u" . vlt/docker-compose-up-all)
          ("C-c C-s-d C-s-w" . vlt/docker-compose-down-all)))
-
-
-(use-package docker-tramp)
 
 
 (use-package dockerfile-mode
@@ -743,7 +739,7 @@ clean buffer we're an order of magnitude laxer about checking."
   (which-func-modes '(java-mode))
   (which-func-unknown "<λ>")
   :config
-  (which-func-mode 1))
+  (which-function-mode 1))
 
 
 (use-package which-key
