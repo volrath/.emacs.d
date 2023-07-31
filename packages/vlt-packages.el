@@ -365,6 +365,11 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-s-o l" . org-store-link)
          :map org-mode-map
          ("C-'" . er/expand-region))
+  :init
+  (defun vlt/org-babel-auto-refresh-images ()
+    (when org-inline-image-overlays
+      (org-redisplay-inline-images)))
+  (add-hook 'org-babel-after-execute-hook #'vlt/org-babel-auto-refresh-images)
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
