@@ -61,10 +61,6 @@
 ;;; Load paths and require modules
 ;;; ---------------------------------------------------------------------------
 
-(defvar vlt/var-dir (expand-file-name (concat "var/" (system-name)) user-emacs-directory)  ;; Avoid littering
-  "This folder stores variable data files for `(system-name)'. For
-example save/history files, package config files, etc.")
-
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "packages" user-emacs-directory))
 (require 'vlt-defaults)
