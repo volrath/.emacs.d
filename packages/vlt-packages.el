@@ -66,11 +66,25 @@
   :bind (("C-x C-y" . browse-kill-ring)))
 
 
+(use-package cddl-mode
+  :mode "\\.cddl\\'"
+  :straight (cddl-mode
+             :type git
+             :host github
+             :repo "cbor/cddl-mode"
+             :files ("*.el")))
+
+
 (use-package change-inner
   :bind (("s-i" . copy-inner)
          ("s-o" . copy-inner)
          ("s-I" . change-inner)
          ("s-O" . change-inner)))
+
+
+(use-package cmake-mode
+  :custom
+  (cmake-tab-width 4))
 
 
 (use-package corfu
