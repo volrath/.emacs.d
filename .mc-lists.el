@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-insert-left-brace
+        c-electric-colon
         c-electric-paren
         c-electric-semi&comma
         c-electric-star
@@ -22,6 +23,7 @@
         sp-backward-kill-word
         sp-backward-sexp
         sp-backward-up-sexp
+        sp-beginning-of-sexp
         sp-delete-char
         sp-down-sexp
         sp-end-of-sexp
@@ -44,8 +46,12 @@
 
 (setq mc/cmds-to-run-once
       '(
+        aggressive-indent-indent-defun
         beginning-of-buffer
         cider-eval-defun-at-point
+        mc--insert-number-and-increase
         org-self-insert-command
+        overwrite-mode
         swiper
+        vterm-toggle
         ))
