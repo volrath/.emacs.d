@@ -139,6 +139,7 @@
 
 (use-package dired-hide-dotfiles
   :hook (dired-mode . dired-hide-dotfiles-mode)
+  :custom (dired-hide-dotfiles-verbose nil)
   :bind (:map dired-mode-map
               ("h" . dired-hide-dotfiles-mode)))
 
