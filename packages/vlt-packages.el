@@ -421,17 +421,29 @@ clean buffer we're an order of magnitude laxer about checking."
   :diminish page-break-lines-mode
   :custom (page-break-lines-max-width 80)
   :init
-  (defun vlt/page-navigation-move-to-bol (&rest _args)
+  (defun vlt/fix-page-breaks-navigation (fwd-page-fn &optional count)
     "page-break-lines is great, but I don't like that the cursor
-    goes to the end of the break line when I `backward-page' or
-    `forward-page'."
+    goes to the end of the break line when I `forward-page' or
+    `backward-page', so we move it to BOL after calling
+    `forward-page' (n.b. `backward-page' is defined in terms of
+    the former).
+
+    A side effect of moving to bol on every page break, is that the
+    break is still at eol, so when moving forward, we're effectively
+    putting the cursor before the page break. If you want to move
+    forward twice in a row, the second time won't be possible because
+    the next break is on the same line the cursor is in. To prevent
+    this from being annoying, we advice `forward-page' to move the
+    cursor down one line before jumping."
     (when (bound-and-true-p page-break-lines-mode)
+      (when (and count (> count 0))
+        (next-line))
+      (apply fwd-page-fn (list count))
       (move-beginning-of-line nil)))
   :config
   (add-to-list 'page-break-lines-modes 'clojure-mode)
   (global-page-break-lines-mode)
-  (advice-add 'backward-page :after #'vlt/page-navigation-move-to-bol)
-  (advice-add 'forward-page :after #'vlt/page-navigation-move-to-bol))
+  (advice-add 'forward-page :around #'vlt/fix-page-breaks-navigation))
 
 
 (use-package parseedn)
