@@ -40,8 +40,10 @@
 
 (use-package aggressive-indent
   :diminish aggressive-indent-mode
-  :config
-  (global-aggressive-indent-mode))
+  :hook
+  (clojure-mode . aggressive-indent-mode)
+  (lisp-data-mode . aggressive-indent-mode)
+  (python-mode . aggressive-indent-mode))
 
 
 (use-package all-the-icons-dired
