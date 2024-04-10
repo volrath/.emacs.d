@@ -818,6 +818,9 @@ clean buffer we're an order of magnitude laxer about checking."
          ("C-x C-0" . zoom-frm-unzoom)))
 
 
+(use-package ztree)
+
+
 
 ;; Require every other package in ~/.emacs.d/packages
 ;; -----------------------------------------------------------------------------
