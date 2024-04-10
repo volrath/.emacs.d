@@ -117,6 +117,9 @@
   (global-corfu-mode))
 
 
+(use-package dart-mode)
+
+
 (use-package dash)
 
 
@@ -278,6 +281,9 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package json-mode)
+
+
+(use-package kotlin-mode)
 
 
 (use-package langtool
@@ -632,6 +638,9 @@ clean buffer we're an order of magnitude laxer about checking."
 
 
 (use-package sudo-edit)
+
+
+(use-package swift-mode)
 
 
 (use-package swiper
