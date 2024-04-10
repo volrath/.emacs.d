@@ -188,8 +188,7 @@
                           (file-name-base (directory-file-name (project-root (project-current)))))
                   vlt/var-dir)
         ,(concat "--jvm-arg=-javaagent:" (expand-file-name "~/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar")))))
-  :hook ((java-mode . eglot-ensure)
-         (python-mode . eglot-ensure)
+  :hook ((python-mode . eglot-ensure)
          (eglot-managed-mode . vlt/eglot-eldoc))
   :config
   ;; Set up Java LSP
