@@ -89,6 +89,7 @@ we use the generic `prn'."
   (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
   (add-hook 'clojure-mode-hook 'yas-minor-mode)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
+  (add-hook 'clojure-mode-hook (lambda () (setq-local comment-column 0)))
   (diminish 'yas-minor-mode)
 
   (use-package cider
