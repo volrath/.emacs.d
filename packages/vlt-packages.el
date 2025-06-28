@@ -713,7 +713,7 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :custom (undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" vlt/var-dir))))
+  :custom (undo-tree-auto-save-history nil)
   :hook (org-mode . undo-tree-mode)
   :config
   (global-undo-tree-mode)

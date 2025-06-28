@@ -272,7 +272,7 @@
       large-file-warning-threshold 100000000  ; 100MB might be too much
       save-place-file (expand-file-name "saveplace" vlt/var-dir)  ; Save place in buffers
       auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" vlt/var-dir)
-      backup-directory-alist `(("." . ,vlt/var-dir))  ; Keep things clean!
+      backup-directory-alist `(("." . ,(expand-file-name "backup" vlt/var-dir)))  ; Keep things clean!
       bookmark-default-file (expand-file-name "bookmarks" vlt/var-dir)
       truncate-partial-width-windows nil  ; Don't truncate lines
       redisplay-dont-pause t  ; Don't defer screen updates when performing operations
@@ -284,7 +284,7 @@
       xterm-mouse-mode t  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Text_002dOnly-Mouse.html
       ispell-program-name "aspell"
       version-control t
-      kept-new-versions 10
+      kept-new-versions 2
       kept-old-versions 0
       delete-old-versions t
       backup-by-copying t
