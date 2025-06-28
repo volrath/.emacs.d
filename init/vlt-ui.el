@@ -30,7 +30,7 @@
 ;;
 ;;; Code:
 
-;;; Theme and Modeline
+;;; Theme, Modeline, and Tabs
 ;;  ----------------------------------------------------------------------------
 
 (use-package monokai-theme
@@ -56,6 +56,24 @@
   :config
   (when (eq system-type 'darwin)
     (mode-line-bell-mode)))
+
+
+(defface vlt/tabs-default
+  '((t
+     (:background "black" :foreground "black")))
+  "Default face used in the tab bar."
+  :group 'vlt/tabs)
+
+(defface vlt/tabs-unselected
+  '((t
+     (:background "#3D3C3D" :foreground "grey50")))
+  "Face used for unselected tabs."
+  :group 'vlt/tabs)
+
+(defface vlt/tabs-selected
+  '((t (:background "#31343E" :foreground "white")))
+  "Face used for the selected tab."
+  :group 'vlt/tabs)
 
 
 ;;; Font
