@@ -29,3 +29,4 @@ being installed:
 - LSP Servers as needed
 - docker, git, and other stuff you probably have already installed.
 - [optional] [[https://www.leonerd.org.uk/code/libvterm/][libvterm]] (also Emacs needs to be compiled with modules)
+- [optional] [[https://github.com/darold/pgFormatter][pgFormatter]] for formatting SQL through [[https://github.com/purcell/sqlformat][sqlformat]].
