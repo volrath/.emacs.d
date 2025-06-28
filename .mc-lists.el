@@ -4,26 +4,19 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-insert-left-brace
-        c-electric-colon
-        c-electric-paren
-        c-electric-semi&comma
-        c-electric-star
         cljr-slash
         clojure-align
         counsel-M-x
         electric-newline-and-maybe-indent
-        fill-paragraph
         indent-for-tab-command
         kill-region-or-backward-word
         markdown-outdent-or-delete
-        org-end-of-line
         org-yank
         pp-eval-expression
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
         sp-backward-up-sexp
-        sp-beginning-of-sexp
         sp-delete-char
         sp-down-sexp
         sp-end-of-sexp
@@ -35,23 +28,20 @@
         sp-raise-sexp
         sp-remove-active-pair-overlay
         sp-splice-sexp-killing-backward
+        sp-split-sexp
         sp-up-sexp
         toggle-quotes
         transpose-sexps
         vlt/clj-doto-print
         wdired--self-insert
-        yaml-electric-backspace
         yaml-electric-dash-and-dot
+        yaml-electric-backspace
         ))
 
 (setq mc/cmds-to-run-once
       '(
-        aggressive-indent-indent-defun
         beginning-of-buffer
         cider-eval-defun-at-point
-        mc--insert-number-and-increase
         org-self-insert-command
-        overwrite-mode
         swiper
-        vterm-toggle
         ))
