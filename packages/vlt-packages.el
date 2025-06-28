@@ -456,6 +456,16 @@ clean buffer we're an order of magnitude laxer about checking."
   (use-package password-store-otp))
 
 
+(use-package pbxproj-mode
+  :straight (pbxproj-mode
+             :type git
+             :host github
+             :repo "danielmartin/pbxproj-mode"))
+
+
+(use-package powershell)
+
+
 (use-package powerthesaurus
   :bind (("C-M-#" . powerthesaurus-lookup-dwim)))
 
