@@ -102,8 +102,6 @@
   (setq tab-always-indent 'complete
         completion-cycle-threshold nil)
 
-  (load (expand-file-name "straight/build/corfu/extensions/corfu-info.el" user-emacs-directory))  ;; (use-package corfu-info :load-path "straight/build/corfu/extensions") not working for me 🤔
-
   (use-package kind-icon
     :after corfu
     :custom
@@ -368,7 +366,8 @@ clean buffer we're an order of magnitude laxer about checking."
 
 (use-package ob-mermaid
   :after org
-  :custom (ob-mermaid-cli-path "/usr/bin/mmdc"))
+  :custom
+  (ob-mermaid-cli-path "/usr/bin/mmdc -p ~/.config/mermaid/puppeteer.json"))
 
 
 (use-package org
