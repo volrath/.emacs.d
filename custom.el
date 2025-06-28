@@ -7,10 +7,14 @@
    '((eval progn
            (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
            (add-to-list 'cider-jack-in-nrepl-middlewares "shadow.cljs.devtools.server.nrepl/middleware"))
-     (eval progn
-           (put-clojure-indent 'm/=> 1))
-     (eval progn (put-clojure-indent 'measure 2)) (vc-prepare-patches-separately)
-     (diff-add-log-use-relative-names . t) (vc-git-annotate-switches . "-w")
+     (eval progn (put-clojure-indent 'm/=> 1) (put-clojure-indent 'meander/match 1))
+     (eval progn (put-clojure-indent 'm/=> 1))
+     (eval progn (make-variable-buffer-local 'cider-jack-in-nrepl-middlewares)
+           (add-to-list 'cider-jack-in-nrepl-middlewares
+                        "shadow.cljs.devtools.server.nrepl/middleware"))
+     (eval progn (put-clojure-indent 'measure 2))
+     (vc-prepare-patches-separately) (diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")
      (cider-ns-refresh-after-fn . "integrant.repl/resume")
      (cider-ns-refresh-before-fn . "integrant.repl/suspend")
      (cider-ns-refresh-after-fn . "user/resume!")

@@ -4,15 +4,24 @@
 (setq mc/cmds-to-run-for-all
       '(
         LaTeX-insert-left-brace
+        c-electric-colon
+        c-electric-paren
+        c-electric-semi&comma
+        c-electric-star
+        cider-switch-to-repl-buffer
         cljr-slash
         clojure-align
         counsel-M-x
         electric-newline-and-maybe-indent
         indent-for-tab-command
         kill-region-or-backward-word
+        kmacro-end-or-call-macro
         markdown-outdent-or-delete
+        nxml-electric-slash
+        org-end-of-line
         org-yank
         pp-eval-expression
+        prog-fill-reindent-defun
         sp-backward-delete-char
         sp-backward-kill-word
         sp-backward-sexp
@@ -42,6 +51,8 @@
       '(
         beginning-of-buffer
         cider-eval-defun-at-point
+        end-of-buffer
+        mc--insert-number-and-increase
         org-self-insert-command
         swiper
         ))
