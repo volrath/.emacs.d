@@ -222,7 +222,8 @@
 
 
 ;; macOS Settings (🤯🔫)
-(when (eq system-type 'darwin)
+(defun vlt/mac-karabiner-modifiers ()
+  (interactive)
   (setq
    ;; Remap Modifiers
    ;; I use Karabiner's simple rules to get the following layout:
@@ -232,7 +233,20 @@
    mac-command-modifier  'control
    mac-control-modifier  'meta
    mac-option-modifier   'super
-   mac-function-modifier 'hyper
+   mac-function-modifier 'hyper))
+
+(defun vlt/mac-defaults-modifiers ()
+  (interactive)
+  (setq
+   mac-command-modifier  'meta
+   mac-control-modifier  'control
+   mac-option-modifier   'super
+   mac-function-modifier 'hyper))
+
+
+(when (eq system-type 'darwin)
+  (vlt/mac-karabiner-modifiers)
+  (setq
    ;; Random sanity
    delete-by-moving-to-trash t
    insert-directory-program "gls"))

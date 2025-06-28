@@ -52,6 +52,11 @@
 (rename-modeline "clojure-mode" clojure-mode "Clj")
 (rename-modeline "clojurescript-mode" clojure-mode "Cljs")
 
+(use-package mode-line-bell
+  :config
+  (when (eq system-type 'darwin)
+    (mode-line-bell-mode)))
+
 
 ;;; Font
 ;;  ----------------------------------------------------------------------------
